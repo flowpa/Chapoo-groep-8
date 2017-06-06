@@ -22,7 +22,11 @@ namespace DAL
 
         public Bestelling ReadBestelling(SqlDataReader reader)
         {
-            Bestelling b = new Bestelling()
+            Bestelling b = new Bestelling();
+            int id = (int)reader["Bestelling_id"];
+            int medewerkersId = (int)reader["Bestelling_id"];
+            int Tafeld = (int)reader["Bestelling_id"];
+
         }
     }
 }
