@@ -23,20 +23,17 @@ namespace Model
             get { return id; }
         }
 
-        public float Fooi
+        public List<Bestelling> BestellingenOpBon
         {
-            get
-            {
-                return fooi;
-            }
-            set
-            {
-                foreach(Bestelling b in bestellingenOpBon)
-                {
-                    fooi += b.GetBestelItems
-                }
-            }
+            get { return bestellingenOpBon; }
+            set { bestellingenOpBon = value; }
         }
+
+        //public float Fooi
+        //{
+        //    get { return fooi; }
+        //    set { fooi = value; }
+        //}
 
        
 
