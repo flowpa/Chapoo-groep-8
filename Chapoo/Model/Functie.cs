@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    enum Functie { eigenaar, kok, barman, bediende }
+    public enum Functie { eigenaar, kok, barman, bediende }
 }

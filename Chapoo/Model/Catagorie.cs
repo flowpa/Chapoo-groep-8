@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    enum Catagorie {voorgerecht, hoofdgerecht, tussengerecht, nagerecht, dranken }
+    public enum Catagorie {voorgerecht, hoofdgerecht, tussengerecht, nagerecht, dranken }
 }
