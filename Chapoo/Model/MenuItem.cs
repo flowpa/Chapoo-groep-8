@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class MenuItem
+    public class MenuItem
     {
         private int id;
         private string naam;

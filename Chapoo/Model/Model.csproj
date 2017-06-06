@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bestelling.cs" />
+    <Compile Include="Bon.cs" />
     <Compile Include="Catagorie.cs" />
     <Compile Include="Dagdeel.cs" />
     <Compile Include="Functie.cs" />

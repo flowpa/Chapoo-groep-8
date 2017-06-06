@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Tafel
+    public class Tafel
     {
         private int nummer;
         private bool isBezet;

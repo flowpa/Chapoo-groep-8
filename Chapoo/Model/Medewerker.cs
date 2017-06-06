@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Medewerker
+    public class Medewerker
     {
         private int id;
         private string voornaam;
@@ -25,6 +25,29 @@ namespace Model
         public int Id
         {
             get { return id; }
+        }
+
+        public string Voornaam
+        {
+            get { return voornaam; }
+            //set { voornaam = value; }
+        }
+
+        public string Achternaam
+        {
+            get { return achternaam; }
+            set { achternaam = value; }
+        }
+
+        public Functie Functie
+        {
+            get { return functie; }
+            set { functie = value; }
+        }
+
+        public string Naam
+        {
+            get { return voornaam + " " + achternaam; }
         }
     }
 }
