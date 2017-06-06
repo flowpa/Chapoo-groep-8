@@ -13,7 +13,7 @@ namespace Model
         private int tafelId;
         private DateTime tijd;
 
-        List<MenuItem> besteldeItems = new List<MenuItem>();
+        private List<MenuItem> besteldeItems;
 
         public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
         {
@@ -44,11 +44,11 @@ namespace Model
         {
             get { return tijd; }
             set { tijd = value; }
-        }
+        } 
 
-        public List<MenuItem> GetBestelItems()
+        public List<MenuItem> BesteldeItems
         {
-            return besteldeItems;
+            get { return besteldeItems; }
         }
 
     }
