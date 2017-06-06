@@ -15,7 +15,7 @@ namespace Model
 
         private List<MenuItem> besteldeItems;
 
-        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
+        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd, List<MenuItem> besteldeItems)
         {
             this.id = id;
             this.medewerkersId = medewerkersId;
