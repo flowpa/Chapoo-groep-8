@@ -8,7 +8,6 @@ namespace Model
 {
     class Bestelling
     {
-        // wrm niet dan?
-        //nu wel halo
+        
     }
 }
