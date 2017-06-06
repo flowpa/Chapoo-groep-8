@@ -43,6 +43,7 @@
     <Compile Include="Bestelling.cs" />
     <Compile Include="Catagorie.cs" />
     <Compile Include="Dagdeel.cs" />
+    <Compile Include="Functie.cs" />
     <Compile Include="Medewerker.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
