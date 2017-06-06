@@ -20,17 +20,18 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public MenuItem ReadItem(SqlDataReader reader)
+        public MenuItem ReadMenuItem(SqlDataReader reader)
         {
-            MenuItem m = new MenuItem();
             int id = (int)reader["MenuItem_id"];
             string naam = (string)reader["Naam"];
-            //Categorie
-            //Dagdeel
-            //Is_alcoholisch
-            float Prijs = (float)reader["Prijs"];
-            int Voorraad = (int)reader["Voorraad"];
-            string Omschrijving = (string)reader["Omschrijving"];
+            Catagorie categorie = (Catagorie)Enum.Parse(typeof(Catagorie), (string)reader["Categorie"]);
+            Dagdeel dagdeel = (Dagdeel)Enum.Parse(typeof(Dagdeel), (string)reader["Dagdeel"]);
+            bool isAlcoholisch = (bool)reader["Is_alcoholisch"];
+            float prijs = (float)reader["Prijs"];
+            int voorraad = (int)reader["Voorraad"];
+            string omschrijving = (string)reader["Omschrijving"];
+
+            return new MenuItem(id, naam, categorie, dagdeel, isAlcoholisch, prijs, voorraad, omschrijving);
         }
     }
 }
