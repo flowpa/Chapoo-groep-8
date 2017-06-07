@@ -8,7 +8,6 @@ C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Logica.pdb
 C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Model.pdb
 C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\DAL.pdb
 C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
-C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingOpneemScherm.resources
 C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Properties.Resources.resources
 C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.exe
@@ -18,3 +17,4 @@ C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csprojResolveAs
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Properties.Resources.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Background.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Background.resources
