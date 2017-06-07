@@ -16,7 +16,8 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(new Form1());                 niet verwijderen. gwn veranderen.
+            BestellingOpneemScherm b = new BestellingOpneemScherm();
+            Application.Run(b);                // niet verwijderen. gwn veranderen.
         }
     }
 }

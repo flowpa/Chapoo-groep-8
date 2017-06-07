@@ -69,6 +69,10 @@ namespace Model
             //set { omschrijving = value; }
         }
 
+        public override string ToString()
+        {
+            return Naam + ", " + Prijs + "        " + omschrijving;
+        }
 
     }
 }
