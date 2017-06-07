@@ -14,7 +14,7 @@ namespace Model
         private DateTime tijd;
         private List<MenuItem> besteldeItems;
 
-        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd, List<MenuItem> besteldeItems)
+        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
         {
             this.id = id;
             this.medewerkersId = medewerkersId;
@@ -48,6 +48,7 @@ namespace Model
         public List<MenuItem> BesteldeItems
         {
             get { return besteldeItems; }
+            set { besteldeItems = value; }
         }
 
     }
