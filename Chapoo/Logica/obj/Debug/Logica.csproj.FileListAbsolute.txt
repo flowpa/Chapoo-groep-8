@@ -1,0 +1,9 @@
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\bin\Debug\Logica.dll
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\bin\Debug\Logica.pdb
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\bin\Debug\DAL.dll
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\bin\Debug\Model.dll
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\bin\Debug\DAL.pdb
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\bin\Debug\Model.pdb
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\obj\Debug\Logica.dll
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Logica\obj\Debug\Logica.pdb
