@@ -1,0 +1,5 @@
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\UI.exe.config
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Properties.Resources.resources
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Background.resources
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
