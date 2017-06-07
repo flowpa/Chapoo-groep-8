@@ -135,7 +135,7 @@
             this.ItemList.ItemHeight = 31;
             this.ItemList.Location = new System.Drawing.Point(0, 50);
             this.ItemList.Name = "ItemList";
-            this.ItemList.Size = new System.Drawing.Size(402, 314);
+            this.ItemList.Size = new System.Drawing.Size(402, 283);
             this.ItemList.TabIndex = 6;
             // 
             // BestellingOpneemScherm
