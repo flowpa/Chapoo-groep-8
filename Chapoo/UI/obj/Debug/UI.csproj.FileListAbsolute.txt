@@ -18,3 +18,4 @@ C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Properties.Reso
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Background.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Background.resources
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingOpneemScherm.resources
