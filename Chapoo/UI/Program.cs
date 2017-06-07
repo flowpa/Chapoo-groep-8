@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace UI
 {
     static class Program
@@ -16,8 +17,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            BestellingOpneemScherm b = new BestellingOpneemScherm();
-            Application.Run(b);                // niet verwijderen. gwn veranderen.
+           // Application.Run(new Form1());                 niet verwijderen. gwn veranderen.
         }
     }
 }
