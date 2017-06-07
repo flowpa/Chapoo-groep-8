@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class Background
+    partial class Inlogscherm
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,6 @@
             // 
             // btn_Login_Text
             // 
-            this.btn_Login_Text.Enabled = false;
             this.btn_Login_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_Login_Text.Location = new System.Drawing.Point(32, 515);
             this.btn_Login_Text.Name = "btn_Login_Text";
@@ -77,7 +76,7 @@
             this.btn_Login_Symbol.Text = ">";
             this.btn_Login_Symbol.UseVisualStyleBackColor = true;
             // 
-            // Background
+            // Inlogscherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,7 +88,7 @@
             this.Controls.Add(this.tbx_WerknemerID_Login);
             this.Controls.Add(this.tbx_Password_Login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Background";
+            this.Name = "Inlogscherm";
             this.Text = "test";
             this.ResumeLayout(false);
             this.PerformLayout();

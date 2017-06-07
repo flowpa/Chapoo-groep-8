@@ -7,23 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
+using Logica;
 
 namespace UI
 {
-    public partial class Background : Form
+    public partial class Inlogscherm : Form
     {
-        public Background()
+        public Inlogscherm()
         {
             InitializeComponent();
         }
 
         private void btn_Login_Text_Click(object sender, EventArgs e)
         {
-            string loginId = tbx_WerknemerID_Login.Text;
-            string password = tbx_Password_Login.Text;
-          
-
+            int loginId = Int32.Parse(tbx_WerknemerID_Login.Text);
+            this.Close();
         }
+
+        private void Inlogscherm_FormClose(object sender, FormClosedEventArgs e)
+        {
+            (new BestellingOpneemScherm()).Show();
+        }
+
 
     }
 }

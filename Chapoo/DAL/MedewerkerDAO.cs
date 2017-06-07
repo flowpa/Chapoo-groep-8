@@ -10,13 +10,13 @@ using System.Configuration;
 
 namespace DAL
 {
-    class MedewerkerDAO
+    public class MedewerkerDAO
     {
         protected SqlConnection dbConnection;
 
         //Door: Juan
         //Haalt een werknemer id op.
-        public Medewerker GetWerknemerId(int Werknemer_id)
+        /*public Medewerker GetWerknemerId(int Werknemer_id)
         {
             string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
             dbConnection = new SqlConnection(connString);
@@ -35,6 +35,7 @@ namespace DAL
             }
             //  return
         }
+        */
 
         //Door: Juan
         //Haalt het wachtwoord op bij een bepaalde werknemerid
@@ -63,22 +64,20 @@ namespace DAL
 
                 Medewerker medewerker;
 
-                if (reader.Read())
-                {
-                    string voornaam = reader.GetString(1);
-                    string achternaam = reader.GetString(2);
-                    // Functie functie = reader.GetString(3));
-                    Functie functie = Functie.eigenaar;
-                    string wachtwoord = reader.GetString(4);
-                    medewerker = new Medewerker(werknemerId, voornaam, achternaam, functie);
-                }
+                string voornaam = reader.GetString(1);
+                string achternaam = reader.GetString(2);
+                // Functie functie = reader.GetString(3));
+                Functie functie = Functie.eigenaar;
+                string wachtwoord = reader.GetString(4);
+                medewerker = new Medewerker(werknemerId, voornaam, achternaam, functie);
 
                 reader.Close();
                 dbConnection.Close();
 
                 return medewerker;
+
             }
-             
+
 
         }
         //Werknemer_id, Voornaam, Achternaam, Functie, wachtwoord
