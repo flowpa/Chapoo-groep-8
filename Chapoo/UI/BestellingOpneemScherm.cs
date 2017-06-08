@@ -21,20 +21,35 @@ namespace UI
 
         private void btn_voorgerecht_Click(object sender, EventArgs e)
         {
+            lv_MenuKaart.Items.Clear();
+
             MenuKaart m = new MenuKaart();
+
             List<Model.MenuItem> voorgerechtKaart = new List<Model.MenuItem>();
             Dagdeel d = new Dagdeel();
             
             voorgerechtKaart = m.VulMenuKaart(Catagorie.voorgerecht, d);
 
+            lv_MenuKaart.Columns.Add("naam", 100);
+            lv_MenuKaart.Columns.Add("prijs", 100);
+            lv_MenuKaart.Columns.Add("omschrijving", 300);
+
+
             foreach (Model.MenuItem menuItem in voorgerechtKaart)
             {
-                MenuKaart.Items.Add(menuItem.ToString());
+                ListViewItem item = new ListViewItem(menuItem.Naam);
+               
+                item.SubItems.Add(menuItem.Prijs.ToString());
+                item.SubItems.Add(menuItem.Omschrijving);
+
+                lv_MenuKaart.Items.Add(item);
             }
         }
 
         private void btn_hoofdgerecht_Click(object sender, EventArgs e)
         {
+            lv_MenuKaart.Items.Clear();
+
             MenuKaart m = new MenuKaart();
             List<Model.MenuItem> hoofdgerechtKaart = new List<Model.MenuItem>();
             Model.MenuItem mItem = new Model.MenuItem(1, "test", Catagorie.hoofdgerecht, Dagdeel.diner, false, 10.10f, 20, "heerlijk");
@@ -46,7 +61,7 @@ namespace UI
 
             foreach (Model.MenuItem menuItem in hoofdgerechtKaart)
             {
-                MenuKaart.Items.Add(menuItem.ToString());
+                lv_MenuKaart.Items.Add(menuItem.ToString());
             }
 
 
@@ -54,49 +69,22 @@ namespace UI
 
         private void btn_Tussengerecht_Click(object sender, EventArgs e)
         {
-            MenuKaart m = new MenuKaart();
-            List<Model.MenuItem> tussengerechtMenu = new List<Model.MenuItem>();
-            Dagdeel d = new Dagdeel();
-
-            tussengerechtMenu = m.VulMenuKaart(Catagorie.tussengerecht, d);
-
-            foreach (Model.MenuItem menuItem in tussengerechtMenu)
-            {
-                MenuKaart.Items.Add(menuItem.ToString());
-            }
+            
         }
 
         private void btn_Nagerecht_Click(object sender, EventArgs e)
         {
-            MenuKaart m = new MenuKaart();
-            List<Model.MenuItem> nagerechtKaart = new List<Model.MenuItem>();
-            Dagdeel d = new Dagdeel();
-
-            nagerechtKaart = m.VulMenuKaart(Catagorie.nagerecht, d);
-
-            foreach (Model.MenuItem menuItem in nagerechtKaart)
-            {
-                MenuKaart.Items.Add(menuItem.ToString());
-            }
+           
         }
 
         private void btn_Drank_Click(object sender, EventArgs e)
         {
-            MenuKaart m = new MenuKaart();
-            List<Model.MenuItem> drankenKaart = new List<Model.MenuItem>();
-            Dagdeel d = new Dagdeel();
             
-            drankenKaart = m.VulDrankenKaart(Catagorie.dranken, d);
-
-            foreach (Model.MenuItem menuItem in drankenKaart)
-            {
-                MenuKaart.Items.Add(menuItem.ToString());
-            }
         }
 
         private void btn_AddBestelscherm_Click(object sender, EventArgs e)
         {
-
+            Bestelde_itemlist
         }
 
         private void btn_DeleteBestelscherm_Click(object sender, EventArgs e)
