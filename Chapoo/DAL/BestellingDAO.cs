@@ -13,7 +13,8 @@ namespace DAL
     class BestellingDAO
     {
         protected SqlConnection dbConnection;
-
+        private BesteldeMenuItemsDAO BesteldeMenuItemsDAO = new BesteldeMenuItemsDAO();
+        private MenuitemDAO MenuitemDAO = new MenuitemDAO();
 
         public BestellingDAO()
         {
@@ -21,85 +22,50 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public Bestelling ReadBestelling(SqlDataReader reader)
+        public Bestelling ReadBestelling(SqlDataReader reader, List<MenuItem> besteldeItems)
         {
             int bestellingid = (int)reader["Bestelling_id"];
             int medewerkerid = (int)reader["Werknemer_id"];
             int tafelid = (int)reader["Tafel_id"];
             DateTime tijd = (DateTime)reader["Tijd"];
 
-            return new Bestelling(bestellingid, medewerkerid, tafelid, tijd);
+            return new Bestelling(bestellingid, medewerkerid, tafelid, tijd, besteldeItems);
         }
 
-        public Bestelling GetBestellingById(int id)
+        public List<Bestelling> GetOnvoltooideDrankBestellingen()
         {
-            string queryString =
-            "SELECT * FROM dbo.Bestelling WHERE Bestelling_id = @id;";
+            List<Bestelling> bestellingen = new List<Bestelling>();
+            List<BesteldeMenuItems> besteldemenuitems = new List<BesteldeMenuItems>();
 
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems" +
+                                            "WHERE status = False AND ORDER BY Bestelling_id ASC", dbConnection);
 
-            using (dbConnection)
+            dbConnection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while(reader.Read())
             {
-                SqlCommand command = new SqlCommand(queryString, dbConnection);
-                dbConnection.Open();
-
-                SqlParameter BestellingIdParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
-                BestellingIdParam.Value = id;
-                command.Parameters.Add(BestellingIdParam);
-
-                command.Prepare();
-                SqlDataReader reader = command.ExecuteReader();
-
-                // Call Read before accessing data.
-                // de code hieronder heb ik laten staan voor als iemand daar een voorbeeld van wilde. groetjes florian.
-
-                //while (reader.Read())
-                //{
-                //}
-
-                int medewerkersId = reader.GetInt32(1);
-                int TafelId = reader.GetInt32(2);
-                DateTime tijd = reader.GetDateTime(3);
-                Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
-                // Call Close when done reading.
-                reader.Close();
-                dbConnection.Close();
-                return b;
+                BesteldeMenuItems bestelde = BesteldeMenuItemsDAO.ReadBesteldeMenuItem(reader);
+                besteldemenuitems.Add(bestelde);
             }
 
-        }
+            reader.Close();
+            dbConnection.Close();
 
-        public List<Bestelling> ReadBestellingen()
-        {
-            string queryString =
-            "SELECT * FROM dbo.Bestelling;";
+            List<MenuItem> MenuItem = MenuitemDAO.GetAll();
 
-            using (dbConnection)
+            cmd = new SqlCommand("SELECT DISTINCT b.* FROM Bestelling AS b " +
+                                 "INNER JOIN Bestelde_MenuItems AS bm ON b.Bestelling_id=bm.Bestelling_id " + 
+                                 "WHERE bm.Status=0", dbConnection);
+            dbConnection.Open();
+            reader = cmd.ExecuteReader();
+
+            while(reader.Read())
             {
-                SqlCommand command = new SqlCommand(queryString, dbConnection);
-                dbConnection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
-
-                // Call Read before accessing data.
-
-                List<Bestelling> bestelingen = new List<Bestelling>();
-
-                while (reader.Read())
-                {
-                    int id = (int)reader["Bestelling_id"];
-                    int medewerkersId = (int)reader["Werknemer_id"];
-                    int TafelId = (int)reader["Tafel_id"];
-                    DateTime tijd = (DateTime)reader["Tijd"];
-                    Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
-                    bestelingen.Add(b);
-                }
-
-
-                // Call Close when done reading.
-                reader.Close();
-                dbConnection.Close();
-                return bestelingen;
             }
+
+            return bestellingen;
         }
     }
 }

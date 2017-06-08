@@ -80,5 +80,25 @@ namespace DAL
                 return menuKaart;
             }
         }
+
+        public List<MenuItem> GetAll()
+        {
+            List<MenuItem> MenuItems = new List<MenuItem>();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM MenuItem", dbConnection);
+
+            dbConnection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while(reader.Read())
+            {
+                MenuItem m = ReadMenuItem(reader);
+                MenuItems.Add(m);
+            }
+            reader.Close();
+            dbConnection.Close();
+
+            return MenuItems;
+        }
     }
 }

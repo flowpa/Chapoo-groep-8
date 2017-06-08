@@ -11,11 +11,11 @@ using System.Configuration;
 
 namespace DAL
 {
-    public class BesteldeMenuItemsDao
+    public class BesteldeMenuItemsDAO
     {
         protected SqlConnection dbConnection;
 
-        public BesteldeMenuItemsDao()
+        public BesteldeMenuItemsDAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
             dbConnection = new SqlConnection(connString);
