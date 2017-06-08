@@ -23,6 +23,8 @@ namespace DAL
 
         public MenuItem ReadMenuItem(SqlDataReader reader)
         {
+
+            //test
             int id = (int)reader["MenuItem_id"];
             string naam = (string)reader["Naam"];
             bool alcohol = (bool)reader["Is_alcoholisch"];
