@@ -13,7 +13,7 @@ namespace DAL
     class BestellingDAO
     {
         protected SqlConnection dbConnection;
-        
+
 
         public BestellingDAO()
         {
@@ -25,7 +25,7 @@ namespace DAL
         {
             string queryString =
             "SELECT * FROM dbo.Bestelling WHERE Bestelling_id = @id;";
-            
+
 
             using (dbConnection)
             {

@@ -64,12 +64,12 @@ namespace DAL
                 // Call Read before accessing data.
 
                 List<MenuItem> menuKaart = new List<MenuItem>();
-                
+
                 while (reader.Read())
                 {
 
-                    MenuItem m =ReadMenuItem(reader);
-                    
+                    MenuItem m = ReadMenuItem(reader);
+
                     menuKaart.Add(m);
                 }
 

@@ -30,6 +30,7 @@
         {
             this.BackgroundPannel = new System.Windows.Forms.Panel();
             this.container_tabjes = new System.Windows.Forms.TabControl();
+            this.tab_Tafels = new System.Windows.Forms.TabPage();
             this.tab_menus = new System.Windows.Forms.TabPage();
             this.btn_OpmerkingBestelscherm = new System.Windows.Forms.Button();
             this.btn_DeleteBestelscherm = new System.Windows.Forms.Button();
@@ -45,7 +46,6 @@
             this.btn_AnnuleerBestelscherm = new System.Windows.Forms.Button();
             this.btn_VerzendenBestelscherm = new System.Windows.Forms.Button();
             this.tab_Rekeningen = new System.Windows.Forms.TabPage();
-            this.tab_Tafels = new System.Windows.Forms.TabPage();
             this.BackgroundPannel.SuspendLayout();
             this.container_tabjes.SuspendLayout();
             this.tab_menus.SuspendLayout();
@@ -71,8 +71,17 @@
             this.container_tabjes.Name = "container_tabjes";
             this.container_tabjes.SelectedIndex = 0;
             this.container_tabjes.Size = new System.Drawing.Size(410, 669);
-            this.container_tabjes.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.container_tabjes.TabIndex = 2;
+            // 
+            // tab_Tafels
+            // 
+            this.tab_Tafels.Location = new System.Drawing.Point(4, 40);
+            this.tab_Tafels.Name = "tab_Tafels";
+            this.tab_Tafels.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Tafels.Size = new System.Drawing.Size(402, 625);
+            this.tab_Tafels.TabIndex = 3;
+            this.tab_Tafels.Text = "Tafels";
+            this.tab_Tafels.UseVisualStyleBackColor = true;
             // 
             // tab_menus
             // 
@@ -244,16 +253,6 @@
             this.tab_Rekeningen.TabIndex = 2;
             this.tab_Rekeningen.Text = "Rekeningen";
             this.tab_Rekeningen.UseVisualStyleBackColor = true;
-            // 
-            // tab_Tafels
-            // 
-            this.tab_Tafels.Location = new System.Drawing.Point(4, 40);
-            this.tab_Tafels.Name = "tab_Tafels";
-            this.tab_Tafels.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Tafels.Size = new System.Drawing.Size(402, 625);
-            this.tab_Tafels.TabIndex = 3;
-            this.tab_Tafels.Text = "Tafels";
-            this.tab_Tafels.UseVisualStyleBackColor = true;
             // 
             // BestellingOpneemScherm
             // 
