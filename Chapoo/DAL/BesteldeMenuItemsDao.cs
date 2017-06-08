@@ -47,10 +47,9 @@ namespace DAL
 
                 command.Prepare();
 
-                SqlDataReader reader = command.ExecuteReader();
+                command.ExecuteNonQuery();
 
                 // Call Close when done reading.
-                reader.Close();
                 dbConnection.Close();
                
             }

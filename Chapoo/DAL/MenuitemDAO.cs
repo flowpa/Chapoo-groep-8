@@ -21,16 +21,18 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public MenuItem ReadMenuItem(SqlDataReader reader, Catagorie c, Dagdeel d)
+        public MenuItem ReadMenuItem(SqlDataReader reader)
         {
-            int id = reader.GetInt32(0);
-            string naam = reader.GetString(1);
-            bool alcohol = reader.GetBoolean(4);
-            float prijs = reader.GetFloat(5);
-            int voorraad = reader.GetInt32(6);
-            string omschrijving = reader.GetString(7);
+            int id = (int)reader["MenuItem_id"];
+            string naam = (string)reader["Naam"];
+            bool alcohol = (bool)reader["Is_alcoholisch"];
+            float prijs = (float)reader["Prijs"];
+            Catagorie catagorie = (Catagorie)reader["Categorie"];
+            Dagdeel dagdeel = (Dagdeel)reader["Dagdeel"];
+            int voorraad = (int)reader["Voorraad"];
+            string omschrijving = (string)reader["Omschrijving"];
 
-            MenuItem m = new MenuItem(id, naam, c, d, alcohol, prijs, voorraad, omschrijving);
+            MenuItem m = new MenuItem(id, naam, catagorie, dagdeel, alcohol, prijs, voorraad, omschrijving);
 
             return m;
         }
@@ -66,7 +68,7 @@ namespace DAL
                 while (reader.Read())
                 {
 
-                    MenuItem m =ReadMenuItem(reader, c, d);
+                    MenuItem m =ReadMenuItem(reader);
                     
                     menuKaart.Add(m);
                 }
