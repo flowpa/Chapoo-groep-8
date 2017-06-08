@@ -26,7 +26,7 @@ namespace DAL
             int id = (int)reader["MenuItem_id"];
             string naam = (string)reader["Naam"];
             bool alcohol = (bool)reader["Is_alcoholisch"];
-            float prijs = (float)reader["Prijs"];
+            double prijs = (double)reader["Prijs"];
             Catagorie catagorie = (Catagorie)reader["Categorie"];
             Dagdeel dagdeel = (Dagdeel)reader["Dagdeel"];
             int voorraad = (int)reader["Voorraad"];
@@ -57,7 +57,7 @@ namespace DAL
                 command.Parameters.Add(CatagorieParam);
                 command.Parameters.Add(DagdeelParam);
 
-                command.Prepare();
+               // command.Prepare();
 
                 SqlDataReader reader = command.ExecuteReader();
 

@@ -9,7 +9,7 @@ namespace Model
     public class Bon
     {
         private int id;
-        private float fooi;
+        private double fooi;
 
         List<Bestelling> bestellingenOpBon = new List<Bestelling>();
 
@@ -29,7 +29,7 @@ namespace Model
             set { bestellingenOpBon = value; }
         }
 
-        //public float Fooi
+        //public double Fooi
         //{
         //    get { return fooi; }
         //    set { fooi = value; }

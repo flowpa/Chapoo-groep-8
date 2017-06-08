@@ -13,11 +13,11 @@ namespace Model
         private Catagorie catagorie;
         private Dagdeel dagdeel;
         private bool isAlcoholisch;
-        private float prijs;
+        private double prijs;
         private int voorraad;
         private string omschrijving;
 
-        public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, float prijs, int voorraad, string omschrijving)
+        public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, double prijs, int voorraad, string omschrijving)
         {
             this.id = id;
             this.naam = naam;
@@ -51,7 +51,7 @@ namespace Model
             //set { dagdeel = value; }
         }
 
-        public float Prijs
+        public double Prijs
         {
             get { return prijs; }
             //set { prijs = value; }
