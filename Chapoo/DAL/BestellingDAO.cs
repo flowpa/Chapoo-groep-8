@@ -21,7 +21,17 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public Bestelling ReadBestelling(int id)
+        public Bestelling ReadBestelling(SqlDataReader reader)
+        {
+            int bestellingid = (int)reader["Bestelling_id"];
+            int medewerkerid = (int)reader["Werknemer_id"];
+            int tafelid = (int)reader["Tafel_id"];
+            DateTime tijd = (DateTime)reader["Tijd"];
+
+            return new Bestelling(bestellingid, medewerkerid, tafelid, tijd);
+        }
+
+        public Bestelling GetBestellingById(int id)
         {
             string queryString =
             "SELECT * FROM dbo.Bestelling WHERE Bestelling_id = @id;";

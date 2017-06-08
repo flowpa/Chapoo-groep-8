@@ -20,6 +20,17 @@ namespace DAL
             string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
             dbConnection = new SqlConnection(connString);
         }
+
+        public BesteldeMenuItems ReadBesteldeMenuItem(SqlDataReader reader)
+        {
+            int bestellingid = (int)reader["Bestelling_id"];
+            int aantal = (int)reader["Aantal"];
+            string opmerking = (string)reader["Opmerking"];
+            int itemid = (int)reader["MenuItem_id"];
+            bool status = (bool)reader["Status"];
+            return new BesteldeMenuItems(bestellingid, aantal, opmerking, itemid, status);
+        }
+
         public void WriteBesteldeMenuItems(List<BesteldeMenuItems> besteldeMenuItems)
         {
             string queryString =
@@ -42,7 +53,7 @@ namespace DAL
                     SqlParameter StatusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
 
 
-                    IdParam.Value = bm.BestellingId; // maar dan in een loop voor alle items in de meegegeven list
+                    IdParam.Value = bm.BestellingId;
                     AantalParam.Value = bm.Aantal;
                     OpmerkingParam.Value = bm.Opmerking;
                     MenuItem_idParam.Value = bm.MenuItemId;
@@ -66,5 +77,7 @@ namespace DAL
                
             }
         }
+
+
     }
 }
