@@ -27,7 +27,7 @@ namespace DAL
             string naam = (string)reader["Naam"];
             bool alcohol = (bool)reader["Is_alcoholisch"];
             double prijs = (double)reader["Prijs"];
-            Catagorie catagorie = (Catagorie)reader["Categorie"];
+            Catagorie catagorie = (Catagorie)Enum.Parse(typeof(Catagorie), (string)reader["Categorie"]);
             Dagdeel dagdeel = (Dagdeel)reader["Dagdeel"];
             int voorraad = (int)reader["Voorraad"];
             string omschrijving = (string)reader["Omschrijving"];
