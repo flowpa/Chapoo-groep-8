@@ -31,26 +31,37 @@ namespace DAL
                 SqlCommand command = new SqlCommand(queryString, dbConnection);
                 dbConnection.Open();
 
-                SqlParameter IdParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
-                SqlParameter AantalParam = new SqlParameter("@aantal", System.Data.SqlDbType.Int);
-                SqlParameter OpmerkingParam = new SqlParameter("@opmerking", System.Data.SqlDbType.NVarChar);
-                SqlParameter MenuItem_idParam = new SqlParameter("@menuItem_id", System.Data.SqlDbType.Int);
-                SqlParameter StatusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
+
+                foreach (BesteldeMenuItems bm in besteldeMenuItems)
+                {
+
+                    SqlParameter IdParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
+                    SqlParameter AantalParam = new SqlParameter("@aantal", System.Data.SqlDbType.Int);
+                    SqlParameter OpmerkingParam = new SqlParameter("@opmerking", System.Data.SqlDbType.NVarChar);
+                    SqlParameter MenuItem_idParam = new SqlParameter("@menuItem_id", System.Data.SqlDbType.Int);
+                    SqlParameter StatusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
 
 
-                IdParam.Value = besteldeMenuItems[0].BestellingId; // maar dan in een loop voor alle items in de meegegeven list
-                
+                    IdParam.Value = bm.BestellingId; // maar dan in een loop voor alle items in de meegegeven list
+                    AantalParam.Value = bm.Aantal;
+                    OpmerkingParam.Value = bm.Opmerking;
+                    MenuItem_idParam.Value = bm.MenuItemId;
+                    StatusParam.Value = bm.Geserveerd;
+
+                    command.Parameters.Add(IdParam);
+                    command.Parameters.Add(AantalParam);
+                    command.Parameters.Add(OpmerkingParam);
+                    command.Parameters.Add(MenuItem_idParam);
+                    command.Parameters.Add(StatusParam);
 
 
-                command.Parameters.Add(IdParam);
-                
+                    command.Prepare();
 
-                command.Prepare();
-
-                SqlDataReader reader = command.ExecuteReader();
+                    command.ExecuteNonQuery();
+                }
 
                 // Call Close when done reading.
-                reader.Close();
+                
                 dbConnection.Close();
                
             }

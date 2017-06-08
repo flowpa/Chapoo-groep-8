@@ -45,6 +45,13 @@ namespace Model
             get { return menuItemId; }
         }
 
+        public bool Geserveerd
+        {
+            get { return geserveerd; }
+            set { geserveerd = value; }
+        }
+        
+
 
     }
 }

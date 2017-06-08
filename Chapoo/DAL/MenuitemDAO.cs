@@ -21,7 +21,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public MenuItem ReadMenuItem(SqlDataReader reader, Catagorie c, Dagdeel d)
+        public MenuItem ReadMenuItem(SqlDataReader reader)
         {
             int id = reader.GetInt32(0);
             string naam = reader.GetString(1);
@@ -30,7 +30,7 @@ namespace DAL
             int voorraad = reader.GetInt32(6);
             string omschrijving = reader.GetString(7);
 
-            MenuItem m = new MenuItem(id, naam, c, d, alcohol, prijs, voorraad, omschrijving);
+            MenuItem m = new MenuItem(id, naam, catagorie, dagdeel, alcohol, prijs, voorraad, omschrijving);
 
             return m;
         }
@@ -66,7 +66,7 @@ namespace DAL
                 while (reader.Read())
                 {
 
-                    MenuItem m =ReadMenuItem(reader, c, d);
+                    MenuItem m = ReadMenuItem(reader);
                     
                     menuKaart.Add(m);
                 }
