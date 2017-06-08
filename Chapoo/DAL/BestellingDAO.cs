@@ -13,7 +13,7 @@ namespace DAL
     class BestellingDAO
     {
         protected SqlConnection dbConnection;
-        private MenuitemDAO MenuitemDAO = new MenuitemDAO();
+        
 
         public BestellingDAO()
         {

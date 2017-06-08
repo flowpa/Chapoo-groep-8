@@ -61,9 +61,9 @@
             // 
             // container_tabjes
             // 
+            this.container_tabjes.Controls.Add(this.tab_Tafels);
             this.container_tabjes.Controls.Add(this.tab_menus);
             this.container_tabjes.Controls.Add(this.tab_Rekeningen);
-            this.container_tabjes.Controls.Add(this.tab_Tafels);
             this.container_tabjes.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.container_tabjes.ItemSize = new System.Drawing.Size(134, 36);
             this.container_tabjes.Location = new System.Drawing.Point(0, 3);
@@ -72,7 +72,7 @@
             this.container_tabjes.SelectedIndex = 0;
             this.container_tabjes.Size = new System.Drawing.Size(410, 669);
             this.container_tabjes.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
-            this.container_tabjes.TabIndex = 0;
+            this.container_tabjes.TabIndex = 2;
             // 
             // tab_menus
             // 
