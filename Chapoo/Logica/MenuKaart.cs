@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Model;
+
+
 namespace Logica
 {
     public class MenuKaart
@@ -23,7 +25,6 @@ namespace Logica
                 d = Dagdeel.diner;
             }
 
-            
             List<MenuItem> menuKaart = md.GetMenuItems(c,d);
 
             return menuKaart;
@@ -35,5 +36,11 @@ namespace Logica
 
             return menuKaart;
         }
+
+        
+        
+        
+        
+        
     }
 }
