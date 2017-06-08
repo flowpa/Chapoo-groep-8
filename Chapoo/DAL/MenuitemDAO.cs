@@ -21,7 +21,21 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<MenuItem> ReadMenuItems(Catagorie c, Dagdeel d)
+        public MenuItem ReadMenuItem(SqlDataReader reader, Catagorie c, Dagdeel d)
+        {
+            int id = reader.GetInt32(0);
+            string naam = reader.GetString(1);
+            bool alcohol = reader.GetBoolean(4);
+            float prijs = reader.GetFloat(5);
+            int voorraad = reader.GetInt32(6);
+            string omschrijving = reader.GetString(7);
+
+            MenuItem m = new MenuItem(id, naam, c, d, alcohol, prijs, voorraad, omschrijving);
+
+            return m;
+        }
+
+        public List<MenuItem> GetMenuItems(Catagorie c, Dagdeel d)
         {
             string queryString =
             "SELECT * FROM dbo.MenuItem WHERE Categorie = @catagorie AND Dagdeel = @dagdeel";
@@ -48,17 +62,12 @@ namespace DAL
                 // Call Read before accessing data.
 
                 List<MenuItem> menuKaart = new List<MenuItem>();
-                MenuItem m;
+                
                 while (reader.Read())
                 {
-                    int id = reader.GetInt32(0);
-                    string naam = reader.GetString(1);
-                    bool alcohol = reader.GetBoolean(4);
-                    float prijs = reader.GetFloat(5);
-                    int voorraad = reader.GetInt32(6);
-                    string omschrijving = reader.GetString(7);
 
-                    m = new MenuItem(id, naam, c, d, alcohol, prijs,voorraad, omschrijving);
+                    MenuItem m =ReadMenuItem(reader, c, d);
+                    
                     menuKaart.Add(m);
                 }
 
@@ -68,21 +77,6 @@ namespace DAL
                 dbConnection.Close();
                 return menuKaart;
             }
-        }
-
-
-        public MenuItem ReadMenuItem(SqlDataReader reader)
-        {
-            int id = (int)reader["MenuItem_id"];
-            string naam = (string)reader["Naam"];
-            Catagorie categorie = (Catagorie)Enum.Parse(typeof(Catagorie), (string)reader["Categorie"]);
-            Dagdeel dagdeel = (Dagdeel)Enum.Parse(typeof(Dagdeel), (string)reader["Dagdeel"]);
-            bool isAlcoholisch = (bool)reader["Is_alcoholisch"];
-            float prijs = (float)reader["Prijs"];
-            int voorraad = (int)reader["Voorraad"];
-            string omschrijving = (string)reader["Omschrijving"];
-
-            return new MenuItem(id, naam, categorie, dagdeel, isAlcoholisch, prijs, voorraad, omschrijving);
         }
     }
 }

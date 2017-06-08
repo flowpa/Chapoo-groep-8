@@ -23,14 +23,14 @@ namespace Logica
             }
 
             
-            List<MenuItem> menuKaart = md.ReadMenuItems(c,d);
+            List<MenuItem> menuKaart = md.GetMenuItems(c,d);
 
             return menuKaart;
         }
         public List<MenuItem> VulDrankenKaart(Catagorie c, Dagdeel d)
         {
             MenuitemDAO md = new MenuitemDAO();
-            List<MenuItem> menuKaart = md.ReadMenuItems(c, d);
+            List<MenuItem> menuKaart = md.GetMenuItems(c, d);
 
             return menuKaart;
         }
