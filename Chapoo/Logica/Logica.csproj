@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BesteldeMenuItemsLogica.cs" />
+    <Compile Include="BestellingService.cs" />
     <Compile Include="MenuKaart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
