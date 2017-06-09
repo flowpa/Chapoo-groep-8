@@ -14,12 +14,13 @@ namespace Model
         private DateTime tijd;
         private List<MenuItem> besteldeItems;
 
-        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
+        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd, List<MenuItem> besteldeItems)
         {
             this.id = id;
             this.medewerkersId = medewerkersId;
             this.tafelId = tafelId;
             this.tijd = tijd;
+            this.besteldeItems = besteldeItems;
         }
 
         public int Id
