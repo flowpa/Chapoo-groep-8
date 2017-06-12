@@ -64,8 +64,9 @@ namespace DAL
             while(reader.Read())
             {
                 int bestellingid = (int)reader["Bestelling_id"];
+                List<MenuItem> besteldeItems = new List<MenuItem>();
 
-                foreach(BesteldeMenuItems b in besteldemenuitems)
+                foreach (BesteldeMenuItems b in besteldemenuitems)
                 {
                     if (b.BestellingId == bestellingid)
                     {
@@ -73,7 +74,7 @@ namespace DAL
                         {
                             if (b.MenuItemId == m.Id)
                             {
-
+                                besteldeItems.Add(m);
                             }
 
                             else
@@ -83,6 +84,8 @@ namespace DAL
                     else
                         break;
                 }
+                Bestelling bestelling = ReadBestelling(reader, besteldeItems);
+                bestellingen.Add(bestelling);
             }
 
             return bestellingen;
@@ -120,6 +123,7 @@ namespace DAL
             while (reader.Read())
             {
                 int bestellingid = (int)reader["Bestelling_id"];
+                List<MenuItem> besteldeItems = new List<MenuItem>();
 
                 foreach (BesteldeMenuItems b in besteldemenuitems)
                 {
@@ -129,7 +133,7 @@ namespace DAL
                         {
                             if (b.MenuItemId == m.Id)
                             {
-
+                                besteldeItems.Add(m);
                             }
 
                             else
@@ -139,6 +143,8 @@ namespace DAL
                     else
                         break;
                 }
+                Bestelling bestelling = ReadBestelling(reader, besteldeItems);
+                bestellingen.Add(bestelling);
             }
 
             return bestellingen;
