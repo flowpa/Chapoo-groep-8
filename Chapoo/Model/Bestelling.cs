@@ -20,6 +20,7 @@ namespace Model
             this.medewerkersId = medewerkersId;
             this.tafelId = tafelId;
             this.tijd = tijd;
+            this.besteldeItems = besteldeItems;
         }
 
         public int Id

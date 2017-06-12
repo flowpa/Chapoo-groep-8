@@ -8,14 +8,14 @@ namespace Model
 {
     public class MenuItem
     {
-        private int id;
-        private string naam;
-        private Catagorie catagorie;
-        private Dagdeel dagdeel;
-        private bool isAlcoholisch;
-        private double prijs;
-        private int voorraad;
-        private string omschrijving;
+        protected int id;
+        protected string naam;
+        protected Catagorie catagorie;
+        protected Dagdeel dagdeel;
+        protected bool isAlcoholisch;
+        protected double prijs;
+        protected int voorraad;
+        protected string omschrijving;
 
         public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, double prijs, int voorraad, string omschrijving)
         {

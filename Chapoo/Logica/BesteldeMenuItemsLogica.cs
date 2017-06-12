@@ -8,13 +8,24 @@ using Model;
 
 namespace Logica
 {
-    class BesteldeMenuItemsLogica
+    public class BesteldeMenuItemsLogica
     {
-
-        public Tafel haalTafelOp(Tafel t)
+        public List<BesteldeMenuItems> InsertBesteldeMenuItems(int BestellingsId, int aantal, string opmerking, int menuItemId, bool status)
         {
-            return t;
+            //bestellingsId kan gehaald worden van 
+
+
+            BesteldeMenuItemsDao bd = new BesteldeMenuItemsDao();
+            
+
+
+            List<BesteldeMenuItems> besteldeMenuItemsList = new List<BesteldeMenuItems>();
+
+            bd.WriteBesteldeMenuItems(besteldeMenuItemsList);
+
+            return besteldeMenuItemsList;
         }
 
+       // public List<BesteldeMenuItems> VulBesteldeItemsList
     }
 }

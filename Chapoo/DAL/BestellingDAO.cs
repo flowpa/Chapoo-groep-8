@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace DAL
 {
-    class BestellingDAO
+    public class BestellingDAO
     {
         protected SqlConnection dbConnection;
 
@@ -49,16 +49,10 @@ namespace DAL
                 command.Prepare();
                 SqlDataReader reader = command.ExecuteReader();
 
-                // Call Read before accessing data.
-                // de code hieronder heb ik laten staan voor als iemand daar een voorbeeld van wilde. groetjes florian.
 
-                //while (reader.Read())
-                //{
-                //}
-
-                int medewerkersId = reader.GetInt32(1);
-                int TafelId = reader.GetInt32(2);
-                DateTime tijd = reader.GetDateTime(3);
+                int medewerkersId = (int)reader["Werknemer_id"];
+                int TafelId = (int)reader["Tafel_id"];
+                DateTime tijd = (DateTime)reader["Tijd"];
                 Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
                 // Call Close when done reading.
                 reader.Close();
@@ -101,5 +95,89 @@ namespace DAL
                 return bestelingen;
             }
         }
+
+        public void WriteBesteling(Bestelling nieuwBestelling)
+        {
+            string queryString =
+            "INSERT INTO dbo.Bestelling (Werknemer_id, Tafel_id, Tijd ) " +
+            "VALUES (@werknemer_id, @tafel_id, @tijd )" +
+            "@id = IDENT_CURRENT('Bestelling') ";
+
+            using (dbConnection)
+            {
+                SqlCommand command = new SqlCommand(queryString, dbConnection);
+                dbConnection.Open();
+
+
+                SqlParameter werknemerId = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int);
+                SqlParameter tafelId = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int);
+                SqlParameter Tijd = new SqlParameter("@tijd", System.Data.SqlDbType.NVarChar);
+
+
+
+                werknemerId.Value = nieuwBestelling.MedewerkersId;
+                tafelId.Value = nieuwBestelling.TafelId;
+                Tijd.Value = nieuwBestelling.Tijd;
+
+
+                command.Parameters.Add(werknemerId);
+                command.Parameters.Add(tafelId);
+                command.Parameters.Add(Tijd);
+
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                int betstellingId = (int)reader["@id"];
+
+                reader.Close();
+
+                command.Prepare();
+
+                command.ExecuteNonQuery();
+
+
+                // Call Close when done reading.
+
+                dbConnection.Close();
+
+
+                
+            }
+
+            
+           
+        }
+
+        public int GetBestellingIdByTijd(DateTime tijd)
+        {
+            string queryString =
+            "SELECT * FROM dbo.Bestelling WHERE Tijd = @tijd;";
+
+
+            using (dbConnection)
+            {
+                SqlCommand command = new SqlCommand(queryString, dbConnection);
+                dbConnection.Open();
+
+                SqlParameter BestellingTijdParam = new SqlParameter("@tijd", System.Data.SqlDbType.DateTime);
+                BestellingTijdParam.Value = tijd;
+                command.Parameters.Add(BestellingTijdParam);
+
+                command.Prepare();
+                SqlDataReader reader = command.ExecuteReader();
+
+                int id = (int)reader["Bestelling_id"];
+               // int medewerkersId = (int)reader["Werknemer_id"];
+               // int TafelId = (int)reader["Tafel_id"];
+                
+               // Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
+                
+                reader.Close();
+                dbConnection.Close();
+                return id;
+            }
+
+        }
+
     }
 }

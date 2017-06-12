@@ -32,6 +32,8 @@
             this.container_tabjes = new System.Windows.Forms.TabControl();
             this.tab_Tafels = new System.Windows.Forms.TabPage();
             this.tab_menus = new System.Windows.Forms.TabPage();
+            this.lv_BesteldeItemlist = new System.Windows.Forms.ListView();
+            this.lv_MenuKaart = new System.Windows.Forms.ListView();
             this.btn_OpmerkingBestelscherm = new System.Windows.Forms.Button();
             this.btn_DeleteBestelscherm = new System.Windows.Forms.Button();
             this.btn_AddBestelscherm = new System.Windows.Forms.Button();
@@ -44,8 +46,6 @@
             this.btn_AnnuleerBestelscherm = new System.Windows.Forms.Button();
             this.btn_VerzendenBestelscherm = new System.Windows.Forms.Button();
             this.tab_Rekeningen = new System.Windows.Forms.TabPage();
-            this.lv_MenuKaart = new System.Windows.Forms.ListView();
-            this.Bestelde_itemlist = new System.Windows.Forms.ListView();
             this.BackgroundPannel.SuspendLayout();
             this.container_tabjes.SuspendLayout();
             this.tab_menus.SuspendLayout();
@@ -85,7 +85,7 @@
             // 
             // tab_menus
             // 
-            this.tab_menus.Controls.Add(this.Bestelde_itemlist);
+            this.tab_menus.Controls.Add(this.lv_BesteldeItemlist);
             this.tab_menus.Controls.Add(this.lv_MenuKaart);
             this.tab_menus.Controls.Add(this.btn_OpmerkingBestelscherm);
             this.tab_menus.Controls.Add(this.btn_DeleteBestelscherm);
@@ -105,6 +105,26 @@
             this.tab_menus.TabIndex = 1;
             this.tab_menus.Text = "Menu\'s";
             this.tab_menus.UseVisualStyleBackColor = true;
+            // 
+            // lv_BesteldeItemlist
+            // 
+            this.lv_BesteldeItemlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_BesteldeItemlist.Location = new System.Drawing.Point(-1, 368);
+            this.lv_BesteldeItemlist.Name = "lv_BesteldeItemlist";
+            this.lv_BesteldeItemlist.Size = new System.Drawing.Size(402, 197);
+            this.lv_BesteldeItemlist.TabIndex = 22;
+            this.lv_BesteldeItemlist.UseCompatibleStateImageBehavior = false;
+            this.lv_BesteldeItemlist.View = System.Windows.Forms.View.Details;
+            // 
+            // lv_MenuKaart
+            // 
+            this.lv_MenuKaart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_MenuKaart.Location = new System.Drawing.Point(0, 51);
+            this.lv_MenuKaart.Name = "lv_MenuKaart";
+            this.lv_MenuKaart.Size = new System.Drawing.Size(402, 268);
+            this.lv_MenuKaart.TabIndex = 21;
+            this.lv_MenuKaart.UseCompatibleStateImageBehavior = false;
+            this.lv_MenuKaart.View = System.Windows.Forms.View.Details;
             // 
             // btn_OpmerkingBestelscherm
             // 
@@ -213,6 +233,7 @@
             this.btn_AnnuleerBestelscherm.TabIndex = 9;
             this.btn_AnnuleerBestelscherm.Text = "Annuleren";
             this.btn_AnnuleerBestelscherm.UseVisualStyleBackColor = true;
+            this.btn_AnnuleerBestelscherm.Click += new System.EventHandler(this.btn_AnnuleerBestelscherm_Click);
             // 
             // btn_VerzendenBestelscherm
             // 
@@ -223,6 +244,7 @@
             this.btn_VerzendenBestelscherm.TabIndex = 10;
             this.btn_VerzendenBestelscherm.Text = "Verzenden";
             this.btn_VerzendenBestelscherm.UseVisualStyleBackColor = true;
+            this.btn_VerzendenBestelscherm.Click += new System.EventHandler(this.btn_VerzendenBestelscherm_Click);
             // 
             // tab_Rekeningen
             // 
@@ -231,27 +253,8 @@
             this.tab_Rekeningen.Padding = new System.Windows.Forms.Padding(3);
             this.tab_Rekeningen.Size = new System.Drawing.Size(402, 625);
             this.tab_Rekeningen.TabIndex = 2;
-            this.tab_Rekeningen.Text = "Rekeningen";
+            this.tab_Rekeningen.Text = "Bestellingen";
             this.tab_Rekeningen.UseVisualStyleBackColor = true;
-            // 
-            // lv_MenuKaart
-            // 
-            this.lv_MenuKaart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lv_MenuKaart.Location = new System.Drawing.Point(0, 51);
-            this.lv_MenuKaart.Name = "lv_MenuKaart";
-            this.lv_MenuKaart.Size = new System.Drawing.Size(402, 268);
-            this.lv_MenuKaart.TabIndex = 21;
-            this.lv_MenuKaart.UseCompatibleStateImageBehavior = false;
-            this.lv_MenuKaart.View = System.Windows.Forms.View.Details;
-            // 
-            // Bestelde_itemlist
-            // 
-            this.Bestelde_itemlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bestelde_itemlist.Location = new System.Drawing.Point(-1, 368);
-            this.Bestelde_itemlist.Name = "Bestelde_itemlist";
-            this.Bestelde_itemlist.Size = new System.Drawing.Size(402, 197);
-            this.Bestelde_itemlist.TabIndex = 22;
-            this.Bestelde_itemlist.UseCompatibleStateImageBehavior = false;
             // 
             // BestellingOpneemScherm
             // 
@@ -287,6 +290,6 @@
         private System.Windows.Forms.Button btn_OpmerkingBestelscherm;
         private System.Windows.Forms.Button btn_DeleteBestelscherm;
         private System.Windows.Forms.ListView lv_MenuKaart;
-        private System.Windows.Forms.ListView Bestelde_itemlist;
+        private System.Windows.Forms.ListView lv_BesteldeItemlist;
     }
 }

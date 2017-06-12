@@ -61,7 +61,7 @@ namespace DAL
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                // Call Read before accessing data.
+                
 
                 List<MenuItem> menuKaart = new List<MenuItem>();
 
@@ -74,7 +74,7 @@ namespace DAL
                 }
 
 
-                // Call Close when done reading.
+              
                 reader.Close();
                 dbConnection.Close();
                 return menuKaart;
