@@ -23,6 +23,7 @@ namespace Model
             this.naam = naam;
             this.catagorie = catagorie;
             this.dagdeel = dagdeel;
+            this.isAlcoholisch = isAlcoholisch;
             this.prijs = prijs;
             this.voorraad = voorraad;
             this.omschrijving = omschrijving;

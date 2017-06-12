@@ -161,6 +161,7 @@ namespace DAL
             SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
             idParam.Value = id;
             cmd.ExecuteNonQuery();
+            dbConnection.Close();
         }
 
         public void BevestigEtenBestelling(int id)
@@ -174,6 +175,7 @@ namespace DAL
             SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
             idParam.Value = id;
             cmd.ExecuteNonQuery();
+            dbConnection.Close();
         }
     }
 }

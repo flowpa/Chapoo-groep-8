@@ -10,7 +10,7 @@ namespace Logica
 {
     class BestellingService
     {
-        private BestellingDAO bd;
+        private BestellingDAO bd = new BestellingDAO();
 
         public List<Bestelling> VulDrankBestellingen()
         {
