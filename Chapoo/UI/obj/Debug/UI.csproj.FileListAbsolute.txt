@@ -40,6 +40,8 @@ C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Logica.pdb
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Model.pdb
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\DAL.pdb
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingEtenForm.resources
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingDrankForm.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingOpneemScherm.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Properties.Resources.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Inlogscherm.resources
