@@ -12,28 +12,16 @@ namespace Logica
     {
         private BestellingDAO bd = new BestellingDAO();
 
-        public List<Bestelling> VulDrankBestellingen()
+        public List<Bestelling> VulBestellingen(Catagorie c)
         {
-            List<Bestelling> b = bd.GetOnvoltooideDrankBestellingen();
+            List<Bestelling> b = bd.GetOnvoltooideBestellingen(c);
 
             return b;
         }
 
-        public List<Bestelling> VulEtenBestellingen()
+        public void BevestigBestelling(int id, Catagorie c)
         {
-            List<Bestelling> b = bd.GetOnvoltooideEtenkBestellingen();
-
-            return b;
-        }
-
-        public void BevestigDrankBestelling(int id)
-        {
-            bd.BevestigDrankBestelling(id);
-        }
-
-        public void BevestigEtenBestelling(int id)
-        {
-            bd.BevestigEtenBestelling(id);
+            bd.BevestigBestelling(id, c);
         }
     }
 }
