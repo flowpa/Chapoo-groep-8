@@ -30,7 +30,9 @@ namespace DAL
             Catagorie catagorie = (Catagorie)Enum.Parse(typeof(Catagorie), (string)reader["Categorie"]) ;
             Dagdeel dagdeel = (Dagdeel)Enum.Parse(typeof(Dagdeel), (string)reader["Dagdeel"]);
             int voorraad = (int)reader["Voorraad"];
-            string omschrijving = (string)reader["Omschrijving"];
+            string omschrijving = "";
+            if (reader["Omschrijving"] != DBNull.Value)
+                omschrijving = (string)reader["Omschrijving"];
 
             MenuItem m = new MenuItem(id, naam, catagorie, dagdeel, alcohol, prijs, voorraad, omschrijving);
 

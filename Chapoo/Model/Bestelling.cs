@@ -54,14 +54,14 @@ namespace Model
 
         public override string ToString()
         {
-            string s = id + "        " + tafelId.ToString() + Environment.NewLine;
+            string s = tafelId.ToString() + "\n";
 
             foreach (MenuItem m in besteldeItems)
             {
-                s += m.Aantal + "    " + m.Naam + Environment.NewLine;
+                s += m.Aantal + "    " + m.Naam + "\n";
                 if (m.Opmerking != "")
                 {
-                    s += "!!!" + m.Opmerking + "!!!" + Environment.NewLine;
+                    s += "!!!" + m.Opmerking + "!!!\n";
                 } 
             }
 
