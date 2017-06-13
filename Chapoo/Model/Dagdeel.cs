@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Dagdeel { lunch, diner }
+    public enum Dagdeel { lunch, diner, altijd }
 }

@@ -8,20 +8,37 @@ using Model;
 
 namespace Logica
 {
-    class BestellingService
+    public class BestellingService
     {
         private BestellingDAO bd = new BestellingDAO();
+        private MenuitemDAO md = new MenuitemDAO();
 
-        public List<Bestelling> VulBestellingen(Catagorie c)
+        public List<Bestelling> VulDrankBestellingen()
         {
-            List<Bestelling> b = bd.GetOnvoltooideBestellingen(c);
+            List<Bestelling> b = new List<Bestelling>();
+            List<MenuItem> m = md.GetAll();
+            Bestelling i = new Bestelling(1, 1, 1, DateTime.Now, m);
+            b.Add(i);
+            //List<Bestelling> b = bd.GetOnvoltooideDrankBestellingen();
 
             return b;
         }
 
-        public void BevestigBestelling(int id, Catagorie c)
+        public List<Bestelling> VulEtenBestellingen()
         {
-            bd.BevestigBestelling(id, c);
+            List<Bestelling> b = bd.GetOnvoltooideEtenBestellingen();
+
+            return b;
+        }
+
+        public void BevestigDrankBestelling(int id)
+        {
+            bd.BevestigDrankBestelling(id);
+        }
+
+        public void BevestigEtenBestelling(int id)
+        {
+            bd.BevestigEtenBestelling(id);
         }
     }
 }
