@@ -45,6 +45,7 @@
             this.lv_eerste.Size = new System.Drawing.Size(647, 858);
             this.lv_eerste.TabIndex = 0;
             this.lv_eerste.UseCompatibleStateImageBehavior = false;
+            this.lv_eerste.View = System.Windows.Forms.View.Details;
             // 
             // lv_alle
             // 

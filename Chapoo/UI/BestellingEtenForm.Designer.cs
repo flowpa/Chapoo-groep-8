@@ -96,19 +96,23 @@
             // 
             // lv_alle
             // 
+            this.lv_alle.FullRowSelect = true;
             this.lv_alle.Location = new System.Drawing.Point(666, 12);
             this.lv_alle.Name = "lv_alle";
             this.lv_alle.Size = new System.Drawing.Size(647, 984);
             this.lv_alle.TabIndex = 9;
             this.lv_alle.UseCompatibleStateImageBehavior = false;
+            this.lv_alle.View = System.Windows.Forms.View.Details;
             // 
             // lv_eerste
             // 
+            this.lv_eerste.FullRowSelect = true;
             this.lv_eerste.Location = new System.Drawing.Point(13, 138);
             this.lv_eerste.Name = "lv_eerste";
             this.lv_eerste.Size = new System.Drawing.Size(647, 858);
             this.lv_eerste.TabIndex = 8;
             this.lv_eerste.UseCompatibleStateImageBehavior = false;
+            this.lv_eerste.View = System.Windows.Forms.View.Details;
             // 
             // lbl_date
             // 
