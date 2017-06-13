@@ -15,6 +15,8 @@ namespace UI
     public partial class Inlogscherm : Form
     {
         private Inloggen i;
+        public TafeloverzichtScherm tafelForm;
+        protected BestellingOpneemScherm bestelForm;
 
         public Inlogscherm()
         {
@@ -27,28 +29,70 @@ namespace UI
 
             try
             {
-                int loginId = Int32.Parse(tbx_WerknemerID_Login.Text);
+                int loginId = int.Parse(tbx_WerknemerID_Login.Text);
                 i.checkMedewerker(loginId);
-
                 if (i.checkMedewerker(loginId) == true)
                 {
-                    this.Hide();
-                    BestellingOpneemScherm b = new BestellingOpneemScherm();
-                    b.ShowDialog();
+                    Medewerker m = i.medewerker(loginId);
+
+                    switch (m.Functie)
+                    {
+                        case Functie.eigenaar:
+                            string password = tbx_Password_Login.Text;
+
+                            try
+                            {
+                                if (password == m.Wachtwoord)
+                                {
+                                    this.Hide();
+                                    bestelForm = new BestellingOpneemScherm();
+                                    bestelForm.ShowDialog();
+                                }
+                                else
+                                {
+                                    l_Message_Inlog.ForeColor = Color.Red;
+                                    l_Message_Inlog.Text = "Uw wachtwoord klopt niet.";
+                                }
+
+                            }
+                            catch { }
+
+                            break;
+
+                        case Functie.bediende:
+                            this.Hide();
+                            tafelForm = new TafeloverzichtScherm();
+                            tafelForm.ShowDialog();
+                            break;
+
+                        //case Functie.kok:
+                        //    this.Hide();
+                        //    tafelForm = new TafeloverzichtScherm();
+                        //    tafelForm.ShowDialog();
+                        //    break;
+
+                        //case Functie.barman:
+                        //    this.Hide();
+                        //    tafelForm = new TafeloverzichtScherm();
+                        //    tafelForm.ShowDialog();
+                        //    break;
+
+                        default:
+                            break;
+                    }
                 }
 
                 else
                 {
                     l_Message_Inlog.ForeColor = Color.Red;
-                    l_Message_Inlog.Text = "Foute inlogcode!";
+                    l_Message_Inlog.Text = "De inlogcode is niet bekend!";
                 }
-
             }
 
             catch
             {
                 l_Message_Inlog.ForeColor = Color.Red;
-                l_Message_Inlog.Text = "Vul je inlogcode in '01'";
+                l_Message_Inlog.Text = "Vul je inlogcode in '8'";
             }
         }
 
@@ -61,6 +105,7 @@ namespace UI
                 BestellingOpneemScherm b = new BestellingOpneemScherm();
                 b.ShowDialog();
             }
+
             catch
             {
                 l_Message_Inlog.Text = "Vul je inlogcode in '01'";
@@ -69,20 +114,28 @@ namespace UI
 
         private void tbx_WerknemerID_Login_TextChanged(object sender, EventArgs e)
         {
+            Inloggen i = new Inloggen();
 
             if (!string.IsNullOrWhiteSpace(tbx_WerknemerID_Login.Text))
             {
                 btn_Login_Text.Enabled = true;
                 btn_Login_Symbol.Enabled = true;
             }
+            else
+            {
+                btn_Login_Text.Enabled = false;
+                btn_Login_Symbol.Enabled = false;
+            }
 
             try
             {
                 int loginId = Int32.Parse(tbx_WerknemerID_Login.Text);
+                Medewerker m = i.medewerker(loginId);
 
-                if (loginId == 01)
+                if (m.Functie == Functie.eigenaar)
                 {
                     tbx_Password_Login.Visible = true;
+                    l_Message_Inlog.Text = "Voer uw wachtwoord in";
                 }
                 else
                 {
@@ -90,8 +143,12 @@ namespace UI
                 }
             }
 
-            catch { }
+            catch
+            {
+                tbx_Password_Login.Visible = false;
+                l_Message_Inlog.Text = "Voer uw inlogcode in";
+            }
         }
-
     }
 }
+

@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BesteldeMenuItemsDao.cs" />
     <Compile Include="BestellingDAO.cs" />
     <Compile Include="MenuitemDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TafelDAO.cs" />
     <Compile Include="test.cs" />
     <Compile Include="MedewerkerDAO.cs" />
   </ItemGroup>

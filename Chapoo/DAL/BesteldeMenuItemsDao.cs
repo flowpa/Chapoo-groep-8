@@ -21,7 +21,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public BesteldeMenuItems ReadBesteldeMenuItem(SqlDataReader reader)
+        public Model.BesteldeMenuItems ReadBesteldeMenuItem(SqlDataReader reader)
         {
             int bestellingid = (int)reader["Bestelling_id"];
             int aantal = (int)reader["Aantal"];
@@ -31,7 +31,7 @@ namespace DAL
             return new BesteldeMenuItems(bestellingid, aantal, opmerking, itemid, status);
         }
 
-        public void WriteBesteldeMenuItems(List<BesteldeMenuItems> besteldeMenuItems)
+        public void WriteBesteldeMenuItems(List<Model.BesteldeMenuItems> besteldeMenuItems)
         {
             string queryString =
             "INSERT INTO dbo.Bestelde_MenuItems (Bestelling_id, Aantal, Opmerking, MenuItem_id, Status) " +
@@ -43,7 +43,7 @@ namespace DAL
                 dbConnection.Open();
 
 
-                foreach (BesteldeMenuItems bm in besteldeMenuItems)
+                foreach (Model.BesteldeMenuItems bm in besteldeMenuItems)
                 {
 
                     SqlParameter IdParam = new SqlParameter("@id", System.Data.SqlDbType.Int);

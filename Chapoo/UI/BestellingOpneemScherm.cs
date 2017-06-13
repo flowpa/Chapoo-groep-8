@@ -84,7 +84,6 @@ namespace UI
 
         private void btn_AddBestelscherm_Click(object sender, EventArgs e)
         {
-            Bestelde_itemlist
         }
 
         private void btn_DeleteBestelscherm_Click(object sender, EventArgs e)

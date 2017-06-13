@@ -21,44 +21,51 @@ namespace DAL
         }
 
         //Door: Juan
-        //Haalt het wachtwoord op bij een bepaalde werknemerid
+        //Haalt de gevegevens van een werknemer op.
         public Medewerker GetWerknemerById(int werknemerId)
 
-         {
-            string queryString = "SELECT * FROM dbo.Werknemer WHERE Werknemer_id = @werknemer_id";
+        {
+            string queryString = "SELECT * FROM Werknemer WHERE Werknemer_id = @werknemer_id";
 
-            using (dbConnection)
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand(queryString, dbConnection);
+
+            SqlParameter werknemer_idParam = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int);
+
+            werknemer_idParam.Value = werknemerId;
+
+            command.Parameters.Add(werknemer_idParam);
+            command.Prepare();
+            
+            SqlDataReader reader = command.ExecuteReader();
+
+            Medewerker medewerker = null;
+
+            if (reader.Read())
             {
-
-                SqlCommand command = new SqlCommand(queryString, dbConnection);
-                dbConnection.Open();
-
-                SqlParameter werknemer_idParam = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int);
-
-                werknemer_idParam.Value = werknemerId;
-
-                command.Parameters.Add(werknemer_idParam);
-                //command.Prepare();
-                SqlDataReader reader = command.ExecuteReader();
-
-                Medewerker medewerker;
-
-              
                 string voornaam = (string)reader["Voornaam"];
                 string achternaam = (string)reader["Achternaam"];
-                Functie functie = (Functie)reader["Functie"];
+                Functie functie = (Functie)Enum.Parse(typeof(Functie),(string)reader["Functie"]);
+                
+
                 medewerker = new Medewerker(werknemerId, voornaam, achternaam, functie);
-
-                //if (medewerker.Functie == Functie.eigenaar)
-                //{
-                //    string wachtwoord = (string)reader["Wachtwoord"];
-                //}
-
-                reader.Close();
-                dbConnection.Close();
-
-                return medewerker;
+                
+                if(medewerker.Functie == Functie.eigenaar)
+                {
+                    string wachtwoord = (string)reader["wachtwoord"];
+                    medewerker.Wachtwoord = wachtwoord; 
+                }
+                else
+                {
+                    medewerker.Wachtwoord = null;
+                }   
             }
+
+            reader.Close();
+            dbConnection.Close();
+            
+            return medewerker;
         }
     }
 }

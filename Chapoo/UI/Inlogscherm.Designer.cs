@@ -85,10 +85,11 @@
             // 
             this.l_Message_Inlog.AutoSize = true;
             this.l_Message_Inlog.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.l_Message_Inlog.Location = new System.Drawing.Point(87, 344);
+            this.l_Message_Inlog.Location = new System.Drawing.Point(93, 344);
             this.l_Message_Inlog.Name = "l_Message_Inlog";
-            this.l_Message_Inlog.Size = new System.Drawing.Size(0, 31);
+            this.l_Message_Inlog.Size = new System.Drawing.Size(253, 31);
             this.l_Message_Inlog.TabIndex = 4;
+            this.l_Message_Inlog.Text = "Vul uw inlogcode in ";
             this.l_Message_Inlog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Inlogscherm

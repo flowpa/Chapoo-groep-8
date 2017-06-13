@@ -14,16 +14,31 @@ namespace Logica
 
         public bool checkMedewerker(int werknemer_id)
         {
-
             try
             {
                 Medewerker m = mDAO.GetWerknemerById(werknemer_id);
-                return true;
+
+                if(m != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+
             catch
             {
                 return false;
             }
         }
+
+        public Medewerker medewerker (int werknemer_id)
+        {
+            Medewerker medewerker = mDAO.GetWerknemerById(werknemer_id);
+            return medewerker;
+        }
     }
 }
+

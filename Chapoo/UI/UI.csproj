@@ -60,6 +60,12 @@
     <Compile Include="Inlogscherm.Designer.cs">
       <DependentUpon>Inlogscherm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TafeloverzichtScherm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TafeloverzichtScherm.Designer.cs">
+      <DependentUpon>TafeloverzichtScherm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BestellingOpneemScherm.resx">
       <DependentUpon>BestellingOpneemScherm.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +80,9 @@
     </Compile>
     <EmbeddedResource Include="Inlogscherm.resx">
       <DependentUpon>Inlogscherm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TafeloverzichtScherm.resx">
+      <DependentUpon>TafeloverzichtScherm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
