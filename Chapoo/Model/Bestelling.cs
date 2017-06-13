@@ -52,5 +52,20 @@ namespace Model
             set { besteldeItems = value; }
         }
 
+        public override string ToString()
+        {
+            string s = id + "        " + tafelId.ToString() + Environment.NewLine;
+
+            foreach (MenuItem m in besteldeItems)
+            {
+                s += m.Aantal + "    " + m.Naam + Environment.NewLine;
+                if (m.Opmerking != "")
+                {
+                    s += "!!!" + m.Opmerking + "!!!" + Environment.NewLine;
+                } 
+            }
+
+            return s;
+        }
     }
 }

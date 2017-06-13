@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BestellingEtenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BestellingEtenForm.Designer.cs">
+      <DependentUpon>BestellingEtenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BestellingDrankForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BestellingDrankForm.Designer.cs">
+      <DependentUpon>BestellingDrankForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BestellingOpneemScherm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +78,12 @@
     <Compile Include="TafeloverzichtScherm.Designer.cs">
       <DependentUpon>TafeloverzichtScherm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BestellingEtenForm.resx">
+      <DependentUpon>BestellingEtenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BestellingDrankForm.resx">
+      <DependentUpon>BestellingDrankForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BestellingOpneemScherm.resx">
       <DependentUpon>BestellingOpneemScherm.cs</DependentUpon>
     </EmbeddedResource>
