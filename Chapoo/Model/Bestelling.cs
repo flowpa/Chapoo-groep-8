@@ -14,7 +14,7 @@ namespace Model
         private DateTime tijd;
         private List<MenuItem> besteldeItems;
 
-        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
+        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd, List<MenuItem> besteldeItems)
         {
             this.id = id;
             this.medewerkersId = medewerkersId;
@@ -52,5 +52,37 @@ namespace Model
             set { besteldeItems = value; }
         }
 
+        public override string ToString()
+        {
+            string s = @tafelId.ToString() + "\n";
+
+            foreach (MenuItem m in besteldeItems)
+            {
+                s += m.Aantal + "    " + m.Naam + "\n";
+                if (m.Opmerking != "")
+                {
+                    s += "!!!" + m.Opmerking + "!!!" + "\n";
+                } 
+            }
+
+            return s;
+        }
+        
+        public List<string> ToStringList()
+        {
+            List<string> ls = new List<string>();
+
+            ls.Add(@tafelId.ToString());
+
+            foreach (MenuItem m in besteldeItems)
+            {
+                ls.Add(m.Aantal + "    " + m.Naam);
+
+                if(m.Opmerking != "")
+                    ls.Add("!!!" + m.Opmerking + "!!!");
+            }
+
+            return ls;
+        }
     }
 }

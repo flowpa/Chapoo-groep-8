@@ -13,9 +13,10 @@ namespace Model
 
         List<Bestelling> bestellingenOpBon = new List<Bestelling>();
 
-        public Bon(int id)
+        public Bon(int id, double fooi)
         {
             this.id = id;
+            this.fooi = fooi;
         }
 
         public int Id

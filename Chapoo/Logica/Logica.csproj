@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfrekenenLogica.cs" />
     <Compile Include="BesteldeMenuItemsLogica.cs" />
-    <Compile Include="BestellingLogica.cs" />
+    <Compile Include="BestellingService.cs" />
     <Compile Include="MenuKaart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

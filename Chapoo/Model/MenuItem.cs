@@ -17,6 +17,7 @@ namespace Model
         private int voorraad;
         private string omschrijving;
         private string opmerking;
+        private int aantal;
 
         public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, double prijs, int voorraad, string omschrijving)
         {
@@ -24,6 +25,7 @@ namespace Model
             this.naam = naam;
             this.catagorie = catagorie;
             this.dagdeel = dagdeel;
+            this.isAlcoholisch = isAlcoholisch;
             this.prijs = prijs;
             this.voorraad = voorraad;
             this.omschrijving = omschrijving;
@@ -81,5 +83,16 @@ namespace Model
             return Naam + ", " + Prijs + "        " + omschrijving;
         }
 
+        public string Opmerking
+        {
+            get { return opmerking; }
+            set { opmerking = value; }
+        }
+
+        public int Aantal
+        {
+            get { return aantal; }
+            set { aantal = value; }
+        }
     }
 }
