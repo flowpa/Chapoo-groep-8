@@ -14,7 +14,7 @@ namespace Logica
 
         public List<Bestelling> VulDrankBestellingen()
         {
-            List<Bestelling> b = bd.GetOnvoltooideEtenBestellingen();
+            List<Bestelling> b = bd.GetOnvoltooideDrankBestellingen();
 
             return b;
         }

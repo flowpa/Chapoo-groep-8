@@ -23,14 +23,14 @@ namespace UI
 
         private void BestellingDrankForm_Load(object sender, EventArgs e)
         {
-            
+
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             lbl_clock.Text = DateTime.Now.ToString("HH:mm");
             lbl_date.Text = DateTime.Now.ToString("ddd dd/MM/yyyy");
-            vulEerste();
-            vulAlle();
+
             vulEersteDGV();
+            vulAlleDGV();
 
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
@@ -43,42 +43,6 @@ namespace UI
             BestellingDrankForm_Load(sender, e);
         }
 
-        private void vulEerste()
-        {
-            lv_eerste.Clear();
-            lv_eerste.Columns.Add("ID", 30);
-            lv_eerste.Columns.Add("Bestellingen", 292);
-
-
-            List<Bestelling> bestellingen = bs.VulDrankBestellingen();
-            for (int i = 0; i < 3 && i < bestellingen.Count; i++)
-            {
-                string s = bestellingen[i].ToString();
-
-                ListViewItem item = new ListViewItem(bestellingen[i].Id.ToString());
-                item.SubItems.Add(s);
-                lv_eerste.Items.Add(item);
-            }
-        }
-
-        private void vulAlle()
-        {
-            lv_alle.Clear();
-            lv_alle.Columns.Add("ID", 30);
-            lv_alle.Columns.Add("Bestellingen", 292);
-            
-
-            List<Bestelling> bestellingen = bs.VulDrankBestellingen();
-            for (int i = 3; i < bestellingen.Count; i++)
-            {
-                string s = bestellingen[i].ToString();
-
-                ListViewItem item = new ListViewItem(Environment.NewLine, bestellingen[i].Id.ToString());
-                item.SubItems.Add(bestellingen[i].ToStringList().ToString());
-                lv_alle.Items.Add(item);
-            }
-        }
-
         private void btn_annuleren_Click(object sender, EventArgs e)
         {
             BestellingDrankForm_Load(sender, e);
@@ -86,8 +50,8 @@ namespace UI
 
         private void btn_bevestig_Click(object sender, EventArgs e)
         {
-            int id = (dynamic)lv_eerste.SelectedItems[0];
-            bs.BevestigDrankBestelling(id);
+        //    int id = (dynamic)lv_eerste.SelectedItems[0];
+        //    bs.BevestigDrankBestelling(id);
         }
 
         private void vulEersteDGV()
@@ -118,7 +82,39 @@ namespace UI
             List<Bestelling> bestellingen = bs.VulDrankBestellingen();
             for (int i = 0; i < 3 && i < bestellingen.Count; i++)
             {
-                dgv_eerste.Rows.Add(bestellingen[i].ToString());
+                dgv_eerste.Rows.Add(bestellingen[i].Id, bestellingen[i].ToString());
+            }
+        }
+
+        private void vulAlleDGV()
+        {
+            dgv_alle.Rows.Clear();
+            dgv_alle.Columns.Clear();
+            dgv_alle.AutoGenerateColumns = false;
+            dgv_alle.RowHeadersVisible = false;
+            dgv_alle.MultiSelect = false;
+            dgv_alle.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv_alle.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            dgv_alle.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "ID",
+                ReadOnly = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                FillWeight = 25
+            });
+            dgv_alle.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "Bestelling",
+                ReadOnly = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 75
+            });
+
+            List<Bestelling> bestellingen = bs.VulDrankBestellingen();
+            for (int i = 3; i < bestellingen.Count; i++)
+            {
+                dgv_alle.Rows.Add(bestellingen[i].Id, bestellingen[i].ToString());
             }
         }
     }

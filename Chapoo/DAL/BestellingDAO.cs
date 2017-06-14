@@ -75,7 +75,7 @@ namespace DAL
                         {
                             if (b.MenuItemId == m.Id)
                             {
-                                b.Aantal = m.Aantal;
+                                m.Aantal = b.Aantal;
                                 if (b.Opmerking != "")
                                 {
                                     m.Opmerking = b.Opmerking;
@@ -156,7 +156,7 @@ namespace DAL
                         {
                             if (b.MenuItemId == m.Id)
                             {
-                                b.Aantal = m.Aantal;
+                                m.Aantal = b.Aantal;
                                 if (b.Opmerking != "")
                                 {
                                     m.Opmerking = b.Opmerking;

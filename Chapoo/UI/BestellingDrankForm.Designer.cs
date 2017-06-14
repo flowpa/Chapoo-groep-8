@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lv_eerste = new System.Windows.Forms.ListView();
-            this.lv_alle = new System.Windows.Forms.ListView();
             this.btn_bevestig = new System.Windows.Forms.Button();
             this.lbl_naam = new System.Windows.Forms.Label();
             this.lbl_clock = new System.Windows.Forms.Label();
@@ -38,26 +37,10 @@
             this.lbl_bestellingen = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
             this.dgv_eerste = new System.Windows.Forms.DataGridView();
+            this.dgv_alle = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lv_eerste
-            // 
-            this.lv_eerste.Location = new System.Drawing.Point(13, 139);
-            this.lv_eerste.Name = "lv_eerste";
-            this.lv_eerste.Size = new System.Drawing.Size(647, 858);
-            this.lv_eerste.TabIndex = 0;
-            this.lv_eerste.UseCompatibleStateImageBehavior = false;
-            this.lv_eerste.View = System.Windows.Forms.View.Details;
-            // 
-            // lv_alle
-            // 
-            this.lv_alle.Location = new System.Drawing.Point(666, 13);
-            this.lv_alle.Name = "lv_alle";
-            this.lv_alle.Size = new System.Drawing.Size(647, 984);
-            this.lv_alle.TabIndex = 1;
-            this.lv_alle.UseCompatibleStateImageBehavior = false;
-            this.lv_alle.View = System.Windows.Forms.View.Details;
             // 
             // btn_bevestig
             // 
@@ -127,15 +110,27 @@
             // 
             // dgv_eerste
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_eerste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_eerste.Location = new System.Drawing.Point(0, 126);
+            this.dgv_eerste.Location = new System.Drawing.Point(28, 117);
             this.dgv_eerste.Name = "dgv_eerste";
             this.dgv_eerste.RowTemplate.Height = 33;
-            this.dgv_eerste.Size = new System.Drawing.Size(660, 871);
+            this.dgv_eerste.Size = new System.Drawing.Size(632, 871);
             this.dgv_eerste.TabIndex = 17;
+            // 
+            // dgv_alle
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_alle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_alle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_alle.Location = new System.Drawing.Point(681, 13);
+            this.dgv_alle.Name = "dgv_alle";
+            this.dgv_alle.RowTemplate.Height = 33;
+            this.dgv_alle.Size = new System.Drawing.Size(632, 975);
+            this.dgv_alle.TabIndex = 18;
             // 
             // BestellingDrankForm
             // 
@@ -143,6 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1894, 1009);
             this.ControlBox = false;
+            this.Controls.Add(this.dgv_alle);
             this.Controls.Add(this.dgv_eerste);
             this.Controls.Add(this.lbl_date);
             this.Controls.Add(this.lbl_bestellingen);
@@ -150,8 +146,6 @@
             this.Controls.Add(this.lbl_clock);
             this.Controls.Add(this.lbl_naam);
             this.Controls.Add(this.btn_bevestig);
-            this.Controls.Add(this.lv_alle);
-            this.Controls.Add(this.lv_eerste);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -161,14 +155,12 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.BestellingDrankForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lv_eerste;
-        private System.Windows.Forms.ListView lv_alle;
         private System.Windows.Forms.Button btn_bevestig;
         private System.Windows.Forms.Label lbl_naam;
         private System.Windows.Forms.Label lbl_clock;
@@ -176,5 +168,6 @@
         private System.Windows.Forms.Label lbl_bestellingen;
         private System.Windows.Forms.Label lbl_date;
         private System.Windows.Forms.DataGridView dgv_eerste;
+        private System.Windows.Forms.DataGridView dgv_alle;
     }
 }
