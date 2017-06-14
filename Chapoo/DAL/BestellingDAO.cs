@@ -38,7 +38,7 @@ namespace DAL
             List<BesteldeMenuItems> besteldemenuitems = new List<BesteldeMenuItems>();
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
-                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = b.MenuItem_id " + 
+                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " + 
                                             "WHERE bm.status = 0 AND m.Categorie != 'dranken'  ORDER BY Bestelling_id ASC", dbConnection);
 
             dbConnection.Open();
@@ -75,16 +75,14 @@ namespace DAL
                         {
                             if (b.MenuItemId == m.Id)
                             {
-                                if(b.Opmerking != "")
+                                b.Aantal = m.Aantal;
+                                if (b.Opmerking != "")
                                 {
                                     m.Opmerking = b.Opmerking;
                                 }
-                                b.Aantal = m.Aantal;
+                                
                                 besteldeItems.Add(m);
                             }
-
-                            else
-                                break;
                         }
                     }
                     else
@@ -93,7 +91,8 @@ namespace DAL
                 Bestelling bestelling = ReadBestelling(reader, besteldeItems);
                 bestellingen.Add(bestelling);
             }
-
+            reader.Close();
+            dbConnection.Close();
             return bestellingen;
         }
 
@@ -109,6 +108,7 @@ namespace DAL
             idParam.Value = id;
 
             cmd.Prepare();
+            dbConnection.Open();
             cmd.ExecuteNonQuery();
             dbConnection.Close();
         }
@@ -119,7 +119,7 @@ namespace DAL
             List<BesteldeMenuItems> besteldemenuitems = new List<BesteldeMenuItems>();
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
-                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = b.MenuItem_id " +
+                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
                                             "WHERE bm.status = 0 AND m.Categorie = 'dranken'  ORDER BY Bestelling_id ASC", dbConnection);
 
             dbConnection.Open();
@@ -156,16 +156,14 @@ namespace DAL
                         {
                             if (b.MenuItemId == m.Id)
                             {
+                                b.Aantal = m.Aantal;
                                 if (b.Opmerking != "")
                                 {
                                     m.Opmerking = b.Opmerking;
                                 }
-                                b.Aantal = m.Aantal;
+
                                 besteldeItems.Add(m);
                             }
-
-                            else
-                                break;
                         }
                     }
                     else
@@ -174,7 +172,8 @@ namespace DAL
                 Bestelling bestelling = ReadBestelling(reader, besteldeItems);
                 bestellingen.Add(bestelling);
             }
-
+            reader.Close();
+            dbConnection.Close();
             return bestellingen;
         }
 
@@ -194,5 +193,59 @@ namespace DAL
             dbConnection.Close();
         }
 
+        public List<Bestelling> GetBestellingenVanTafel(int tafelId)
+        {
+            List<Bestelling> bestellingen = new List<Bestelling>();
+            List<BesteldeMenuItems> besteldemenuitems = new List<BesteldeMenuItems>();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
+                                            "INNER JOIN Bestelling AS b ON b.Bestelling_id = bm.Bestelling_id " +
+                                            "WHERE bm.status = 1 AND b.Tafel_id = @tafel_id", dbConnection);
+
+            cmd.Parameters.AddWithValue("@tafel_id", tafelId);
+
+            dbConnection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                BesteldeMenuItems bestelde = BesteldeMenuItemsDAO.ReadBesteldeMenuItem(reader);
+                besteldemenuitems.Add(bestelde);
+            }
+
+            reader.Close();
+
+            List<MenuItem> allMenuItems = MenuitemDAO.GetAll();
+
+            cmd = new SqlCommand("SELECT * FROM Bestelling " +
+                                 "WHERE Tafel_id = @tafel_id", dbConnection);
+
+            cmd.Parameters.AddWithValue("@tafel_id", tafelId);
+
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                int bestellingId = (int)reader["Bestelling_id"];
+                List<BesteldeMenuItems> bMenuItems = besteldemenuitems.Where(bm => bm.BestellingId == bestellingId).ToList();
+                List<MenuItem> besteldeItems = new List<MenuItem>();
+
+                foreach (BesteldeMenuItems bItem in bMenuItems)
+                {
+                    MenuItem item = allMenuItems.Where(mi => mi.Id == bItem.MenuItemId).FirstOrDefault();
+
+                    for (int i = 0; i <= bItem.Aantal; i++)
+                    {
+                        besteldeItems.Add(item);
+                    }
+                }
+
+                Bestelling bestelling = ReadBestelling(reader, besteldeItems);
+                bestellingen.Add(bestelling);
+            }
+            dbConnection.Close();
+
+            return bestellingen;
+        }
     }
 }

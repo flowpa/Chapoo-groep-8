@@ -28,9 +28,10 @@ namespace UI
             WindowState = FormWindowState.Maximized;
             lbl_clock.Text = DateTime.Now.ToString("HH:mm");
             lbl_date.Text = DateTime.Now.ToString("ddd dd/MM/yyyy");
-            //vulEerste();
+            vulEerste();
             vulAlle();
-            
+            vulEersteDGV();
+
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
             timer.Tick += new EventHandler(timer_Tick);
@@ -44,19 +45,19 @@ namespace UI
 
         private void vulEerste()
         {
-            lv_alle.Clear();
-            lv_alle.Columns.Add("ID", 30);
-            lv_alle.Columns.Add("Bestellingen", 292);
+            lv_eerste.Clear();
+            lv_eerste.Columns.Add("ID", 30);
+            lv_eerste.Columns.Add("Bestellingen", 292);
 
 
             List<Bestelling> bestellingen = bs.VulDrankBestellingen();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3 && i < bestellingen.Count; i++)
             {
                 string s = bestellingen[i].ToString();
 
                 ListViewItem item = new ListViewItem(bestellingen[i].Id.ToString());
                 item.SubItems.Add(s);
-                lv_alle.Items.Add(item);
+                lv_eerste.Items.Add(item);
             }
         }
 
@@ -72,8 +73,8 @@ namespace UI
             {
                 string s = bestellingen[i].ToString();
 
-                ListViewItem item = new ListViewItem(bestellingen[i].Id.ToString());
-                item.SubItems.Add(s);
+                ListViewItem item = new ListViewItem(Environment.NewLine, bestellingen[i].Id.ToString());
+                item.SubItems.Add(bestellingen[i].ToStringList().ToString());
                 lv_alle.Items.Add(item);
             }
         }
@@ -87,6 +88,38 @@ namespace UI
         {
             int id = (dynamic)lv_eerste.SelectedItems[0];
             bs.BevestigDrankBestelling(id);
+        }
+
+        private void vulEersteDGV()
+        {
+            dgv_eerste.Rows.Clear();
+            dgv_eerste.Columns.Clear();
+            dgv_eerste.AutoGenerateColumns = false;
+            dgv_eerste.RowHeadersVisible = false;
+            dgv_eerste.MultiSelect = false;
+            dgv_eerste.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv_eerste.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            dgv_eerste.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "ID",
+                ReadOnly = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                FillWeight = 25
+            });
+            dgv_eerste.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "Bestelling",
+                ReadOnly = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 75
+            });
+
+            List<Bestelling> bestellingen = bs.VulDrankBestellingen();
+            for (int i = 0; i < 3 && i < bestellingen.Count; i++)
+            {
+                dgv_eerste.Rows.Add(bestellingen[i].ToString());
+            }
         }
     }
 }

@@ -11,15 +11,10 @@ namespace Logica
     public class BestellingService
     {
         private BestellingDAO bd = new BestellingDAO();
-        private MenuitemDAO md = new MenuitemDAO();
 
         public List<Bestelling> VulDrankBestellingen()
         {
-            List<Bestelling> b = new List<Bestelling>();
-            List<MenuItem> m = md.GetAll();
-            Bestelling i = new Bestelling(1, 1, 1, DateTime.Now, m);
-            b.Add(i);
-            //List<Bestelling> b = bd.GetOnvoltooideDrankBestellingen();
+            List<Bestelling> b = bd.GetOnvoltooideEtenBestellingen();
 
             return b;
         }
@@ -39,6 +34,13 @@ namespace Logica
         public void BevestigEtenBestelling(int id)
         {
             bd.BevestigEtenBestelling(id);
+        }
+
+        public List<Bestelling> GetBestellingenVanTafel(int tafelId)
+        {
+            List<Bestelling> bestellingen = bd.GetBestellingenVanTafel(tafelId);
+
+            return bestellingen;
         }
     }
 }

@@ -27,6 +27,8 @@ namespace UI
             WindowState = FormWindowState.Maximized;
             lbl_clock.Text = DateTime.Now.ToString("HH:mm");
             lbl_date.Text = DateTime.Now.ToString("ddd dd/MM/yyyy");
+            vulEerste();
+            vulAlle();
             
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
@@ -41,19 +43,19 @@ namespace UI
 
         private void vulEerste()
         {
-            lv_alle.Clear();
-            lv_alle.Columns.Add("ID", 30);
-            lv_alle.Columns.Add("Bestellingen", 292);
+            lv_eerste.Clear();
+            lv_eerste.Columns.Add("ID", 30);
+            lv_eerste.Columns.Add("Bestellingen", 292);
 
 
             List<Bestelling> bestellingen = bs.VulEtenBestellingen();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3 && i < bestellingen.Count(); i++)
             {
                 string s = bestellingen[i].ToString();
 
                 ListViewItem item = new ListViewItem(bestellingen[i].Id.ToString());
                 item.SubItems.Add(s);
-                lv_alle.Items.Add(item);
+                lv_eerste.Items.Add(item);
             }
         }
 

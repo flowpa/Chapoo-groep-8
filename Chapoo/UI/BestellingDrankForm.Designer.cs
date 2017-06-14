@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lv_eerste = new System.Windows.Forms.ListView();
             this.lv_alle = new System.Windows.Forms.ListView();
             this.btn_bevestig = new System.Windows.Forms.Button();
@@ -36,6 +37,8 @@
             this.btn_annuleren = new System.Windows.Forms.Button();
             this.lbl_bestellingen = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
+            this.dgv_eerste = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).BeginInit();
             this.SuspendLayout();
             // 
             // lv_eerste
@@ -67,6 +70,7 @@
             this.btn_bevestig.TabIndex = 2;
             this.btn_bevestig.Text = "Bevestigen";
             this.btn_bevestig.UseVisualStyleBackColor = false;
+            this.btn_bevestig.Click += new System.EventHandler(this.btn_bevestig_Click);
             // 
             // lbl_naam
             // 
@@ -121,12 +125,25 @@
             this.lbl_date.Text = "DAG DD/MM/JJJJ";
             this.lbl_date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dgv_eerste
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_eerste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_eerste.Location = new System.Drawing.Point(0, 126);
+            this.dgv_eerste.Name = "dgv_eerste";
+            this.dgv_eerste.RowTemplate.Height = 33;
+            this.dgv_eerste.Size = new System.Drawing.Size(660, 871);
+            this.dgv_eerste.TabIndex = 17;
+            // 
             // BestellingDrankForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1894, 1009);
             this.ControlBox = false;
+            this.Controls.Add(this.dgv_eerste);
             this.Controls.Add(this.lbl_date);
             this.Controls.Add(this.lbl_bestellingen);
             this.Controls.Add(this.btn_annuleren);
@@ -143,6 +160,7 @@
             this.Text = "BestellingDrankForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.BestellingDrankForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -157,5 +175,6 @@
         private System.Windows.Forms.Button btn_annuleren;
         private System.Windows.Forms.Label lbl_bestellingen;
         private System.Windows.Forms.Label lbl_date;
+        private System.Windows.Forms.DataGridView dgv_eerste;
     }
 }
