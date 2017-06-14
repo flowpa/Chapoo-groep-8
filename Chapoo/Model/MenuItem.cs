@@ -16,8 +16,6 @@ namespace Model
         private double prijs;
         private int voorraad;
         private string omschrijving;
-        private string opmerking;
-        private int aantal;
 
         public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, double prijs, int voorraad, string omschrijving)
         {
