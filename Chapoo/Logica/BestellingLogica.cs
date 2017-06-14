@@ -37,8 +37,6 @@ namespace Logica
             bDAO.WriteBesteling(bestelling);
             int bestellingId = bDAO.GetBestellingIdByTijd(bestelling.Tijd);
 
-
-            // moet nog de huidige bestelling toevoegen aan een bon
         }
 
     }

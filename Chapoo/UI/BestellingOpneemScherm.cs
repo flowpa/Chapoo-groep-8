@@ -17,6 +17,8 @@ namespace UI
         public BestellingOpneemScherm()
         {
             InitializeComponent();
+            btn_addOpmerking.Hide();
+            tbx_opmerking.Hide();
         }
 
         private void btn_voorgerecht_Click(object sender, EventArgs e)
@@ -84,7 +86,7 @@ namespace UI
             for (int i = 0; i < lv_MenuKaart.SelectedItems.Count; i++)
             {
                 Model.MenuItem menuItem = (Model.MenuItem)lv_MenuKaart.SelectedItems[i].Tag;
-
+                menuItem.Opmerking = "";
                 besteldeMenuItemsList.Add(menuItem);
 
             }
@@ -95,12 +97,11 @@ namespace UI
                 item.SubItems.Add(menuItem.Prijs.ToString());
                 item.SubItems.Add("");
                 item.SubItems.Add(menuItem.Omschrijving);
+                item.Tag = menuItem;
 
                 lv_BesteldeItemlist.Items.Add(item);
             }
 
-            
-            
         }
 
         private void btn_DeleteBestelscherm_Click(object sender, EventArgs e)
@@ -114,7 +115,16 @@ namespace UI
 
         private void btn_OpmerkingBestelscherm_Click(object sender, EventArgs e)
         {
-
+            if (btn_addOpmerking.Visible == false)
+            {
+                btn_addOpmerking.Show();
+                tbx_opmerking.Show();
+            }
+            else
+            {
+                btn_addOpmerking.Hide();
+                tbx_opmerking.Hide();
+            }
         }
 
         private void VulTagMenuKaart(List<Model.MenuItem> items)
@@ -133,12 +143,21 @@ namespace UI
         
         private void btn_VerzendenBestelscherm_Click(object sender, EventArgs e)
         {
-            BestellingLogica bsl = new BestellingLogica();
+            BesteldeMenuItemsLogica b = new BesteldeMenuItemsLogica();
 
-            Medewerker m = bsl.HaalMedewerkerOp();
-            Tafel t = bsl.HaalTafelOp();
+            List<Model.MenuItem> besteldeMenuItemsList = new List<Model.MenuItem>();
+            List<Model.BesteldeMenuItems> besteldeItemsList = new List<Model.BesteldeMenuItems>();
 
-            bsl.WriteBestelling(m, t);
+            for (int i = 0; i < lv_BesteldeItemlist.Items.Count; i++)
+            {
+                Model.MenuItem menuItem = (Model.MenuItem)lv_BesteldeItemlist.Items[i].Tag;          
+                besteldeMenuItemsList.Add(menuItem);
+            }
+
+            b.MaakBesteldeMenuItemsLijst(besteldeMenuItemsList);
+
+            btn_addOpmerking.Hide();
+            tbx_opmerking.Hide();
 
             lv_BesteldeItemlist.Clear();
         }
@@ -173,21 +192,36 @@ namespace UI
             VulTagMenuKaart(menuKaart);
         }
 
-        private List<BesteldeMenuItems> maakBesteldeMenuItems(List<Model.MenuItem> menuItems)
+        private void btn_addOpmerking_Click(object sender, EventArgs e)
         {
-            BestellingLogica b = new BestellingLogica();
+            lv_BesteldeItemlist.Columns.Clear();
 
-            List<BesteldeMenuItems> besteldeMenuItems = new List<BesteldeMenuItems>();
+            List<Model.MenuItem> besteldeMenuItemsList = new List<Model.MenuItem>();
 
-            Medewerker m = b.HaalMedewerkerOp();
+            lv_BesteldeItemlist.Columns.Add("naam", 100);
+            lv_BesteldeItemlist.Columns.Add("prijs", 100);
+            lv_BesteldeItemlist.Columns.Add("opmerking", 150);
+            lv_BesteldeItemlist.Columns.Add("omschrijving", 350);
 
-            Tafel t = b.HaalTafelOp();
 
-          //  BesteldeMenuItems b = new BesteldeMenuItems(,);
+            for (int i = 0; i < lv_MenuKaart.SelectedItems.Count; i++)
+            {
+                Model.MenuItem menuItem = (Model.MenuItem)lv_MenuKaart.SelectedItems[i].Tag;
+                menuItem.Opmerking = tbx_opmerking.Text;
+                besteldeMenuItemsList.Add(menuItem);
 
-            return besteldeMenuItems;
+            }
+
+            foreach (Model.MenuItem menuItem in besteldeMenuItemsList)
+            {
+                ListViewItem item = new ListViewItem(menuItem.Naam);
+                item.SubItems.Add(menuItem.Prijs.ToString());
+                item.SubItems.Add(menuItem.Opmerking);
+                item.SubItems.Add(menuItem.Omschrijving);
+                item.Tag = menuItem;
+
+                lv_BesteldeItemlist.Items.Add(item);
+            }
         }
-
-        
     }
 }

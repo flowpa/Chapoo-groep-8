@@ -8,14 +8,15 @@ namespace Model
 {
     public class MenuItem
     {
-        protected int id;
-        protected string naam;
-        protected Catagorie catagorie;
-        protected Dagdeel dagdeel;
-        protected bool isAlcoholisch;
-        protected double prijs;
-        protected int voorraad;
-        protected string omschrijving;
+        private int id;
+        private string naam;
+        private Catagorie catagorie;
+        private Dagdeel dagdeel;
+        private bool isAlcoholisch;
+        private double prijs;
+        private int voorraad;
+        private string omschrijving;
+        private string opmerking;
 
         public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, double prijs, int voorraad, string omschrijving)
         {
@@ -67,6 +68,12 @@ namespace Model
         {
             get { return omschrijving; }
             //set { omschrijving = value; }
+        }
+
+        public string Opmerking
+        {
+            get { return opmerking; }
+            set { opmerking = value; }
         }
 
         public override string ToString()

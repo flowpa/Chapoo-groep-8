@@ -100,8 +100,8 @@ namespace DAL
         {
             string queryString =
             "INSERT INTO dbo.Bestelling (Werknemer_id, Tafel_id, Tijd ) " +
-            "VALUES (@werknemer_id, @tafel_id, @tijd )" +
-            "@id = IDENT_CURRENT('Bestelling') ";
+            "VALUES (@werknemer_id, @tafel_id, @tijd )";
+            
 
             using (dbConnection)
             {
@@ -124,12 +124,6 @@ namespace DAL
                 command.Parameters.Add(tafelId);
                 command.Parameters.Add(Tijd);
 
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                int betstellingId = (int)reader["@id"];
-
-                reader.Close();
 
                 command.Prepare();
 
@@ -167,11 +161,7 @@ namespace DAL
                 SqlDataReader reader = command.ExecuteReader();
 
                 int id = (int)reader["Bestelling_id"];
-               // int medewerkersId = (int)reader["Werknemer_id"];
-               // int TafelId = (int)reader["Tafel_id"];
-                
-               // Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
-                
+                            
                 reader.Close();
                 dbConnection.Close();
                 return id;

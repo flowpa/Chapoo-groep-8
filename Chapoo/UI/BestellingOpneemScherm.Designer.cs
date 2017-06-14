@@ -46,6 +46,8 @@
             this.btn_AnnuleerBestelscherm = new System.Windows.Forms.Button();
             this.btn_VerzendenBestelscherm = new System.Windows.Forms.Button();
             this.tab_Rekeningen = new System.Windows.Forms.TabPage();
+            this.tbx_opmerking = new System.Windows.Forms.TextBox();
+            this.btn_addOpmerking = new System.Windows.Forms.Button();
             this.BackgroundPannel.SuspendLayout();
             this.container_tabjes.SuspendLayout();
             this.tab_menus.SuspendLayout();
@@ -85,6 +87,8 @@
             // 
             // tab_menus
             // 
+            this.tab_menus.Controls.Add(this.btn_addOpmerking);
+            this.tab_menus.Controls.Add(this.tbx_opmerking);
             this.tab_menus.Controls.Add(this.lv_BesteldeItemlist);
             this.tab_menus.Controls.Add(this.lv_MenuKaart);
             this.tab_menus.Controls.Add(this.btn_OpmerkingBestelscherm);
@@ -109,9 +113,10 @@
             // lv_BesteldeItemlist
             // 
             this.lv_BesteldeItemlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_BesteldeItemlist.FullRowSelect = true;
             this.lv_BesteldeItemlist.Location = new System.Drawing.Point(-1, 368);
             this.lv_BesteldeItemlist.Name = "lv_BesteldeItemlist";
-            this.lv_BesteldeItemlist.Size = new System.Drawing.Size(402, 197);
+            this.lv_BesteldeItemlist.Size = new System.Drawing.Size(402, 189);
             this.lv_BesteldeItemlist.TabIndex = 22;
             this.lv_BesteldeItemlist.UseCompatibleStateImageBehavior = false;
             this.lv_BesteldeItemlist.View = System.Windows.Forms.View.Details;
@@ -119,9 +124,10 @@
             // lv_MenuKaart
             // 
             this.lv_MenuKaart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_MenuKaart.FullRowSelect = true;
             this.lv_MenuKaart.Location = new System.Drawing.Point(0, 51);
             this.lv_MenuKaart.Name = "lv_MenuKaart";
-            this.lv_MenuKaart.Size = new System.Drawing.Size(402, 268);
+            this.lv_MenuKaart.Size = new System.Drawing.Size(402, 265);
             this.lv_MenuKaart.TabIndex = 21;
             this.lv_MenuKaart.UseCompatibleStateImageBehavior = false;
             this.lv_MenuKaart.View = System.Windows.Forms.View.Details;
@@ -216,20 +222,20 @@
             // 
             // btn_VorrigeBestelscherm
             // 
-            this.btn_VorrigeBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_VorrigeBestelscherm.Location = new System.Drawing.Point(-4, 541);
+            this.btn_VorrigeBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_VorrigeBestelscherm.Location = new System.Drawing.Point(0, 556);
             this.btn_VorrigeBestelscherm.Name = "btn_VorrigeBestelscherm";
-            this.btn_VorrigeBestelscherm.Size = new System.Drawing.Size(139, 69);
+            this.btn_VorrigeBestelscherm.Size = new System.Drawing.Size(133, 54);
             this.btn_VorrigeBestelscherm.TabIndex = 8;
             this.btn_VorrigeBestelscherm.Text = "Vorrige";
             this.btn_VorrigeBestelscherm.UseVisualStyleBackColor = true;
             // 
             // btn_AnnuleerBestelscherm
             // 
-            this.btn_AnnuleerBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AnnuleerBestelscherm.Location = new System.Drawing.Point(130, 541);
+            this.btn_AnnuleerBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AnnuleerBestelscherm.Location = new System.Drawing.Point(135, 556);
             this.btn_AnnuleerBestelscherm.Name = "btn_AnnuleerBestelscherm";
-            this.btn_AnnuleerBestelscherm.Size = new System.Drawing.Size(139, 69);
+            this.btn_AnnuleerBestelscherm.Size = new System.Drawing.Size(133, 54);
             this.btn_AnnuleerBestelscherm.TabIndex = 9;
             this.btn_AnnuleerBestelscherm.Text = "Annuleren";
             this.btn_AnnuleerBestelscherm.UseVisualStyleBackColor = true;
@@ -237,10 +243,10 @@
             // 
             // btn_VerzendenBestelscherm
             // 
-            this.btn_VerzendenBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_VerzendenBestelscherm.Location = new System.Drawing.Point(263, 541);
+            this.btn_VerzendenBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_VerzendenBestelscherm.Location = new System.Drawing.Point(269, 556);
             this.btn_VerzendenBestelscherm.Name = "btn_VerzendenBestelscherm";
-            this.btn_VerzendenBestelscherm.Size = new System.Drawing.Size(139, 69);
+            this.btn_VerzendenBestelscherm.Size = new System.Drawing.Size(133, 53);
             this.btn_VerzendenBestelscherm.TabIndex = 10;
             this.btn_VerzendenBestelscherm.Text = "Verzenden";
             this.btn_VerzendenBestelscherm.UseVisualStyleBackColor = true;
@@ -256,18 +262,36 @@
             this.tab_Rekeningen.Text = "Bestellingen";
             this.tab_Rekeningen.UseVisualStyleBackColor = true;
             // 
+            // tbx_opmerking
+            // 
+            this.tbx_opmerking.Location = new System.Drawing.Point(24, 226);
+            this.tbx_opmerking.Name = "tbx_opmerking";
+            this.tbx_opmerking.Size = new System.Drawing.Size(279, 38);
+            this.tbx_opmerking.TabIndex = 23;
+            // 
+            // btn_addOpmerking
+            // 
+            this.btn_addOpmerking.Location = new System.Drawing.Point(310, 226);
+            this.btn_addOpmerking.Name = "btn_addOpmerking";
+            this.btn_addOpmerking.Size = new System.Drawing.Size(75, 38);
+            this.btn_addOpmerking.TabIndex = 24;
+            this.btn_addOpmerking.Text = "add";
+            this.btn_addOpmerking.UseVisualStyleBackColor = true;
+            this.btn_addOpmerking.Click += new System.EventHandler(this.btn_addOpmerking_Click);
+            // 
             // BestellingOpneemScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 650);
             this.Controls.Add(this.BackgroundPannel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "BestellingOpneemScherm";
             this.Text = "BestellingOpneemScherm";
             this.BackgroundPannel.ResumeLayout(false);
             this.container_tabjes.ResumeLayout(false);
             this.tab_menus.ResumeLayout(false);
+            this.tab_menus.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -291,5 +315,7 @@
         private System.Windows.Forms.Button btn_DeleteBestelscherm;
         private System.Windows.Forms.ListView lv_MenuKaart;
         private System.Windows.Forms.ListView lv_BesteldeItemlist;
+        private System.Windows.Forms.TextBox tbx_opmerking;
+        private System.Windows.Forms.Button btn_addOpmerking;
     }
 }
