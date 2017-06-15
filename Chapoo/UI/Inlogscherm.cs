@@ -14,9 +14,12 @@ namespace UI
 {
     public partial class Inlogscherm : Form
     {
-        private Inloggen i;
-        public TafeloverzichtScherm tafelForm;
-        protected BestellingOpneemScherm bestelForm;
+        private InloggenService iService;
+        private TafeloverzichtScherm tafelForm;
+        private BestellingOpneemScherm bestelForm;
+        private BestellingDrankForm barmanForm;
+        private BestellingEtenForm kokForm;
+        
 
         public Inlogscherm()
         {
@@ -25,15 +28,19 @@ namespace UI
 
         private void btn_Login_Text_Click(object sender, EventArgs e)
         {
-            i = new Inloggen();
+            iService = new InloggenService();
+
 
             try
             {
                 int loginId = int.Parse(tbx_WerknemerID_Login.Text);
-                i.checkMedewerker(loginId);
-                if (i.checkMedewerker(loginId) == true)
+                //i.checkMedewerker(loginId);
+
+
+                if (iService.checkMedewerker(loginId) == true)
                 {
-                    Medewerker m = i.medewerker(loginId);
+                    Medewerker m = iService.getMedewerker(loginId);
+
 
                     switch (m.Functie)
                     {
@@ -62,20 +69,21 @@ namespace UI
                         case Functie.bediende:
                             this.Hide();
                             tafelForm = new TafeloverzichtScherm();
+                            tafelForm.medewerker(m);
                             tafelForm.ShowDialog();
                             break;
 
-                        //case Functie.kok:
-                        //    this.Hide();
-                        //    tafelForm = new TafeloverzichtScherm();
-                        //    tafelForm.ShowDialog();
-                        //    break;
+                        case Functie.kok:
+                            this.Hide();
+                            kokForm = new BestellingEtenForm();
+                            kokForm.ShowDialog();
+                            break;
 
-                        //case Functie.barman:
-                        //    this.Hide();
-                        //    tafelForm = new TafeloverzichtScherm();
-                        //    tafelForm.ShowDialog();
-                        //    break;
+                        case Functie.barman:
+                            this.Hide();
+                            barmanForm = new BestellingDrankForm();
+                            barmanForm.ShowDialog();
+                            break;
 
                         default:
                             break;
@@ -96,25 +104,9 @@ namespace UI
             }
         }
 
-        private void btn_Login_Symbol_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int loginId = Int32.Parse(tbx_WerknemerID_Login.Text);
-                this.Hide();
-                BestellingOpneemScherm b = new BestellingOpneemScherm();
-                b.ShowDialog();
-            }
-
-            catch
-            {
-                l_Message_Inlog.Text = "Vul je inlogcode in '01'";
-            }
-        }
-
         private void tbx_WerknemerID_Login_TextChanged(object sender, EventArgs e)
         {
-            Inloggen i = new Inloggen();
+            InloggenService iService = new InloggenService();
 
             if (!string.IsNullOrWhiteSpace(tbx_WerknemerID_Login.Text))
             {
@@ -130,8 +122,8 @@ namespace UI
             try
             {
                 int loginId = Int32.Parse(tbx_WerknemerID_Login.Text);
-                Medewerker m = i.medewerker(loginId);
-
+                Medewerker m = iService.getMedewerker(loginId);
+                
                 if (m.Functie == Functie.eigenaar)
                 {
                     tbx_Password_Login.Visible = true;

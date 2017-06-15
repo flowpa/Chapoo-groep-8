@@ -17,6 +17,7 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Inlogscherm s = new Inlogscherm();
+            TafeloverzichtScherm t = new TafeloverzichtScherm();
             Application.Run(s);                // niet verwijderen. gwn veranderen.
         }
     }
