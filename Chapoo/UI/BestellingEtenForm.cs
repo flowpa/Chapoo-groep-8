@@ -130,7 +130,7 @@ namespace UI
             this.Hide();
             Inlogscherm inlog = new Inlogscherm();
             inlog.Closed += (s, args) => this.Close();
-            inlog.Show()
+            inlog.Show();
         }
     }
 }
