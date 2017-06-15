@@ -22,7 +22,6 @@ namespace Model
             this.tijd = tijd;
         }
 
-
         public int Id
         {
             get { return id; }
@@ -55,10 +54,10 @@ namespace Model
         public override string ToString()
         {
             string s = "";
-
+            s += "Tafel: " + TafelId + "            Tijd: " + Tijd.ToString("HH:mm") + "\n\n";
             foreach (MenuItem m in besteldeItems)
             {
-                s += m.Aantal + "    " + m.Naam + "\n";
+                s += m.Aantal + "x    " + m.Naam + "\n";
                 if (m.Opmerking != "")
                 {
                     s += "!!!" + m.Opmerking + "!!!" + "\n";
