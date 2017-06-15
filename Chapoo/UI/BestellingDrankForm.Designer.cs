@@ -38,7 +38,6 @@
             this.lbl_date = new System.Windows.Forms.Label();
             this.dgv_eerste = new System.Windows.Forms.DataGridView();
             this.dgv_alle = new System.Windows.Forms.DataGridView();
-            this.btn_afmelden = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +49,7 @@
             this.btn_bevestig.ForeColor = System.Drawing.Color.White;
             this.btn_bevestig.Location = new System.Drawing.Point(1320, 416);
             this.btn_bevestig.Name = "btn_bevestig";
-            this.btn_bevestig.Size = new System.Drawing.Size(562, 225);
+            this.btn_bevestig.Size = new System.Drawing.Size(562, 270);
             this.btn_bevestig.TabIndex = 2;
             this.btn_bevestig.Text = "Bevestigen";
             this.btn_bevestig.UseVisualStyleBackColor = false;
@@ -81,9 +80,9 @@
             this.btn_annuleren.BackColor = System.Drawing.Color.Red;
             this.btn_annuleren.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_annuleren.ForeColor = System.Drawing.Color.White;
-            this.btn_annuleren.Location = new System.Drawing.Point(1319, 674);
+            this.btn_annuleren.Location = new System.Drawing.Point(1320, 727);
             this.btn_annuleren.Name = "btn_annuleren";
-            this.btn_annuleren.Size = new System.Drawing.Size(562, 225);
+            this.btn_annuleren.Size = new System.Drawing.Size(562, 270);
             this.btn_annuleren.TabIndex = 6;
             this.btn_annuleren.Text = "Annuleren";
             this.btn_annuleren.UseVisualStyleBackColor = false;
@@ -135,23 +134,12 @@
             this.dgv_alle.Size = new System.Drawing.Size(632, 975);
             this.dgv_alle.TabIndex = 18;
             // 
-            // btn_afmelden
-            // 
-            this.btn_afmelden.Location = new System.Drawing.Point(1319, 917);
-            this.btn_afmelden.Name = "btn_afmelden";
-            this.btn_afmelden.Size = new System.Drawing.Size(562, 71);
-            this.btn_afmelden.TabIndex = 22;
-            this.btn_afmelden.Text = "Afmelden";
-            this.btn_afmelden.UseVisualStyleBackColor = true;
-            this.btn_afmelden.Click += new System.EventHandler(this.btn_afmelden_Click);
-            // 
             // BestellingDrankForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1894, 1009);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_afmelden);
             this.Controls.Add(this.dgv_alle);
             this.Controls.Add(this.dgv_eerste);
             this.Controls.Add(this.lbl_date);
@@ -183,6 +171,5 @@
         private System.Windows.Forms.Label lbl_date;
         private System.Windows.Forms.DataGridView dgv_eerste;
         private System.Windows.Forms.DataGridView dgv_alle;
-        private System.Windows.Forms.Button btn_afmelden;
     }
 }

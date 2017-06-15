@@ -123,12 +123,5 @@ namespace UI
                 dgv_alle.Rows.Add(bestellingen[i].Id, bestellingen[i].ToString());
             }
         }
-
-        private void btn_afmelden_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Inlogscherm inlog = new Inlogscherm();
-            inlog.Show();
-        }
     }
 }

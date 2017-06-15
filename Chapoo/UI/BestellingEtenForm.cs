@@ -127,9 +127,10 @@ namespace UI
 
         private void btn_afmelden_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             Inlogscherm inlog = new Inlogscherm();
-            inlog.Show();
+            inlog.Closed += (s, args) => this.Close();
+            inlog.Show()
         }
     }
 }
