@@ -104,6 +104,9 @@ namespace UI
             }
         }
 
+        
+
+
         private void tbx_WerknemerID_Login_TextChanged(object sender, EventArgs e)
         {
             InloggenService iService = new InloggenService();
@@ -141,6 +144,8 @@ namespace UI
                 l_Message_Inlog.Text = "Voer uw inlogcode in";
             }
         }
+
+
     }
 }
 

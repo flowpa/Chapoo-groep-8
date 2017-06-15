@@ -80,6 +80,7 @@
             this.btn_Login_Symbol.TabIndex = 3;
             this.btn_Login_Symbol.Text = ">";
             this.btn_Login_Symbol.UseVisualStyleBackColor = true;
+            this.btn_Login_Symbol.Click += new System.EventHandler(this.btn_Login_Symbol_Click);
             // 
             // l_Message_Inlog
             // 
