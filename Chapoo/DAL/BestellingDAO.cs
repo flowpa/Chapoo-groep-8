@@ -32,18 +32,24 @@ namespace DAL
             return new Bestelling(bestellingid, medewerkerid, tafelid, tijd, besteldeItems);
         }
 
-        public List<Bestelling> GetOnvoltooideEtenBestellingen()
+        public List<Bestelling> GetOnvoltooideBestellingen(bool drank)
         {
             List<Bestelling> bestellingen = new List<Bestelling>();
             List<BesteldeMenuItems> besteldemenuitems = new List<BesteldeMenuItems>();
 
+            string dranken = "";
+            if (drank)
+                dranken = "= 'dranken'";
+
+            else
+                dranken = "!= 'dranken'";
             SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
                                             "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " + 
-                                            "WHERE bm.status = 0 AND m.Categorie != 'dranken'  ORDER BY Bestelling_id ASC", dbConnection);
+                                            "WHERE bm.status = 0 AND m.Categorie "+ dranken + " ORDER BY Bestelling_id ASC", dbConnection);
 
             dbConnection.Open();
-
-            SqlDataReader reader = cmd.ExecuteReader();
+            cmd.Prepare();
+             SqlDataReader reader = cmd.ExecuteReader();
 
             while(reader.Read())
             {
@@ -96,101 +102,33 @@ namespace DAL
             return bestellingen;
         }
 
-        public void BevestigEtenBestelling(int id)
+        public void BevestigBestelling(int id, bool drank)
         {
             SqlCommand cmd = new SqlCommand("UPDATE bm " +
                                             "SET bm.Status = 1 " +
                                             "FROM Bestelde_MenuItems AS bm " + 
                                             "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
-                                            "WHERE bm.Bestelling_id = @id AND m.Categorie != 'dranken'", dbConnection);
+                                            "WHERE bm.Bestelling_id = @id AND m.Categorie @drank", dbConnection);
 
-            SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
+            SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int, 32);
             idParam.Value = id;
+            string dranken = "";
+            if (drank)
+                dranken = "= 'dranken'";
 
-            cmd.Prepare();
+            else
+                dranken = "!= 'dranken'";
+
+            SqlParameter drankParam = new SqlParameter("@drank", System.Data.SqlDbType.NVarChar, 50);
+            drankParam.Value = dranken;
+
+            cmd.Parameters.Add(idParam);
+            cmd.Parameters.Add(drankParam);
             dbConnection.Open();
-            cmd.ExecuteNonQuery();
-            dbConnection.Close();
-        }
-
-        public List<Bestelling> GetOnvoltooideDrankBestellingen()
-        {
-            List<Bestelling> bestellingen = new List<Bestelling>();
-            List<BesteldeMenuItems> besteldemenuitems = new List<BesteldeMenuItems>();
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
-                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
-                                            "WHERE bm.status = 0 AND m.Categorie = 'dranken'  ORDER BY Bestelling_id ASC", dbConnection);
-
-            dbConnection.Open();
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                BesteldeMenuItems bestelde = BesteldeMenuItemsDAO.ReadBesteldeMenuItem(reader);
-                besteldemenuitems.Add(bestelde);
-            }
-
-            reader.Close();
-            dbConnection.Close();
-
-            List<MenuItem> AllMenuItems = MenuitemDAO.GetAll();
-
-            cmd = new SqlCommand("SELECT DISTINCT b.* FROM Bestelling AS b " +
-                                 "INNER JOIN Bestelde_MenuItems AS bm ON b.Bestelling_id=bm.Bestelling_id " +
-                                 "WHERE bm.Status=0", dbConnection);
-            dbConnection.Open();
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                int bestellingid = (int)reader["Bestelling_id"];
-                List<MenuItem> besteldeItems = new List<MenuItem>();
-
-                foreach (BesteldeMenuItems b in besteldemenuitems)
-                {
-                    if (b.BestellingId == bestellingid)
-                    {
-                        foreach (MenuItem m in AllMenuItems)
-                        {
-                            if (b.MenuItemId == m.Id)
-                            {
-                                m.Aantal = b.Aantal;
-                                if (b.Opmerking != "")
-                                {
-                                    m.Opmerking = b.Opmerking;
-                                }
-
-                                besteldeItems.Add(m);
-                            }
-                        }
-                    }
-                    else
-                        break;
-                }
-                Bestelling bestelling = ReadBestelling(reader, besteldeItems);
-                bestellingen.Add(bestelling);
-            }
-            reader.Close();
-            dbConnection.Close();
-            return bestellingen;
-        }
-
-        public void BevestigDrankBestelling(int id)
-        {
-            SqlCommand cmd = new SqlCommand("UPDATE bm " +
-                                            "SET bm.Status = 1 " +
-                                            "FROM Bestelde_MenuItems AS bm " +
-                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
-                                            "WHERE bm.Bestelling_id = @id AND m.Categorie = 'dranken'", dbConnection);
-
-            SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
-            idParam.Value = id;
-
             cmd.Prepare();
             cmd.ExecuteNonQuery();
             dbConnection.Close();
+            
         }
 
         public List<Bestelling> GetBestellingenVanTafel(int tafelId)

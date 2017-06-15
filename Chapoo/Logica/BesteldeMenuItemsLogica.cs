@@ -10,6 +10,7 @@ namespace Logica
 {
     public class BesteldeMenuItemsLogica
     {
+
         public void MaakBesteldeMenuItemsLijst(List<MenuItem> menuItems)
         {
             
@@ -25,7 +26,7 @@ namespace Logica
                 besteldeMenuItems.Add(b);
  
             }
-            BesteldeMenuItemsDao bmDAO = new BesteldeMenuItemsDao();
+            BesteldeMenuItemsDAO bmDAO = new BesteldeMenuItemsDAO();
             besteldeMenuItems = berekenAantalBesteldeMenuItems(besteldeMenuItems);
 
             foreach (BesteldeMenuItems m in besteldeMenuItems)

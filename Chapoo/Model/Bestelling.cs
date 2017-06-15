@@ -59,7 +59,7 @@ namespace Model
             foreach (MenuItem m in besteldeItems)
             {
                 s += m.Aantal + "    " + m.Naam + "\n";
-                if (m.Opmerking != null)
+                if (m.Opmerking != "")
                 {
                     s += "!!!" + m.Opmerking + "!!!" + "\n";
                 } 
