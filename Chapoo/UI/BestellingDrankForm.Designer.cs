@@ -131,7 +131,9 @@
             this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_eerste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_eerste.Location = new System.Drawing.Point(28, 117);
+            this.dgv_eerste.MultiSelect = false;
             this.dgv_eerste.Name = "dgv_eerste";
+            this.dgv_eerste.ReadOnly = true;
             this.dgv_eerste.RowTemplate.Height = 33;
             this.dgv_eerste.Size = new System.Drawing.Size(632, 871);
             this.dgv_eerste.TabIndex = 17;
