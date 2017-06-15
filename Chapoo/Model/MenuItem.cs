@@ -16,11 +16,10 @@ namespace Model
         private double prijs;
         private int voorraad;
         private string omschrijving;
-<<<<<<< HEAD
+
         private string opmerking;
         private int aantal;
-=======
->>>>>>> parent of 2f23fc4... Onderdeel afrekenen bijna klaar
+
 
         public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, double prijs, int voorraad, string omschrijving)
         {
@@ -86,15 +85,8 @@ namespace Model
             return Naam + ", " + Prijs + "        " + omschrijving;
         }
 
-<<<<<<< HEAD
-=======
-        public string Opmerking
-        {
-            get { return opmerking; }
-            set { opmerking = value; }
-        }
 
->>>>>>> parent of 2f23fc4... Onderdeel afrekenen bijna klaar
+
         public int Aantal
         {
             get { return aantal; }

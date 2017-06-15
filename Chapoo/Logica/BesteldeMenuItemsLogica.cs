@@ -26,7 +26,7 @@ namespace Logica
                 besteldeMenuItems.Add(b);
  
             }
-            BesteldeMenuItemsDao bmDAO = new BesteldeMenuItemsDao();
+            BesteldeMenuItemsDAO bmDAO = new BesteldeMenuItemsDAO();
             besteldeMenuItems = berekenAantalBesteldeMenuItems(besteldeMenuItems);
 
             foreach (BesteldeMenuItems m in besteldeMenuItems)

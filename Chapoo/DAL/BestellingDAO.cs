@@ -29,7 +29,9 @@ namespace DAL
             int tafelid = (int)reader["Tafel_id"];
             DateTime tijd = (DateTime)reader["Tijd"];
 
-            return new Bestelling(bestellingid, medewerkerid, tafelid, tijd, besteldeItems);
+            Bestelling b = new Bestelling(bestellingid, medewerkerid, tafelid, tijd);
+            b.BesteldeItems = besteldeItems;
+            return b;
         }
 
         public List<Bestelling> GetOnvoltooideBestellingen(bool drank)
