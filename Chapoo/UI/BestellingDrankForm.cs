@@ -123,5 +123,13 @@ namespace UI
                 dgv_alle.Rows.Add(bestellingen[i].Id, bestellingen[i].ToString());
             }
         }
+
+        private void btn_afmelden_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inlogscherm inlog = new Inlogscherm();
+            inlog.Closed += (s, args) => this.Close();
+            inlog.Show();
+        }
     }
 }
