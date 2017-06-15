@@ -106,14 +106,6 @@ namespace DAL
 
         public void BevestigBestelling(int id, bool drank)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE bm " +
-                                            "SET bm.Status = 1 " +
-                                            "FROM Bestelde_MenuItems AS bm " + 
-                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
-                                            "WHERE bm.Bestelling_id = @id AND m.Categorie @drank", dbConnection);
-
-            SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int, 32);
-            idParam.Value = id;
             string dranken = "";
             if (drank)
                 dranken = "= 'dranken'";
@@ -121,11 +113,14 @@ namespace DAL
             else
                 dranken = "!= 'dranken'";
 
-            SqlParameter drankParam = new SqlParameter("@drank", System.Data.SqlDbType.NVarChar, 50);
-            drankParam.Value = dranken;
+            SqlCommand cmd = new SqlCommand("UPDATE bm " +
+                                            "SET bm.Status = 1 " +
+                                            "FROM Bestelde_MenuItems AS bm " + 
+                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
+                                            "WHERE bm.Bestelling_id = @id AND m.Categorie " + dranken, dbConnection);
 
-            cmd.Parameters.Add(idParam);
-            cmd.Parameters.Add(drankParam);
+            SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int, 32);
+            idParam.Value = id;
             dbConnection.Open();
             cmd.Prepare();
             cmd.ExecuteNonQuery();
