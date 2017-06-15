@@ -29,19 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnl_betaling = new System.Windows.Forms.Panel();
-            this.btn_terugBetaald = new System.Windows.Forms.Button();
-            this.lbl_totaalBetaaldPrijs = new System.Windows.Forms.Label();
-            this.lbl_totaalBetaald = new System.Windows.Forms.Label();
-            this.lbl_betaaldBedrag = new System.Windows.Forms.Label();
-            this.txt_betaaldBedrag = new System.Windows.Forms.TextBox();
-            this.rbtn_creditcard = new System.Windows.Forms.RadioButton();
-            this.rbtn_pinnen = new System.Windows.Forms.RadioButton();
-            this.rbtn_contant = new System.Windows.Forms.RadioButton();
-            this.btn_betaald = new System.Windows.Forms.Button();
             this.lbl_btwTotaalPrijs = new System.Windows.Forms.Label();
             this.lbl_btwTotaal = new System.Windows.Forms.Label();
             this.btn_betalen = new System.Windows.Forms.Button();
+            this.btn_wijzig = new System.Windows.Forms.Button();
             this.btn_terug = new System.Windows.Forms.Button();
             this.lbl_btwHoogPrijs = new System.Windows.Forms.Label();
             this.lbl_btwLaagPrijs = new System.Windows.Forms.Label();
@@ -51,15 +42,14 @@
             this.lbl_totaal = new System.Windows.Forms.Label();
             this.lv_bon = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
-            this.pnl_betaling.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pnl_betaling);
             this.panel1.Controls.Add(this.lbl_btwTotaalPrijs);
             this.panel1.Controls.Add(this.lbl_btwTotaal);
             this.panel1.Controls.Add(this.btn_betalen);
+            this.panel1.Controls.Add(this.btn_wijzig);
             this.panel1.Controls.Add(this.btn_terug);
             this.panel1.Controls.Add(this.lbl_btwHoogPrijs);
             this.panel1.Controls.Add(this.lbl_btwLaagPrijs);
@@ -68,145 +58,57 @@
             this.panel1.Controls.Add(this.lbl_btwLaag);
             this.panel1.Controls.Add(this.lbl_totaal);
             this.panel1.Controls.Add(this.lv_bon);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Location = new System.Drawing.Point(4, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 462);
+            this.panel1.Size = new System.Drawing.Size(968, 888);
             this.panel1.TabIndex = 3;
-            // 
-            // pnl_betaling
-            // 
-            this.pnl_betaling.Controls.Add(this.btn_terugBetaald);
-            this.pnl_betaling.Controls.Add(this.lbl_totaalBetaaldPrijs);
-            this.pnl_betaling.Controls.Add(this.lbl_totaalBetaald);
-            this.pnl_betaling.Controls.Add(this.lbl_betaaldBedrag);
-            this.pnl_betaling.Controls.Add(this.txt_betaaldBedrag);
-            this.pnl_betaling.Controls.Add(this.rbtn_creditcard);
-            this.pnl_betaling.Controls.Add(this.rbtn_pinnen);
-            this.pnl_betaling.Controls.Add(this.rbtn_contant);
-            this.pnl_betaling.Controls.Add(this.btn_betaald);
-            this.pnl_betaling.Location = new System.Drawing.Point(0, 0);
-            this.pnl_betaling.Name = "pnl_betaling";
-            this.pnl_betaling.Size = new System.Drawing.Size(481, 459);
-            this.pnl_betaling.TabIndex = 15;
-            // 
-            // btn_terugBetaald
-            // 
-            this.btn_terugBetaald.Location = new System.Drawing.Point(50, 366);
-            this.btn_terugBetaald.Name = "btn_terugBetaald";
-            this.btn_terugBetaald.Size = new System.Drawing.Size(150, 58);
-            this.btn_terugBetaald.TabIndex = 8;
-            this.btn_terugBetaald.Text = "Terug";
-            this.btn_terugBetaald.UseVisualStyleBackColor = true;
-            this.btn_terugBetaald.Click += new System.EventHandler(this.btn_terugBetaald_Click);
-            // 
-            // lbl_totaalBetaaldPrijs
-            // 
-            this.lbl_totaalBetaaldPrijs.AutoSize = true;
-            this.lbl_totaalBetaaldPrijs.Location = new System.Drawing.Point(115, 31);
-            this.lbl_totaalBetaaldPrijs.Name = "lbl_totaalBetaaldPrijs";
-            this.lbl_totaalBetaaldPrijs.Size = new System.Drawing.Size(0, 13);
-            this.lbl_totaalBetaaldPrijs.TabIndex = 7;
-            // 
-            // lbl_totaalBetaald
-            // 
-            this.lbl_totaalBetaald.AutoSize = true;
-            this.lbl_totaalBetaald.Location = new System.Drawing.Point(47, 31);
-            this.lbl_totaalBetaald.Name = "lbl_totaalBetaald";
-            this.lbl_totaalBetaald.Size = new System.Drawing.Size(37, 13);
-            this.lbl_totaalBetaald.TabIndex = 6;
-            this.lbl_totaalBetaald.Text = "Totaal";
-            // 
-            // lbl_betaaldBedrag
-            // 
-            this.lbl_betaaldBedrag.AutoSize = true;
-            this.lbl_betaaldBedrag.Location = new System.Drawing.Point(47, 166);
-            this.lbl_betaaldBedrag.Name = "lbl_betaaldBedrag";
-            this.lbl_betaaldBedrag.Size = new System.Drawing.Size(80, 13);
-            this.lbl_betaaldBedrag.TabIndex = 5;
-            this.lbl_betaaldBedrag.Text = "Betaald Bedrag";
-            // 
-            // txt_betaaldBedrag
-            // 
-            this.txt_betaaldBedrag.Location = new System.Drawing.Point(50, 182);
-            this.txt_betaaldBedrag.Name = "txt_betaaldBedrag";
-            this.txt_betaaldBedrag.Size = new System.Drawing.Size(100, 20);
-            this.txt_betaaldBedrag.TabIndex = 4;
-            // 
-            // rbtn_creditcard
-            // 
-            this.rbtn_creditcard.AutoSize = true;
-            this.rbtn_creditcard.Location = new System.Drawing.Point(50, 115);
-            this.rbtn_creditcard.Name = "rbtn_creditcard";
-            this.rbtn_creditcard.Size = new System.Drawing.Size(73, 17);
-            this.rbtn_creditcard.TabIndex = 3;
-            this.rbtn_creditcard.TabStop = true;
-            this.rbtn_creditcard.Text = "Creditcard";
-            this.rbtn_creditcard.UseVisualStyleBackColor = true;
-            // 
-            // rbtn_pinnen
-            // 
-            this.rbtn_pinnen.AutoSize = true;
-            this.rbtn_pinnen.Location = new System.Drawing.Point(50, 92);
-            this.rbtn_pinnen.Name = "rbtn_pinnen";
-            this.rbtn_pinnen.Size = new System.Drawing.Size(58, 17);
-            this.rbtn_pinnen.TabIndex = 2;
-            this.rbtn_pinnen.TabStop = true;
-            this.rbtn_pinnen.Text = "Pinnen";
-            this.rbtn_pinnen.UseVisualStyleBackColor = true;
-            // 
-            // rbtn_contant
-            // 
-            this.rbtn_contant.AutoSize = true;
-            this.rbtn_contant.Checked = true;
-            this.rbtn_contant.Location = new System.Drawing.Point(50, 69);
-            this.rbtn_contant.Name = "rbtn_contant";
-            this.rbtn_contant.Size = new System.Drawing.Size(62, 17);
-            this.rbtn_contant.TabIndex = 1;
-            this.rbtn_contant.TabStop = true;
-            this.rbtn_contant.Text = "Contant";
-            this.rbtn_contant.UseVisualStyleBackColor = true;
-            // 
-            // btn_betaald
-            // 
-            this.btn_betaald.Location = new System.Drawing.Point(287, 366);
-            this.btn_betaald.Name = "btn_betaald";
-            this.btn_betaald.Size = new System.Drawing.Size(150, 58);
-            this.btn_betaald.TabIndex = 0;
-            this.btn_betaald.Text = "Betaald";
-            this.btn_betaald.UseVisualStyleBackColor = true;
             // 
             // lbl_btwTotaalPrijs
             // 
             this.lbl_btwTotaalPrijs.AutoSize = true;
-            this.lbl_btwTotaalPrijs.Location = new System.Drawing.Point(345, 308);
+            this.lbl_btwTotaalPrijs.Location = new System.Drawing.Point(762, 704);
+            this.lbl_btwTotaalPrijs.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_btwTotaalPrijs.Name = "lbl_btwTotaalPrijs";
-            this.lbl_btwTotaalPrijs.Size = new System.Drawing.Size(0, 13);
+            this.lbl_btwTotaalPrijs.Size = new System.Drawing.Size(0, 25);
             this.lbl_btwTotaalPrijs.TabIndex = 14;
             // 
             // lbl_btwTotaal
             // 
             this.lbl_btwTotaal.AutoSize = true;
-            this.lbl_btwTotaal.Location = new System.Drawing.Point(238, 308);
+            this.lbl_btwTotaal.Location = new System.Drawing.Point(482, 704);
+            this.lbl_btwTotaal.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_btwTotaal.Name = "lbl_btwTotaal";
-            this.lbl_btwTotaal.Size = new System.Drawing.Size(77, 13);
+            this.lbl_btwTotaal.Size = new System.Drawing.Size(147, 25);
             this.lbl_btwTotaal.TabIndex = 13;
             this.lbl_btwTotaal.Text = "BTW TOTAAL";
             // 
             // btn_betalen
             // 
-            this.btn_betalen.Location = new System.Drawing.Point(336, 397);
+            this.btn_betalen.Location = new System.Drawing.Point(672, 763);
+            this.btn_betalen.Margin = new System.Windows.Forms.Padding(6);
             this.btn_betalen.Name = "btn_betalen";
-            this.btn_betalen.Size = new System.Drawing.Size(134, 49);
+            this.btn_betalen.Size = new System.Drawing.Size(268, 94);
             this.btn_betalen.TabIndex = 12;
             this.btn_betalen.Text = "Betalen";
             this.btn_betalen.UseVisualStyleBackColor = true;
-            this.btn_betalen.Click += new System.EventHandler(this.btn_betalen_Click);
+            // 
+            // btn_wijzig
+            // 
+            this.btn_wijzig.Location = new System.Drawing.Point(342, 763);
+            this.btn_wijzig.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_wijzig.Name = "btn_wijzig";
+            this.btn_wijzig.Size = new System.Drawing.Size(268, 94);
+            this.btn_wijzig.TabIndex = 11;
+            this.btn_wijzig.Text = "Wijzig";
+            this.btn_wijzig.UseVisualStyleBackColor = true;
             // 
             // btn_terug
             // 
-            this.btn_terug.Location = new System.Drawing.Point(10, 397);
+            this.btn_terug.Location = new System.Drawing.Point(20, 763);
+            this.btn_terug.Margin = new System.Windows.Forms.Padding(6);
             this.btn_terug.Name = "btn_terug";
-            this.btn_terug.Size = new System.Drawing.Size(134, 49);
+            this.btn_terug.Size = new System.Drawing.Size(268, 94);
             this.btn_terug.TabIndex = 10;
             this.btn_terug.Text = "Terug";
             this.btn_terug.UseVisualStyleBackColor = true;
@@ -215,76 +117,82 @@
             // lbl_btwHoogPrijs
             // 
             this.lbl_btwHoogPrijs.AutoSize = true;
-            this.lbl_btwHoogPrijs.Location = new System.Drawing.Point(345, 286);
+            this.lbl_btwHoogPrijs.Location = new System.Drawing.Point(762, 637);
+            this.lbl_btwHoogPrijs.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_btwHoogPrijs.Name = "lbl_btwHoogPrijs";
-            this.lbl_btwHoogPrijs.Size = new System.Drawing.Size(0, 13);
+            this.lbl_btwHoogPrijs.Size = new System.Drawing.Size(0, 25);
             this.lbl_btwHoogPrijs.TabIndex = 9;
             // 
             // lbl_btwLaagPrijs
             // 
             this.lbl_btwLaagPrijs.AutoSize = true;
-            this.lbl_btwLaagPrijs.Location = new System.Drawing.Point(345, 264);
+            this.lbl_btwLaagPrijs.Location = new System.Drawing.Point(762, 569);
+            this.lbl_btwLaagPrijs.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_btwLaagPrijs.Name = "lbl_btwLaagPrijs";
-            this.lbl_btwLaagPrijs.Size = new System.Drawing.Size(0, 13);
+            this.lbl_btwLaagPrijs.Size = new System.Drawing.Size(0, 25);
             this.lbl_btwLaagPrijs.TabIndex = 8;
             // 
             // lbl_totaalPrijs
             // 
             this.lbl_totaalPrijs.AutoSize = true;
-            this.lbl_totaalPrijs.Location = new System.Drawing.Point(345, 331);
+            this.lbl_totaalPrijs.Location = new System.Drawing.Point(762, 504);
+            this.lbl_totaalPrijs.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_totaalPrijs.Name = "lbl_totaalPrijs";
-            this.lbl_totaalPrijs.Size = new System.Drawing.Size(0, 13);
+            this.lbl_totaalPrijs.Size = new System.Drawing.Size(0, 25);
             this.lbl_totaalPrijs.TabIndex = 7;
             // 
             // lbl_btwHoog
             // 
             this.lbl_btwHoog.AutoSize = true;
-            this.lbl_btwHoog.Location = new System.Drawing.Point(238, 286);
+            this.lbl_btwHoog.Location = new System.Drawing.Point(482, 637);
+            this.lbl_btwHoog.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_btwHoog.Name = "lbl_btwHoog";
-            this.lbl_btwHoog.Size = new System.Drawing.Size(90, 13);
+            this.lbl_btwHoog.Size = new System.Drawing.Size(177, 25);
             this.lbl_btwHoog.TabIndex = 6;
             this.lbl_btwHoog.Text = "BTW HOOG 21%";
             // 
             // lbl_btwLaag
             // 
             this.lbl_btwLaag.AutoSize = true;
-            this.lbl_btwLaag.Location = new System.Drawing.Point(238, 264);
+            this.lbl_btwLaag.Location = new System.Drawing.Point(482, 569);
+            this.lbl_btwLaag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_btwLaag.Name = "lbl_btwLaag";
-            this.lbl_btwLaag.Size = new System.Drawing.Size(80, 13);
+            this.lbl_btwLaag.Size = new System.Drawing.Size(158, 25);
             this.lbl_btwLaag.TabIndex = 5;
             this.lbl_btwLaag.Text = "BTW LAAG 6%";
             // 
             // lbl_totaal
             // 
             this.lbl_totaal.AutoSize = true;
-            this.lbl_totaal.Location = new System.Drawing.Point(238, 331);
+            this.lbl_totaal.Location = new System.Drawing.Point(482, 504);
+            this.lbl_totaal.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_totaal.Name = "lbl_totaal";
-            this.lbl_totaal.Size = new System.Drawing.Size(37, 13);
+            this.lbl_totaal.Size = new System.Drawing.Size(72, 25);
             this.lbl_totaal.TabIndex = 4;
             this.lbl_totaal.Text = "Totaal";
             // 
             // lv_bon
             // 
-            this.lv_bon.Location = new System.Drawing.Point(10, 11);
+            this.lv_bon.Location = new System.Drawing.Point(20, 21);
+            this.lv_bon.Margin = new System.Windows.Forms.Padding(6);
             this.lv_bon.Name = "lv_bon";
-            this.lv_bon.Size = new System.Drawing.Size(460, 232);
+            this.lv_bon.Size = new System.Drawing.Size(916, 442);
             this.lv_bon.TabIndex = 0;
             this.lv_bon.UseCompatibleStateImageBehavior = false;
             this.lv_bon.View = System.Windows.Forms.View.Details;
             // 
             // Afrekenen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 459);
+            this.ClientSize = new System.Drawing.Size(968, 883);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Afrekenen";
             this.Text = "Afrekenen";
             this.Load += new System.EventHandler(this.Afrekenen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnl_betaling.ResumeLayout(false);
-            this.pnl_betaling.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,6 +203,7 @@
         private System.Windows.Forms.Label lbl_btwTotaalPrijs;
         private System.Windows.Forms.Label lbl_btwTotaal;
         private System.Windows.Forms.Button btn_betalen;
+        private System.Windows.Forms.Button btn_wijzig;
         private System.Windows.Forms.Button btn_terug;
         private System.Windows.Forms.Label lbl_btwHoogPrijs;
         private System.Windows.Forms.Label lbl_btwLaagPrijs;
@@ -303,15 +212,5 @@
         private System.Windows.Forms.Label lbl_btwLaag;
         private System.Windows.Forms.Label lbl_totaal;
         private System.Windows.Forms.ListView lv_bon;
-        private System.Windows.Forms.Panel pnl_betaling;
-        private System.Windows.Forms.Label lbl_totaalBetaaldPrijs;
-        private System.Windows.Forms.Label lbl_totaalBetaald;
-        private System.Windows.Forms.Label lbl_betaaldBedrag;
-        private System.Windows.Forms.TextBox txt_betaaldBedrag;
-        private System.Windows.Forms.RadioButton rbtn_creditcard;
-        private System.Windows.Forms.RadioButton rbtn_pinnen;
-        private System.Windows.Forms.RadioButton rbtn_contant;
-        private System.Windows.Forms.Button btn_betaald;
-        private System.Windows.Forms.Button btn_terugBetaald;
     }
 }

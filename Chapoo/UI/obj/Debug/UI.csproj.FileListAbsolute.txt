@@ -32,12 +32,19 @@ C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.c
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingDrankForm.resources
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingOpneemScherm.resources
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Properties.Resources.resources
+<<<<<<< HEAD
+=======
+C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Background.resources
+>>>>>>> parent of 2f23fc4... Onderdeel afrekenen bijna klaar
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.exe
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.pdb
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingEtenForm.resources
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Afrekenen.resources
+<<<<<<< HEAD
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.exe
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.pdb
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Inlogscherm.resources
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.TafeloverzichtScherm.resources
+=======
+>>>>>>> parent of 2f23fc4... Onderdeel afrekenen bijna klaar
