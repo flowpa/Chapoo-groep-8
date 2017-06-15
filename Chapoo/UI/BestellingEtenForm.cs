@@ -24,7 +24,6 @@ namespace UI
         private void BestellingEtenForm_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
             lbl_clock.Text = DateTime.Now.ToString("HH:mm");
             lbl_date.Text = DateTime.Now.ToString("ddd dd/MM/yyyy");
 
@@ -32,7 +31,10 @@ namespace UI
 
             vulEersteDGV(drank);
             vulAlleDGV(drank);
-            
+
+            dgv_eerste.ClearSelection();
+            dgv_alle.ClearSelection();
+
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
             timer.Tick += new EventHandler(timer_Tick);
@@ -52,9 +54,23 @@ namespace UI
         private void btn_bevestig_Click(object sender, EventArgs e)
         {
             bool drank = false;
-            int id = Convert.ToInt32(dgv_eerste.CurrentRow.Cells[0].Value);
-            bs.BevestigBestelling(id, drank);
+            int c = dgv_eerste.SelectedRows.Count;
+            if (c > 0)
+            {
+                int id = Convert.ToInt32(dgv_eerste.CurrentRow.Cells[0].Value);
+                bs.BevestigBestelling(id, drank);
+            }
+
             BestellingEtenForm_Load(sender, e);
+        }
+
+        private void btn_afmelden_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inlogscherm inlog = new Inlogscherm();
+            inlog.Closed += (s, args) => this.Close();
+            inlog.Show();
+            inlog.BringToFront();
         }
 
         private void vulEersteDGV(bool drank)
@@ -69,12 +85,14 @@ namespace UI
             dgv_eerste.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgv_eerste.AllowUserToAddRows = false;
 
+
             dgv_eerste.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 HeaderText = "ID",
                 ReadOnly = true,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                FillWeight = 25
+                FillWeight = 25,
+
             });
             dgv_eerste.Columns.Add(new DataGridViewTextBoxColumn()
             {
@@ -123,14 +141,6 @@ namespace UI
             {
                 dgv_alle.Rows.Add(bestellingen[i].Id, bestellingen[i].ToString());
             }
-        }
-
-        private void btn_afmelden_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Inlogscherm inlog = new Inlogscherm();
-            inlog.Closed += (s, args) => this.Close();
-            inlog.Show();
         }
     }
 }

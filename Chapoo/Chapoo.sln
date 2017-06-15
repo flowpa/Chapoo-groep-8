@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{EAC5CE3E-7953-402B-9489-BF00ADC06213}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{E3E78903-9B56-486F-B524-C4B0CA93C932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "\\intranet.inholland.nl\Eduhome\haa00\607653\Desktop\UI\UI.csproj", "{A5E2A59A-62E5-46A1-8B64-F6E0ED8ECA41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{A5E2A59A-62E5-46A1-8B64-F6E0ED8ECA41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
