@@ -23,6 +23,14 @@ namespace Model
             this.besteldeItems = besteldeItems;
         }
 
+        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
+        {
+            this.id = id;
+            this.medewerkersId = medewerkersId;
+            this.tafelId = tafelId;
+            this.tijd = tijd;
+        }
+
         public int Id
         {
             get { return id; }

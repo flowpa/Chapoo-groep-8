@@ -14,6 +14,7 @@ namespace DAL
     public class BesteldeMenuItemsDAO
     {
         protected SqlConnection dbConnection;
+        private MenuitemDAO mDAO = new MenuitemDAO();
 
         public BesteldeMenuItemsDAO()
         {
@@ -28,7 +29,7 @@ namespace DAL
             string opmerking = (string)reader["Opmerking"];
             int itemid = (int)reader["MenuItem_id"];
             bool status = (bool)reader["Status"];
-            return new BesteldeMenuItems(bestellingid, aantal, opmerking, itemid, status);
+            return new BesteldeMenuItems(bestellingid, aantal, opmerking, mDAO.GetItemById(itemid), status);
         }
 
         public void WriteBesteldeMenuItem(BesteldeMenuItems bm)
@@ -56,7 +57,7 @@ namespace DAL
             Bestelling_idParam.Value = bm.BestellingId;
             AantalParam.Value = bm.Aantal;
             OpmerkingParam.Value = bm.Opmerking;
-            MenuItem_idParam.Value = bm.MenuItemId;
+            MenuItem_idParam.Value = bm.MenuItem.Id;
             StatusParam.Value = 0;
             TijdParam.Value = DateTime.Now;
 

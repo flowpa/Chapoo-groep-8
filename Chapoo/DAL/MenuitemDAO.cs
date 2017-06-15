@@ -102,5 +102,22 @@ namespace DAL
 
             return MenuItems;
         }
+
+        public MenuItem GetItemById(int id)
+        {
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM MenuItem WHERE Menuitem_id = @menuItem_id ", dbConnection);
+
+            dbConnection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            MenuItem m = ReadMenuItem(reader);
+            
+            
+            reader.Close();
+            dbConnection.Close();
+
+            return m;
+        }
     }
 }

@@ -32,6 +32,7 @@
             this.container_tabjes = new System.Windows.Forms.TabControl();
             this.tab_Tafels = new System.Windows.Forms.TabPage();
             this.tab_menus = new System.Windows.Forms.TabPage();
+            this.tbx_opmerking = new System.Windows.Forms.TextBox();
             this.lv_BesteldeItemlist = new System.Windows.Forms.ListView();
             this.lv_MenuKaart = new System.Windows.Forms.ListView();
             this.btn_OpmerkingBestelscherm = new System.Windows.Forms.Button();
@@ -45,12 +46,14 @@
             this.btn_VorrigeBestelscherm = new System.Windows.Forms.Button();
             this.btn_AnnuleerBestelscherm = new System.Windows.Forms.Button();
             this.btn_VerzendenBestelscherm = new System.Windows.Forms.Button();
-            this.tab_Rekeningen = new System.Windows.Forms.TabPage();
-            this.tbx_opmerking = new System.Windows.Forms.TextBox();
-            this.btn_addOpmerking = new System.Windows.Forms.Button();
+            this.tab_Bestelling = new System.Windows.Forms.TabPage();
+            this.btn_DeleteBestellingTab = new System.Windows.Forms.Button();
+            this.btn_VorrigeBestellingTab = new System.Windows.Forms.Button();
+            this.lv_HuidigeBestelling = new System.Windows.Forms.ListView();
             this.BackgroundPannel.SuspendLayout();
             this.container_tabjes.SuspendLayout();
             this.tab_menus.SuspendLayout();
+            this.tab_Bestelling.SuspendLayout();
             this.SuspendLayout();
             // 
             // BackgroundPannel
@@ -65,7 +68,7 @@
             // 
             this.container_tabjes.Controls.Add(this.tab_Tafels);
             this.container_tabjes.Controls.Add(this.tab_menus);
-            this.container_tabjes.Controls.Add(this.tab_Rekeningen);
+            this.container_tabjes.Controls.Add(this.tab_Bestelling);
             this.container_tabjes.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.container_tabjes.ItemSize = new System.Drawing.Size(134, 36);
             this.container_tabjes.Location = new System.Drawing.Point(0, 3);
@@ -87,7 +90,6 @@
             // 
             // tab_menus
             // 
-            this.tab_menus.Controls.Add(this.btn_addOpmerking);
             this.tab_menus.Controls.Add(this.tbx_opmerking);
             this.tab_menus.Controls.Add(this.lv_BesteldeItemlist);
             this.tab_menus.Controls.Add(this.lv_MenuKaart);
@@ -109,6 +111,13 @@
             this.tab_menus.TabIndex = 1;
             this.tab_menus.Text = "Menu\'s";
             this.tab_menus.UseVisualStyleBackColor = true;
+            // 
+            // tbx_opmerking
+            // 
+            this.tbx_opmerking.Location = new System.Drawing.Point(56, 247);
+            this.tbx_opmerking.Name = "tbx_opmerking";
+            this.tbx_opmerking.Size = new System.Drawing.Size(279, 38);
+            this.tbx_opmerking.TabIndex = 23;
             // 
             // lv_BesteldeItemlist
             // 
@@ -252,32 +261,50 @@
             this.btn_VerzendenBestelscherm.UseVisualStyleBackColor = true;
             this.btn_VerzendenBestelscherm.Click += new System.EventHandler(this.btn_VerzendenBestelscherm_Click);
             // 
-            // tab_Rekeningen
+            // tab_Bestelling
             // 
-            this.tab_Rekeningen.Location = new System.Drawing.Point(4, 40);
-            this.tab_Rekeningen.Name = "tab_Rekeningen";
-            this.tab_Rekeningen.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Rekeningen.Size = new System.Drawing.Size(402, 625);
-            this.tab_Rekeningen.TabIndex = 2;
-            this.tab_Rekeningen.Text = "Bestellingen";
-            this.tab_Rekeningen.UseVisualStyleBackColor = true;
+            this.tab_Bestelling.Controls.Add(this.btn_DeleteBestellingTab);
+            this.tab_Bestelling.Controls.Add(this.btn_VorrigeBestellingTab);
+            this.tab_Bestelling.Controls.Add(this.lv_HuidigeBestelling);
+            this.tab_Bestelling.Location = new System.Drawing.Point(4, 40);
+            this.tab_Bestelling.Name = "tab_Bestelling";
+            this.tab_Bestelling.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Bestelling.Size = new System.Drawing.Size(402, 625);
+            this.tab_Bestelling.TabIndex = 2;
+            this.tab_Bestelling.Text = "Bestellingen";
+            this.tab_Bestelling.UseVisualStyleBackColor = true;
             // 
-            // tbx_opmerking
+            // btn_DeleteBestellingTab
             // 
-            this.tbx_opmerking.Location = new System.Drawing.Point(24, 226);
-            this.tbx_opmerking.Name = "tbx_opmerking";
-            this.tbx_opmerking.Size = new System.Drawing.Size(279, 38);
-            this.tbx_opmerking.TabIndex = 23;
+            this.btn_DeleteBestellingTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DeleteBestellingTab.Location = new System.Drawing.Point(200, 554);
+            this.btn_DeleteBestellingTab.Name = "btn_DeleteBestellingTab";
+            this.btn_DeleteBestellingTab.Size = new System.Drawing.Size(199, 53);
+            this.btn_DeleteBestellingTab.TabIndex = 24;
+            this.btn_DeleteBestellingTab.Text = "Delete";
+            this.btn_DeleteBestellingTab.UseVisualStyleBackColor = true;
             // 
-            // btn_addOpmerking
+            // btn_VorrigeBestellingTab
             // 
-            this.btn_addOpmerking.Location = new System.Drawing.Point(310, 226);
-            this.btn_addOpmerking.Name = "btn_addOpmerking";
-            this.btn_addOpmerking.Size = new System.Drawing.Size(75, 38);
-            this.btn_addOpmerking.TabIndex = 24;
-            this.btn_addOpmerking.Text = "add";
-            this.btn_addOpmerking.UseVisualStyleBackColor = true;
-            this.btn_addOpmerking.Click += new System.EventHandler(this.btn_addOpmerking_Click);
+            this.btn_VorrigeBestellingTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_VorrigeBestellingTab.Location = new System.Drawing.Point(0, 554);
+            this.btn_VorrigeBestellingTab.Name = "btn_VorrigeBestellingTab";
+            this.btn_VorrigeBestellingTab.Size = new System.Drawing.Size(199, 53);
+            this.btn_VorrigeBestellingTab.TabIndex = 23;
+            this.btn_VorrigeBestellingTab.Text = "Vorrige";
+            this.btn_VorrigeBestellingTab.UseVisualStyleBackColor = true;
+            this.btn_VorrigeBestellingTab.Click += new System.EventHandler(this.btn_VorrigeBestellingTab_Click);
+            // 
+            // lv_HuidigeBestelling
+            // 
+            this.lv_HuidigeBestelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_HuidigeBestelling.FullRowSelect = true;
+            this.lv_HuidigeBestelling.Location = new System.Drawing.Point(0, 6);
+            this.lv_HuidigeBestelling.Name = "lv_HuidigeBestelling";
+            this.lv_HuidigeBestelling.Size = new System.Drawing.Size(402, 542);
+            this.lv_HuidigeBestelling.TabIndex = 22;
+            this.lv_HuidigeBestelling.UseCompatibleStateImageBehavior = false;
+            this.lv_HuidigeBestelling.View = System.Windows.Forms.View.Details;
             // 
             // BestellingOpneemScherm
             // 
@@ -292,6 +319,7 @@
             this.container_tabjes.ResumeLayout(false);
             this.tab_menus.ResumeLayout(false);
             this.tab_menus.PerformLayout();
+            this.tab_Bestelling.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -300,7 +328,7 @@
         private System.Windows.Forms.Panel BackgroundPannel;
         private System.Windows.Forms.TabControl container_tabjes;
         private System.Windows.Forms.TabPage tab_menus;
-        private System.Windows.Forms.TabPage tab_Rekeningen;
+        private System.Windows.Forms.TabPage tab_Bestelling;
         private System.Windows.Forms.TabPage tab_Tafels;
         private System.Windows.Forms.Button btn_Drank;
         private System.Windows.Forms.Button btn_Nagerecht;
@@ -316,6 +344,8 @@
         private System.Windows.Forms.ListView lv_MenuKaart;
         private System.Windows.Forms.ListView lv_BesteldeItemlist;
         private System.Windows.Forms.TextBox tbx_opmerking;
-        private System.Windows.Forms.Button btn_addOpmerking;
+        private System.Windows.Forms.Button btn_DeleteBestellingTab;
+        private System.Windows.Forms.Button btn_VorrigeBestellingTab;
+        private System.Windows.Forms.ListView lv_HuidigeBestelling;
     }
 }
