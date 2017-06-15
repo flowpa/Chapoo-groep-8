@@ -7,7 +7,7 @@ using Model;
 using System.Data.SqlTypes;
 using System.Data.SqlClient;
 using System.Configuration;
-
+using System.Data;
 
 namespace DAL
 {
@@ -21,7 +21,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public Model.BesteldeMenuItems ReadBesteldeMenuItem(SqlDataReader reader)
+        public BesteldeMenuItems ReadBesteldeMenuItem(SqlDataReader reader)
         {
             int bestellingid = (int)reader["Bestelling_id"];
             int aantal = (int)reader["Aantal"];
@@ -31,51 +31,88 @@ namespace DAL
             return new BesteldeMenuItems(bestellingid, aantal, opmerking, itemid, status);
         }
 
-        public void WriteBesteldeMenuItems(List<Model.BesteldeMenuItems> besteldeMenuItems)
+        public void WriteBesteldeMenuItem(BesteldeMenuItems bm)
         {
             string queryString =
-            "INSERT INTO dbo.Bestelde_MenuItems (Bestelling_id, Aantal, Opmerking, MenuItem_id, Status) " +
-            "VALUES (@id, @aantal, @opmerking, @menuItem_id, @status)";
+            "INSERT INTO dbo.Bestelde_MenuItems (Bestelling_id, Aantal, Opmerking, MenuItem_id, Status, Tijd) " +
+            "VALUES (@bestelling_id, @aantal, @opmerking, @menuItem_id, @status, @tijd)";
+
+
+
+            SqlCommand command = new SqlCommand(queryString, dbConnection);
+            dbConnection.Open();
+
+
+            SqlParameter Bestelling_idParam = new SqlParameter("@bestelling_id", SqlDbType.Int, 32);
+            SqlParameter AantalParam = new SqlParameter("@aantal", SqlDbType.Int, 32);
+            SqlParameter OpmerkingParam = new SqlParameter("@opmerking", SqlDbType.NVarChar, 255);
+            SqlParameter MenuItem_idParam = new SqlParameter("@menuItem_id", SqlDbType.Int, 32);
+            SqlParameter StatusParam = new SqlParameter("@status", SqlDbType.Bit, 2);
+            SqlParameter TijdParam = new SqlParameter("@tijd", SqlDbType.DateTime);
+
+
+
+
+            Bestelling_idParam.Value = bm.BestellingId;
+            AantalParam.Value = bm.Aantal;
+            OpmerkingParam.Value = bm.Opmerking;
+            MenuItem_idParam.Value = bm.MenuItemId;
+            StatusParam.Value = 0;
+            TijdParam.Value = DateTime.Now;
+
+
+            command.Parameters.Add(Bestelling_idParam);
+            command.Parameters.Add(AantalParam);
+            command.Parameters.Add(OpmerkingParam);
+            command.Parameters.Add(MenuItem_idParam);
+            command.Parameters.Add(StatusParam);
+            command.Parameters.Add(TijdParam);
+
+
+            command.Prepare();
+
+            command.ExecuteNonQuery();
+
+
+            // Call Close when done reading.
+
+            dbConnection.Close();
+
+
+        }
+
+        public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId)
+        {
+            string queryString =
+            "SELECT * FROM dbo.Bestelde_MenuItems WHERE Bestelling_id = @id;";
+
 
             using (dbConnection)
             {
                 SqlCommand command = new SqlCommand(queryString, dbConnection);
                 dbConnection.Open();
 
+                SqlParameter BestellingIdParam = new SqlParameter("@id", System.Data.SqlDbType.Int, 32);
+                BestellingIdParam.Value = bestellingId;
+                command.Parameters.Add(BestellingIdParam);
 
-                foreach (Model.BesteldeMenuItems bm in besteldeMenuItems)
+                command.Prepare();
+                SqlDataReader reader = command.ExecuteReader();
+
+                List<BesteldeMenuItems> besteldeMenuItems = new List<BesteldeMenuItems>();
+
+                while (reader.Read())
                 {
-
-                    SqlParameter IdParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
-                    SqlParameter AantalParam = new SqlParameter("@aantal", System.Data.SqlDbType.Int);
-                    SqlParameter OpmerkingParam = new SqlParameter("@opmerking", System.Data.SqlDbType.NVarChar);
-                    SqlParameter MenuItem_idParam = new SqlParameter("@menuItem_id", System.Data.SqlDbType.Int);
-                    SqlParameter StatusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
-
-
-                    IdParam.Value = bm.BestellingId;
-                    AantalParam.Value = bm.Aantal;
-                    OpmerkingParam.Value = bm.Opmerking;
-                    MenuItem_idParam.Value = bm.MenuItemId;
-                    StatusParam.Value = bm.Geserveerd;
-
-                    command.Parameters.Add(IdParam);
-                    command.Parameters.Add(AantalParam);
-                    command.Parameters.Add(OpmerkingParam);
-                    command.Parameters.Add(MenuItem_idParam);
-                    command.Parameters.Add(StatusParam);
-
-
-                    command.Prepare();
-
-                    command.ExecuteNonQuery();
+                    BesteldeMenuItems b = ReadBesteldeMenuItem(reader);
+                    besteldeMenuItems.Add(b);
                 }
 
                 // Call Close when done reading.
-                
+                reader.Close();
                 dbConnection.Close();
-               
+                return besteldeMenuItems;
             }
+
         }
 
 

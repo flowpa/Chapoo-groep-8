@@ -24,6 +24,13 @@ namespace Logica
             return b;
         }
 
+        public List<Bestelling> VulDrankBestellingen()
+        {
+            List<Bestelling> b = bd.GetOnvoltooideDrankBestellingen();
+
+            return b;
+        }
+
         public List<Bestelling> VulEtenBestellingen()
         {
             List<Bestelling> b = bd.GetOnvoltooideEtenBestellingen();
@@ -39,6 +46,13 @@ namespace Logica
         public void BevestigEtenBestelling(int id)
         {
             bd.BevestigEtenBestelling(id);
+        }
+
+        public List<Bestelling> GetBestellingenVanTafel(int tafelId)
+        {
+            List<Bestelling> bestellingen = bd.GetBestellingenVanTafel(tafelId);
+
+            return bestellingen;
         }
     }
 }
