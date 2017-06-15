@@ -43,8 +43,10 @@
     <Compile Include="AfrekenenLogica.cs" />
     <Compile Include="BesteldeMenuItemsLogica.cs" />
     <Compile Include="BestellingService.cs" />
+    <Compile Include="InloggenService.cs" />
     <Compile Include="MenuKaart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TafeloverzichtService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
