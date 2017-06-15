@@ -108,7 +108,7 @@ namespace UI
 
         private void btn_DeleteBestelscherm_Click(object sender, EventArgs e)
         {
-            //lv_BesteldeItemlist.SelectedItems.Clear();
+            
             foreach(ListViewItem lv in lv_BesteldeItemlist.SelectedItems)
             {
                 deleten((BesteldeMenuItems)lv.Tag);
@@ -205,12 +205,12 @@ namespace UI
             foreach (ListViewItem i in lv_BesteldeItemlist.Items)
             {
                 Model.BesteldeMenuItems besteldeMenuItem = (Model.BesteldeMenuItems)i.Tag;
-                 
+                besteldeMenuItem.Opmerking = tbx_opmerking.Text;
 
-                if (besteldeMenuItem.MenuItem.Naam == item.Naam)
+                if (besteldeMenuItem.MenuItem.Naam == item.Naam && besteldeMenuItem.Opmerking == item.Opmerking)
                 {
                     besteldeMenuItem.Aantal++;
-                    besteldeMenuItem.Opmerking = tbx_opmerking.Text;
+                    
                     lv_BesteldeItemlist.Items.Remove(i);
 
                     ListViewItem li = new ListViewItem(besteldeMenuItem.Aantal.ToString());
@@ -224,7 +224,7 @@ namespace UI
 
                     toegevoegd = true;
                 }
-                
+
             }
 
             if (!toegevoegd)
@@ -237,7 +237,7 @@ namespace UI
                 li.SubItems.Add(bestelItem.Opmerking);
                 li.SubItems.Add(bestelItem.MenuItem.Omschrijving);
 
-                
+
 
                 li.Tag = bestelItem;
 

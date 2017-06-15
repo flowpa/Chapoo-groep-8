@@ -19,8 +19,7 @@ namespace Model
         private string omschrijving;
         private int aantal;
 
-        private string opmerking;
-        private int aantal;
+        
 
 
         public MenuItem(int id, string naam, Catagorie catagorie, Dagdeel dagdeel, bool isAlcoholisch, double prijs, int voorraad, string omschrijving)
@@ -33,6 +32,7 @@ namespace Model
             this.prijs = prijs;
             this.voorraad = voorraad;
             this.omschrijving = omschrijving;
+
         }
 
         public int Id
@@ -85,12 +85,6 @@ namespace Model
         public override string ToString()
         {
             return Naam + ", " + Prijs + "        " + omschrijving;
-        }
-
-        public string Opmerking
-        {
-            get { return opmerking; }
-            set { opmerking = value; }
         }
 
         public int Aantal

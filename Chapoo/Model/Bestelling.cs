@@ -22,13 +22,6 @@ namespace Model
             this.tijd = tijd;
         }
 
-        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
-        {
-            this.id = id;
-            this.medewerkersId = medewerkersId;
-            this.tafelId = tafelId;
-            this.tijd = tijd;
-        }
 
         public int Id
         {
