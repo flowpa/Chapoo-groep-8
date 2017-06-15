@@ -7,3 +7,14 @@ C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Properties.Reso
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Inlogscherm.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.TafeloverzichtScherm.resources
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\UI.exe.config
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\UI.exe
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\UI.pdb
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Logica.dll
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Model.dll
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\DAL.dll
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Logica.pdb
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\Model.pdb
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\bin\Debug\DAL.pdb
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.exe
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.pdb

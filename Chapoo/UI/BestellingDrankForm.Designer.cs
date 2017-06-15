@@ -42,22 +42,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).BeginInit();
             this.SuspendLayout();
             // 
-            // lv_eerste
-            // 
-            this.lv_eerste.Location = new System.Drawing.Point(13, 139);
-            this.lv_eerste.Name = "lv_eerste";
-            this.lv_eerste.Size = new System.Drawing.Size(647, 858);
-            this.lv_eerste.TabIndex = 0;
-            this.lv_eerste.UseCompatibleStateImageBehavior = false;
-            // 
-            // lv_alle
-            // 
-            this.lv_alle.Location = new System.Drawing.Point(666, 13);
-            this.lv_alle.Name = "lv_alle";
-            this.lv_alle.Size = new System.Drawing.Size(647, 984);
-            this.lv_alle.TabIndex = 1;
-            this.lv_alle.UseCompatibleStateImageBehavior = false;
-            // 
             // btn_bevestig
             // 
             this.btn_bevestig.BackColor = System.Drawing.Color.Green;
