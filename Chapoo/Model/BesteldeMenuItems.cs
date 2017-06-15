@@ -49,9 +49,6 @@ namespace Model
         {
             get { return geserveerd; }
             set { geserveerd = value; }
-        }
-        
-
-
+        }      
     }
 }

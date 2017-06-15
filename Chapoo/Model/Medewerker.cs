@@ -13,7 +13,7 @@ namespace Model
         private string voornaam;
         private string achternaam;
         private Functie functie;
-        private string wachtwoord;
+        private string wachtwoord; 
 
         public Medewerker(int id, string voornaam, string achternaam, Functie functie)
         {
@@ -53,8 +53,9 @@ namespace Model
 
         public string Wachtwoord
         {
-            get { return wachtwoord; }
-            set { wachtwoord = value; }
+           get { return wachtwoord; }
+           set { wachtwoord = value; }
         }
+
     }
 }
