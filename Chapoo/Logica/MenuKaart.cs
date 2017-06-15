@@ -29,6 +29,7 @@ namespace Logica
 
             return menuKaart;
         }
+
         public List<MenuItem> VulDrankenKaart(Catagorie c, Dagdeel d)
         {
             md = new MenuitemDAO();
@@ -40,7 +41,6 @@ namespace Logica
         
         
         
-        
-        
+    
     }
 }

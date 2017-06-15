@@ -13,3 +13,10 @@ C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\DAL\bin\Debug\Mod
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.dll
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.pdb
+C:\Users\607653\Source\Repos\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\607653\Source\Repos\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.dll
+C:\Users\607653\Source\Repos\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.pdb
+C:\Users\607653\Source\Repos\Chapoo-groep-8\Chapoo\DAL\bin\Debug\DAL.dll
+C:\Users\607653\Source\Repos\Chapoo-groep-8\Chapoo\DAL\bin\Debug\DAL.pdb
+C:\Users\607653\Source\Repos\Chapoo-groep-8\Chapoo\DAL\bin\Debug\Model.dll
+C:\Users\607653\Source\Repos\Chapoo-groep-8\Chapoo\DAL\bin\Debug\Model.pdb

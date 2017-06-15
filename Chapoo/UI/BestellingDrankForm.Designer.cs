@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lv_eerste = new System.Windows.Forms.ListView();
-            this.lv_alle = new System.Windows.Forms.ListView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_bevestig = new System.Windows.Forms.Button();
             this.lbl_naam = new System.Windows.Forms.Label();
             this.lbl_clock = new System.Windows.Forms.Label();
@@ -38,35 +37,20 @@
             this.lbl_bestellingen = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
             this.dgv_eerste = new System.Windows.Forms.DataGridView();
+            this.dgv_alle = new System.Windows.Forms.DataGridView();
+            this.btn_afmelden = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lv_eerste
-            // 
-            this.lv_eerste.Location = new System.Drawing.Point(13, 139);
-            this.lv_eerste.Name = "lv_eerste";
-            this.lv_eerste.Size = new System.Drawing.Size(647, 858);
-            this.lv_eerste.TabIndex = 0;
-            this.lv_eerste.UseCompatibleStateImageBehavior = false;
-            this.lv_eerste.View = System.Windows.Forms.View.Details;
-            // 
-            // lv_alle
-            // 
-            this.lv_alle.Location = new System.Drawing.Point(666, 13);
-            this.lv_alle.Name = "lv_alle";
-            this.lv_alle.Size = new System.Drawing.Size(647, 984);
-            this.lv_alle.TabIndex = 1;
-            this.lv_alle.UseCompatibleStateImageBehavior = false;
-            this.lv_alle.View = System.Windows.Forms.View.Details;
             // 
             // btn_bevestig
             // 
             this.btn_bevestig.BackColor = System.Drawing.Color.Green;
             this.btn_bevestig.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_bevestig.ForeColor = System.Drawing.Color.White;
-            this.btn_bevestig.Location = new System.Drawing.Point(1320, 416);
+            this.btn_bevestig.Location = new System.Drawing.Point(1320, 415);
             this.btn_bevestig.Name = "btn_bevestig";
-            this.btn_bevestig.Size = new System.Drawing.Size(562, 270);
+            this.btn_bevestig.Size = new System.Drawing.Size(562, 225);
             this.btn_bevestig.TabIndex = 2;
             this.btn_bevestig.Text = "Bevestigen";
             this.btn_bevestig.UseVisualStyleBackColor = false;
@@ -97,9 +81,9 @@
             this.btn_annuleren.BackColor = System.Drawing.Color.Red;
             this.btn_annuleren.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_annuleren.ForeColor = System.Drawing.Color.White;
-            this.btn_annuleren.Location = new System.Drawing.Point(1320, 727);
+            this.btn_annuleren.Location = new System.Drawing.Point(1320, 666);
             this.btn_annuleren.Name = "btn_annuleren";
-            this.btn_annuleren.Size = new System.Drawing.Size(562, 270);
+            this.btn_annuleren.Size = new System.Drawing.Size(562, 225);
             this.btn_annuleren.TabIndex = 6;
             this.btn_annuleren.Text = "Annuleren";
             this.btn_annuleren.UseVisualStyleBackColor = false;
@@ -127,15 +111,39 @@
             // 
             // dgv_eerste
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_eerste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_eerste.Location = new System.Drawing.Point(0, 126);
+            this.dgv_eerste.Location = new System.Drawing.Point(28, 117);
+            this.dgv_eerste.MultiSelect = false;
             this.dgv_eerste.Name = "dgv_eerste";
+            this.dgv_eerste.ReadOnly = true;
             this.dgv_eerste.RowTemplate.Height = 33;
-            this.dgv_eerste.Size = new System.Drawing.Size(660, 871);
+            this.dgv_eerste.Size = new System.Drawing.Size(632, 871);
             this.dgv_eerste.TabIndex = 17;
+            // 
+            // dgv_alle
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_alle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_alle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_alle.Location = new System.Drawing.Point(681, 22);
+            this.dgv_alle.Name = "dgv_alle";
+            this.dgv_alle.RowTemplate.Height = 33;
+            this.dgv_alle.Size = new System.Drawing.Size(632, 975);
+            this.dgv_alle.TabIndex = 18;
+            // 
+            // btn_afmelden
+            // 
+            this.btn_afmelden.Location = new System.Drawing.Point(1320, 926);
+            this.btn_afmelden.Name = "btn_afmelden";
+            this.btn_afmelden.Size = new System.Drawing.Size(562, 71);
+            this.btn_afmelden.TabIndex = 22;
+            this.btn_afmelden.Text = "Afmelden";
+            this.btn_afmelden.UseVisualStyleBackColor = true;
+            this.btn_afmelden.Click += new System.EventHandler(this.btn_afmelden_Click);
             // 
             // BestellingDrankForm
             // 
@@ -143,6 +151,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1894, 1009);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_afmelden);
+            this.Controls.Add(this.dgv_alle);
             this.Controls.Add(this.dgv_eerste);
             this.Controls.Add(this.lbl_date);
             this.Controls.Add(this.lbl_bestellingen);
@@ -150,8 +160,6 @@
             this.Controls.Add(this.lbl_clock);
             this.Controls.Add(this.lbl_naam);
             this.Controls.Add(this.btn_bevestig);
-            this.Controls.Add(this.lv_alle);
-            this.Controls.Add(this.lv_eerste);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -161,14 +169,12 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.BestellingDrankForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lv_eerste;
-        private System.Windows.Forms.ListView lv_alle;
         private System.Windows.Forms.Button btn_bevestig;
         private System.Windows.Forms.Label lbl_naam;
         private System.Windows.Forms.Label lbl_clock;
@@ -176,5 +182,7 @@
         private System.Windows.Forms.Label lbl_bestellingen;
         private System.Windows.Forms.Label lbl_date;
         private System.Windows.Forms.DataGridView dgv_eerste;
+        private System.Windows.Forms.DataGridView dgv_alle;
+        private System.Windows.Forms.Button btn_afmelden;
     }
 }
