@@ -11,15 +11,16 @@ namespace Model
         private int bestellingId;
         private int aantal;
         private string opmerking;
-        private int menuItemId;
+        //private int menuItemId; // aanpassen naar Menu object (niet int)
+        private MenuItem menuItem;
         private bool geserveerd;
 
-        public BesteldeMenuItems(int bestellingId, int aantal, string opmerking, int menuItemId, bool geserveerd)
+        public BesteldeMenuItems(int bestellingId, int aantal, string opmerking, MenuItem menuItem, bool geserveerd)
         {
             this.bestellingId = bestellingId;
             this.aantal = aantal;
             this.opmerking = opmerking;
-            this.menuItemId = menuItemId;
+            this.menuItem = menuItem;
             this.geserveerd = geserveerd;
         }
 
@@ -40,9 +41,10 @@ namespace Model
             set { opmerking = value; }
         }
 
-        public int MenuItemId
+        public MenuItem MenuItem
         {
-            get { return menuItemId; }
+            get { return menuItem; }
+            set { menuItem = value; }
         }
 
         public bool Geserveerd
