@@ -30,13 +30,11 @@ namespace UI
         {
             iService = new InloggenService();
 
+            int loginId;
 
-            try
-            {
-                int loginId = int.Parse(tbx_WerknemerID_Login.Text);
-                //i.checkMedewerker(loginId);
-
-
+            bool legit= int.TryParse(tbx_WerknemerID_Login.Text, out loginId);
+            if(legit)
+            { 
                 if (iService.checkMedewerker(loginId) == true)
                 {
                     Medewerker m = iService.getMedewerker(loginId);
@@ -97,7 +95,7 @@ namespace UI
                 }
             }
 
-            catch
+            else
             {
                 l_Message_Inlog.ForeColor = Color.Red;
                 l_Message_Inlog.Text = "Vul je inlogcode in '8'";
