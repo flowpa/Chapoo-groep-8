@@ -20,6 +20,7 @@ namespace UI
             BestellingOpneemScherm b = new BestellingOpneemScherm();
             BestellingDrankForm d = new BestellingDrankForm();
             BestellingEtenForm e = new BestellingEtenForm();
+            
             Afrekenen a = new Afrekenen();
             Application.Run(b);                // niet verwijderen. gwn veranderen.
         }
