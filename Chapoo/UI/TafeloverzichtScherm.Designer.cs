@@ -44,7 +44,7 @@
             this.fake_lbl_tafelVrij = new System.Windows.Forms.Label();
             this.btn_Opnemen = new System.Windows.Forms.Button();
             this.btn_Bestellingen = new System.Windows.Forms.Button();
-            this.btn_Terug = new System.Windows.Forms.Button();
+            this.btn_Uitloggen = new System.Windows.Forms.Button();
             this.l_huidigeTafel = new System.Windows.Forms.Label();
             this.l_huidigeGebruiker = new System.Windows.Forms.Label();
             this.btn_Vrijgeven = new System.Windows.Forms.Button();
@@ -70,6 +70,7 @@
             this.btn_Tafel2.TabIndex = 1;
             this.btn_Tafel2.Text = "2";
             this.btn_Tafel2.UseVisualStyleBackColor = true;
+            this.btn_Tafel2.Click += new System.EventHandler(this.btn_Tafel2_Click);
             // 
             // btn_Tafel3
             // 
@@ -80,6 +81,7 @@
             this.btn_Tafel3.TabIndex = 2;
             this.btn_Tafel3.Text = "3";
             this.btn_Tafel3.UseVisualStyleBackColor = true;
+            this.btn_Tafel3.Click += new System.EventHandler(this.btn_Tafel3_Click);
             // 
             // btn_Tafel4
             // 
@@ -90,6 +92,7 @@
             this.btn_Tafel4.TabIndex = 3;
             this.btn_Tafel4.Text = "4";
             this.btn_Tafel4.UseVisualStyleBackColor = true;
+            this.btn_Tafel4.Click += new System.EventHandler(this.btn_Tafel4_Click);
             // 
             // btn_Tafel5
             // 
@@ -100,6 +103,7 @@
             this.btn_Tafel5.TabIndex = 4;
             this.btn_Tafel5.Text = "5";
             this.btn_Tafel5.UseVisualStyleBackColor = true;
+            this.btn_Tafel5.Click += new System.EventHandler(this.btn_Tafel5_Click);
             // 
             // btn_Tafel6
             // 
@@ -110,6 +114,7 @@
             this.btn_Tafel6.TabIndex = 5;
             this.btn_Tafel6.Text = "6";
             this.btn_Tafel6.UseVisualStyleBackColor = true;
+            this.btn_Tafel6.Click += new System.EventHandler(this.btn_Tafel6_Click);
             // 
             // btn_Tafel7
             // 
@@ -120,6 +125,7 @@
             this.btn_Tafel7.TabIndex = 6;
             this.btn_Tafel7.Text = "7";
             this.btn_Tafel7.UseVisualStyleBackColor = true;
+            this.btn_Tafel7.Click += new System.EventHandler(this.btn_Tafel7_Click);
             // 
             // btn_Tafel8
             // 
@@ -130,6 +136,7 @@
             this.btn_Tafel8.TabIndex = 7;
             this.btn_Tafel8.Text = "8";
             this.btn_Tafel8.UseVisualStyleBackColor = true;
+            this.btn_Tafel8.Click += new System.EventHandler(this.btn_Tafel8_Click);
             // 
             // btn_Tafel9
             // 
@@ -140,6 +147,7 @@
             this.btn_Tafel9.TabIndex = 8;
             this.btn_Tafel9.Text = "9";
             this.btn_Tafel9.UseVisualStyleBackColor = true;
+            this.btn_Tafel9.Click += new System.EventHandler(this.btn_Tafel9_Click);
             // 
             // btn_Tafel10
             // 
@@ -150,6 +158,7 @@
             this.btn_Tafel10.TabIndex = 9;
             this.btn_Tafel10.Text = "10";
             this.btn_Tafel10.UseVisualStyleBackColor = true;
+            this.btn_Tafel10.Click += new System.EventHandler(this.btn_Tafel10_Click);
             // 
             // fake_btn_tafelGebruik
             // 
@@ -213,17 +222,17 @@
             this.btn_Bestellingen.Text = "Bestellingen";
             this.btn_Bestellingen.UseVisualStyleBackColor = true;
             // 
-            // btn_Terug
+            // btn_Uitloggen
             // 
-            this.btn_Terug.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_Terug.Location = new System.Drawing.Point(207, 489);
-            this.btn_Terug.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_Terug.Name = "btn_Terug";
-            this.btn_Terug.Size = new System.Drawing.Size(102, 56);
-            this.btn_Terug.TabIndex = 19;
-            this.btn_Terug.Text = "Terug";
-            this.btn_Terug.UseVisualStyleBackColor = true;
-            this.btn_Terug.Click += new System.EventHandler(this.btn_Terug_Click);
+            this.btn_Uitloggen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_Uitloggen.Location = new System.Drawing.Point(207, 489);
+            this.btn_Uitloggen.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Uitloggen.Name = "btn_Uitloggen";
+            this.btn_Uitloggen.Size = new System.Drawing.Size(102, 56);
+            this.btn_Uitloggen.TabIndex = 19;
+            this.btn_Uitloggen.Text = "Terug";
+            this.btn_Uitloggen.UseVisualStyleBackColor = true;
+            this.btn_Uitloggen.Click += new System.EventHandler(this.btn_Terug_Click);
             // 
             // l_huidigeTafel
             // 
@@ -263,7 +272,7 @@
             this.Controls.Add(this.l_huidigeTafel);
             this.Controls.Add(this.btn_Opnemen);
             this.Controls.Add(this.btn_Bestellingen);
-            this.Controls.Add(this.btn_Terug);
+            this.Controls.Add(this.btn_Uitloggen);
             this.Controls.Add(this.fake_lbl_tafelVrij);
             this.Controls.Add(this.fake_lbl_tafelGebruik);
             this.Controls.Add(this.fake_btn_tafelVrij);
@@ -304,7 +313,7 @@
         private System.Windows.Forms.Label fake_lbl_tafelVrij;
         private System.Windows.Forms.Button btn_Opnemen;
         private System.Windows.Forms.Button btn_Bestellingen;
-        private System.Windows.Forms.Button btn_Terug;
+        private System.Windows.Forms.Button btn_Uitloggen;
         private System.Windows.Forms.Label l_huidigeTafel;
         private System.Windows.Forms.Label l_huidigeGebruiker;
         private System.Windows.Forms.Button btn_Vrijgeven;

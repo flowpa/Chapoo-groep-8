@@ -43,7 +43,8 @@ namespace DAL
             {
                 int tafelNummer = (int)reader["Tafel_id"];
                 bool isBezet = (bool)reader["Is_bezet"];
-                 t = new Tafel(tafelNummer, isBezet);
+
+                t = new Tafel(tafelNummer, isBezet);
             }
 
             reader.Close();
@@ -63,11 +64,14 @@ namespace DAL
 
             SqlCommand command = new SqlCommand(queryString, dbConnection);
 
-            SqlParameter tafelIdParam = new SqlParameter("@tafelId", System.Data.SqlDbType.Int);
-            SqlParameter isBezetParam = new SqlParameter("@isBezet", System.Data.SqlDbType.Bit);
+            SqlParameter tafelIdParam = new SqlParameter("@tafelId", System.Data.SqlDbType.Int, 32);
+            SqlParameter isBezetParam = new SqlParameter("@isBezet", System.Data.SqlDbType.Bit, 2);
 
             tafelIdParam.Value = tafelId;
             isBezetParam.Value = isBezet;
+
+            command.Parameters.Add(tafelIdParam);
+            command.Parameters.Add(isBezetParam);
 
             command.Prepare();
             command.ExecuteNonQuery();
