@@ -51,7 +51,7 @@ namespace DAL
 
             dbConnection.Open();
             cmd.Prepare();
-             SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
 
             while(reader.Read())
             {
