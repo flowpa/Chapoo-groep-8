@@ -16,9 +16,13 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            BestellingOpneemScherm b = new BestellingOpneemScherm();
+            BestellingDrankForm d = new BestellingDrankForm();
+            BestellingEtenForm e = new BestellingEtenForm();
+            Afrekenen a = new Afrekenen();
             Inlogscherm s = new Inlogscherm();
-            TafeloverzichtScherm t = new TafeloverzichtScherm();
             Application.Run(s);                // niet verwijderen. gwn veranderen.
         }
     }
 }
+

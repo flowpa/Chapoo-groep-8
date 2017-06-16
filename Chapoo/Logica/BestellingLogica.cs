@@ -34,8 +34,9 @@ namespace Logica
             Bestelling bestelling = new Bestelling(0, m.Id, t.Nummer, DateTime.Now);
 
 
-            bDAO.WriteBesteling(bestelling);
-            int bestellingId = bDAO.GetBestellingIdByTijd(bestelling.Tijd);
+           /// bDAO.WriteBesteling(bestelling);
+
+           // int bestellingId = bDAO.GetBestellingIdByTijd(bestelling.Tijd);
 
         }
 

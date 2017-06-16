@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_bestellingen = new System.Windows.Forms.Label();
             this.btn_annuleren = new System.Windows.Forms.Button();
             this.lbl_clock = new System.Windows.Forms.Label();
@@ -58,9 +58,9 @@
             this.btn_annuleren.BackColor = System.Drawing.Color.Red;
             this.btn_annuleren.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_annuleren.ForeColor = System.Drawing.Color.White;
-            this.btn_annuleren.Location = new System.Drawing.Point(1320, 666);
+            this.btn_annuleren.Location = new System.Drawing.Point(1331, 712);
             this.btn_annuleren.Name = "btn_annuleren";
-            this.btn_annuleren.Size = new System.Drawing.Size(562, 225);
+            this.btn_annuleren.Size = new System.Drawing.Size(562, 250);
             this.btn_annuleren.TabIndex = 13;
             this.btn_annuleren.Text = "Annuleren";
             this.btn_annuleren.UseVisualStyleBackColor = false;
@@ -91,9 +91,9 @@
             this.btn_bevestig.BackColor = System.Drawing.Color.Green;
             this.btn_bevestig.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_bevestig.ForeColor = System.Drawing.Color.White;
-            this.btn_bevestig.Location = new System.Drawing.Point(1320, 415);
+            this.btn_bevestig.Location = new System.Drawing.Point(1331, 415);
             this.btn_bevestig.Name = "btn_bevestig";
-            this.btn_bevestig.Size = new System.Drawing.Size(562, 225);
+            this.btn_bevestig.Size = new System.Drawing.Size(562, 250);
             this.btn_bevestig.TabIndex = 10;
             this.btn_bevestig.Text = "Bevestigen";
             this.btn_bevestig.UseVisualStyleBackColor = false;
@@ -111,31 +111,31 @@
             // 
             // dgv_alle
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_alle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_alle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgv_alle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_alle.Location = new System.Drawing.Point(681, 22);
             this.dgv_alle.Name = "dgv_alle";
             this.dgv_alle.RowTemplate.Height = 33;
-            this.dgv_alle.Size = new System.Drawing.Size(632, 975);
+            this.dgv_alle.Size = new System.Drawing.Size(632, 1046);
             this.dgv_alle.TabIndex = 20;
             // 
             // dgv_eerste
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgv_eerste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_eerste.Location = new System.Drawing.Point(28, 126);
+            this.dgv_eerste.Location = new System.Drawing.Point(12, 126);
             this.dgv_eerste.Name = "dgv_eerste";
             this.dgv_eerste.RowTemplate.Height = 33;
-            this.dgv_eerste.Size = new System.Drawing.Size(632, 871);
+            this.dgv_eerste.Size = new System.Drawing.Size(648, 942);
             this.dgv_eerste.TabIndex = 19;
             // 
             // btn_afmelden
             // 
-            this.btn_afmelden.Location = new System.Drawing.Point(1320, 926);
+            this.btn_afmelden.Location = new System.Drawing.Point(1331, 997);
             this.btn_afmelden.Name = "btn_afmelden";
             this.btn_afmelden.Size = new System.Drawing.Size(562, 71);
             this.btn_afmelden.TabIndex = 21;
@@ -147,7 +147,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1894, 1009);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.ControlBox = false;
             this.Controls.Add(this.btn_afmelden);
             this.Controls.Add(this.dgv_alle);
@@ -164,7 +165,6 @@
             this.Name = "BestellingEtenForm";
             this.ShowIcon = false;
             this.Text = "BestellingDrankForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.BestellingEtenForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).EndInit();

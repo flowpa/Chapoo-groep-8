@@ -14,13 +14,12 @@ namespace Model
         private DateTime tijd;
         private List<MenuItem> besteldeItems;
 
-        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd, List<MenuItem> besteldeItems)
+        public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
         {
             this.id = id;
             this.medewerkersId = medewerkersId;
             this.tafelId = tafelId;
             this.tijd = tijd;
-            this.besteldeItems = besteldeItems;
         }
 
         public int Id
@@ -55,10 +54,10 @@ namespace Model
         public override string ToString()
         {
             string s = "";
-
+            s += "Tafel: " + TafelId + "            Tijd: " + Tijd.ToString("HH:mm") + "\n\n";
             foreach (MenuItem m in besteldeItems)
             {
-                s += m.Aantal + "    " + m.Naam + "\n";
+                s += m.Aantal + "x    " + m.Naam + "\n";
                 if (m.Opmerking != "")
                 {
                     s += "!!!" + m.Opmerking + "!!!" + "\n";

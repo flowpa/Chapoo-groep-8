@@ -51,9 +51,23 @@ namespace UI
         private void btn_bevestig_Click(object sender, EventArgs e)
         {
             bool drank = true;
-            int id = Convert.ToInt32(dgv_eerste.CurrentRow.Cells[0].Value);
-            bs.BevestigBestelling(id, drank);
+            int c = dgv_eerste.SelectedRows.Count; 
+            if (c > 0)
+            {
+                int id = Convert.ToInt32(dgv_eerste.CurrentRow.Cells[0].Value);
+                bs.BevestigBestelling(id, drank);
+            }
+
             BestellingDrankForm_Load(sender, e);
+        }
+
+        private void btn_afmelden_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inlogscherm inlog = new Inlogscherm();
+            inlog.Closed += (s, args) => this.Close();
+            inlog.Show();
+            inlog.BringToFront();
         }
 
         private void vulEersteDGV(bool drank)
@@ -62,7 +76,7 @@ namespace UI
             dgv_eerste.Columns.Clear();
             dgv_eerste.AutoGenerateColumns = false;
             dgv_eerste.RowHeadersVisible = false;
-            dgv_eerste.SelectionMode =DataGridViewSelectionMode.FullRowSelect;
+            dgv_eerste.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_eerste.MultiSelect = false;
             dgv_eerste.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv_eerste.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -73,7 +87,9 @@ namespace UI
                 HeaderText = "ID",
                 ReadOnly = true,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                FillWeight = 25
+                FillWeight = 25,
+
+
             });
             dgv_eerste.Columns.Add(new DataGridViewTextBoxColumn()
             {
