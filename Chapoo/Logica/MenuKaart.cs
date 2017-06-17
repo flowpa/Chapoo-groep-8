@@ -16,13 +16,16 @@ namespace Logica
         {
             md= new MenuitemDAO();
 
-            if (DateTime.Now.Hour <= 16)
+            if (d != Dagdeel.altijd)
             {
-                d = Dagdeel.lunch;
-            }
-            else
-            {
-                d = Dagdeel.diner;
+                if (DateTime.Now.Hour <= 16)
+                {
+                    d = Dagdeel.lunch;
+                }
+                else
+                {
+                    d = Dagdeel.diner;
+                }
             }
 
             List<MenuItem> menuKaart = md.GetMenuItems(c,d);
@@ -38,7 +41,21 @@ namespace Logica
             return menuKaart;
         }
 
-        
+        public int aantal(int id)
+        {
+            md = new MenuitemDAO();
+
+            MenuItem m = md.GetItemById(id);
+            return m.Voorraad;
+        }
+
+        public List<BesteldeMenuItems> getBesteldeMenuItemsByBestellingId(int bestellingId)
+        {
+            BesteldeMenuItemsDAO bmi = new BesteldeMenuItemsDAO();
+
+            List<BesteldeMenuItems> besteldeItems = bmi.GetBesteldeMenuItems(bestellingId);
+            return besteldeItems;
+        }       
         
         
     

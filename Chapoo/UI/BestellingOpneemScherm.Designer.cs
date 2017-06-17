@@ -47,9 +47,14 @@
             this.btn_AnnuleerBestelscherm = new System.Windows.Forms.Button();
             this.btn_VerzendenBestelscherm = new System.Windows.Forms.Button();
             this.tab_Rekeningen = new System.Windows.Forms.TabPage();
+            this.lv_geheleBestelling = new System.Windows.Forms.ListView();
+            this.btn_betalen = new System.Windows.Forms.Button();
+            this.btn_deleten = new System.Windows.Forms.Button();
+            this.btn_vorrige = new System.Windows.Forms.Button();
             this.BackgroundPannel.SuspendLayout();
             this.container_tabjes.SuspendLayout();
             this.tab_menus.SuspendLayout();
+            this.tab_Rekeningen.SuspendLayout();
             this.SuspendLayout();
             // 
             // BackgroundPannel
@@ -121,7 +126,7 @@
             this.lv_BesteldeItemlist.FullRowSelect = true;
             this.lv_BesteldeItemlist.Location = new System.Drawing.Point(-1, 368);
             this.lv_BesteldeItemlist.Name = "lv_BesteldeItemlist";
-            this.lv_BesteldeItemlist.Size = new System.Drawing.Size(402, 189);
+            this.lv_BesteldeItemlist.Size = new System.Drawing.Size(402, 170);
             this.lv_BesteldeItemlist.TabIndex = 22;
             this.lv_BesteldeItemlist.UseCompatibleStateImageBehavior = false;
             this.lv_BesteldeItemlist.View = System.Windows.Forms.View.Details;
@@ -228,9 +233,9 @@
             // btn_VorrigeBestelscherm
             // 
             this.btn_VorrigeBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_VorrigeBestelscherm.Location = new System.Drawing.Point(0, 556);
+            this.btn_VorrigeBestelscherm.Location = new System.Drawing.Point(3, 545);
             this.btn_VorrigeBestelscherm.Name = "btn_VorrigeBestelscherm";
-            this.btn_VorrigeBestelscherm.Size = new System.Drawing.Size(133, 54);
+            this.btn_VorrigeBestelscherm.Size = new System.Drawing.Size(126, 54);
             this.btn_VorrigeBestelscherm.TabIndex = 8;
             this.btn_VorrigeBestelscherm.Text = "Vorrige";
             this.btn_VorrigeBestelscherm.UseVisualStyleBackColor = true;
@@ -238,9 +243,9 @@
             // btn_AnnuleerBestelscherm
             // 
             this.btn_AnnuleerBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AnnuleerBestelscherm.Location = new System.Drawing.Point(135, 556);
+            this.btn_AnnuleerBestelscherm.Location = new System.Drawing.Point(139, 545);
             this.btn_AnnuleerBestelscherm.Name = "btn_AnnuleerBestelscherm";
-            this.btn_AnnuleerBestelscherm.Size = new System.Drawing.Size(133, 54);
+            this.btn_AnnuleerBestelscherm.Size = new System.Drawing.Size(126, 54);
             this.btn_AnnuleerBestelscherm.TabIndex = 9;
             this.btn_AnnuleerBestelscherm.Text = "Annuleren";
             this.btn_AnnuleerBestelscherm.UseVisualStyleBackColor = true;
@@ -249,9 +254,9 @@
             // btn_VerzendenBestelscherm
             // 
             this.btn_VerzendenBestelscherm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_VerzendenBestelscherm.Location = new System.Drawing.Point(269, 556);
+            this.btn_VerzendenBestelscherm.Location = new System.Drawing.Point(273, 545);
             this.btn_VerzendenBestelscherm.Name = "btn_VerzendenBestelscherm";
-            this.btn_VerzendenBestelscherm.Size = new System.Drawing.Size(133, 53);
+            this.btn_VerzendenBestelscherm.Size = new System.Drawing.Size(126, 54);
             this.btn_VerzendenBestelscherm.TabIndex = 10;
             this.btn_VerzendenBestelscherm.Text = "Verzenden";
             this.btn_VerzendenBestelscherm.UseVisualStyleBackColor = true;
@@ -259,6 +264,10 @@
             // 
             // tab_Rekeningen
             // 
+            this.tab_Rekeningen.Controls.Add(this.lv_geheleBestelling);
+            this.tab_Rekeningen.Controls.Add(this.btn_betalen);
+            this.tab_Rekeningen.Controls.Add(this.btn_deleten);
+            this.tab_Rekeningen.Controls.Add(this.btn_vorrige);
             this.tab_Rekeningen.Location = new System.Drawing.Point(4, 40);
             this.tab_Rekeningen.Name = "tab_Rekeningen";
             this.tab_Rekeningen.Padding = new System.Windows.Forms.Padding(3);
@@ -266,6 +275,50 @@
             this.tab_Rekeningen.TabIndex = 2;
             this.tab_Rekeningen.Text = "Bestellingen";
             this.tab_Rekeningen.UseVisualStyleBackColor = true;
+            // 
+            // lv_geheleBestelling
+            // 
+            this.lv_geheleBestelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_geheleBestelling.FullRowSelect = true;
+            this.lv_geheleBestelling.Location = new System.Drawing.Point(0, 0);
+            this.lv_geheleBestelling.Name = "lv_geheleBestelling";
+            this.lv_geheleBestelling.Size = new System.Drawing.Size(399, 539);
+            this.lv_geheleBestelling.TabIndex = 12;
+            this.lv_geheleBestelling.UseCompatibleStateImageBehavior = false;
+            this.lv_geheleBestelling.View = System.Windows.Forms.View.Details;
+            // 
+            // btn_betalen
+            // 
+            this.btn_betalen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_betalen.Location = new System.Drawing.Point(273, 545);
+            this.btn_betalen.Name = "btn_betalen";
+            this.btn_betalen.Size = new System.Drawing.Size(126, 54);
+            this.btn_betalen.TabIndex = 11;
+            this.btn_betalen.Text = "Betalen";
+            this.btn_betalen.UseVisualStyleBackColor = true;
+            this.btn_betalen.Click += new System.EventHandler(this.btn_betalen_Click);
+            // 
+            // btn_deleten
+            // 
+            this.btn_deleten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deleten.Location = new System.Drawing.Point(139, 545);
+            this.btn_deleten.Name = "btn_deleten";
+            this.btn_deleten.Size = new System.Drawing.Size(126, 54);
+            this.btn_deleten.TabIndex = 10;
+            this.btn_deleten.Text = "Deleten";
+            this.btn_deleten.UseVisualStyleBackColor = true;
+            this.btn_deleten.Click += new System.EventHandler(this.btn_deleten_Click);
+            // 
+            // btn_vorrige
+            // 
+            this.btn_vorrige.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_vorrige.Location = new System.Drawing.Point(3, 545);
+            this.btn_vorrige.Name = "btn_vorrige";
+            this.btn_vorrige.Size = new System.Drawing.Size(126, 54);
+            this.btn_vorrige.TabIndex = 9;
+            this.btn_vorrige.Text = "Vorrige";
+            this.btn_vorrige.UseVisualStyleBackColor = true;
+            this.btn_vorrige.Click += new System.EventHandler(this.btn_vorrige_Click);
             // 
             // BestellingOpneemScherm
             // 
@@ -280,6 +333,7 @@
             this.container_tabjes.ResumeLayout(false);
             this.tab_menus.ResumeLayout(false);
             this.tab_menus.PerformLayout();
+            this.tab_Rekeningen.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -304,10 +358,9 @@
         private System.Windows.Forms.ListView lv_MenuKaart;
         private System.Windows.Forms.ListView lv_BesteldeItemlist;
         private System.Windows.Forms.TextBox tbx_opmerking;
-        private System.Windows.Forms.Button btn_DeleteBestellingTab;
-        private System.Windows.Forms.Button btn_VorrigeBestellingTab;
-        private System.Windows.Forms.ListView lv_HuidigeBestelling;
-        private System.Windows.Forms.TabPage tab_Bestelling;
-
+        private System.Windows.Forms.Button btn_betalen;
+        private System.Windows.Forms.Button btn_deleten;
+        private System.Windows.Forms.Button btn_vorrige;
+        private System.Windows.Forms.ListView lv_geheleBestelling;
     }
 }
