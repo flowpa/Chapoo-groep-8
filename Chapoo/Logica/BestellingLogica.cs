@@ -40,5 +40,28 @@ namespace Logica
 
         }
 
+        //Juan
+        public List<Bestelling> getAllBestellingen()
+        {
+            BestellingDAO bDAO = new BestellingDAO();
+
+            List<Bestelling> bestellingen = bDAO.ReadBestellingen();
+
+            return bestellingen;
+        }
+
+        public void WriteBestellingIncrement(int bestellingId, int medewerkerId, Tafel tafel)
+        {
+            BestellingDAO bDAO = new BestellingDAO();
+            Bestelling bestelling = new Bestelling(bestellingId, medewerkerId, tafel.Nummer, DateTime.Now);
+            bDAO.WriteBesteling(bestelling);
+        }
+
+        public Bestelling getBestellingById(int bestellingId)
+        {
+            BestellingDAO bDAO = new BestellingDAO();
+            Bestelling bestelling  = bDAO.GetBestellingById(bestellingId);
+            return bestelling; 
+        }
     }
 }

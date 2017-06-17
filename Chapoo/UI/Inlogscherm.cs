@@ -31,8 +31,8 @@ namespace UI
             iService = new InloggenService();
 
 
-            try
-            {
+            //try
+            //{
                 int loginId = int.Parse(tbx_WerknemerID_Login.Text);
                 //i.checkMedewerker(loginId);
 
@@ -97,12 +97,12 @@ namespace UI
                 }
             }
 
-            catch
-            {
-                l_Message_Inlog.ForeColor = Color.Red;
-                l_Message_Inlog.Text = "Vul je inlogcode in '8'";
-            }
-        }
+            //catch
+            //{
+            //    l_Message_Inlog.ForeColor = Color.Red;
+            //    l_Message_Inlog.Text = "Vul je inlogcode in '8'";
+            //}
+        
 
         
 

@@ -125,8 +125,7 @@ namespace DAL
             dbConnection.Open();
             cmd.Prepare();
             cmd.ExecuteNonQuery();
-            dbConnection.Close();
-           
+            dbConnection.Close();   
         }
 
         public void BevestigDrankBestelling(int id)
@@ -228,12 +227,15 @@ namespace DAL
 
                 command.Prepare();
                 SqlDataReader reader = command.ExecuteReader();
+                Bestelling b = null;
+                if (reader.Read())
+                {
+                    int medewerkersId = (int)reader["Werknemer_id"];
+                    int TafelId = (int)reader["Tafel_id"];
+                    DateTime tijd = (DateTime)reader["Tijd"];
+                    b = new Bestelling(id, medewerkersId, TafelId, tijd);
+                }
 
-
-                int medewerkersId = (int)reader["Werknemer_id"];
-                int TafelId = (int)reader["Tafel_id"];
-                DateTime tijd = (DateTime)reader["Tijd"];
-                Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
                 // Call Close when done reading.
                 reader.Close();
                 dbConnection.Close();
@@ -256,7 +258,7 @@ namespace DAL
 
                 // Call Read before accessing data.
 
-                List<Bestelling> bestelingen = new List<Bestelling>();
+                List<Bestelling> bestellingen = new List<Bestelling>();
 
                 while (reader.Read())
                 {
@@ -265,14 +267,14 @@ namespace DAL
                     int TafelId = (int)reader["Tafel_id"];
                     DateTime tijd = (DateTime)reader["Tijd"];
                     Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
-                    bestelingen.Add(b);
+                    bestellingen.Add(b);
                 }
 
 
                 // Call Close when done reading.
                 reader.Close();
                 dbConnection.Close();
-                return bestelingen;
+                return bestellingen;
             }
         }
 
@@ -289,9 +291,9 @@ namespace DAL
                 dbConnection.Open();
 
 
-                SqlParameter werknemerId = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int);
-                SqlParameter tafelId = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int);
-                SqlParameter Tijd = new SqlParameter("@tijd", System.Data.SqlDbType.NVarChar);
+                SqlParameter werknemerId = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int, 32);
+                SqlParameter tafelId = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int, 32);
+                SqlParameter Tijd = new SqlParameter("@tijd", System.Data.SqlDbType.DateTime);
 
 
 
@@ -313,13 +315,7 @@ namespace DAL
                 // Call Close when done reading.
 
                 dbConnection.Close();
-
-
-
             }
-
-
-
         }
 
         public int GetBestellingIdByTijd(DateTime tijd)
