@@ -57,6 +57,7 @@
             this.btn_Tafel1.Name = "btn_Tafel1";
             this.btn_Tafel1.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel1.TabIndex = 0;
+            this.btn_Tafel1.TabStop = false;
             this.btn_Tafel1.Text = "1";
             this.btn_Tafel1.UseVisualStyleBackColor = true;
             this.btn_Tafel1.Click += new System.EventHandler(this.btn_Tafel1_Click);
@@ -68,6 +69,7 @@
             this.btn_Tafel2.Name = "btn_Tafel2";
             this.btn_Tafel2.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel2.TabIndex = 1;
+            this.btn_Tafel2.TabStop = false;
             this.btn_Tafel2.Text = "2";
             this.btn_Tafel2.UseVisualStyleBackColor = true;
             this.btn_Tafel2.Click += new System.EventHandler(this.btn_Tafel2_Click);
@@ -79,6 +81,7 @@
             this.btn_Tafel3.Name = "btn_Tafel3";
             this.btn_Tafel3.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel3.TabIndex = 2;
+            this.btn_Tafel3.TabStop = false;
             this.btn_Tafel3.Text = "3";
             this.btn_Tafel3.UseVisualStyleBackColor = true;
             this.btn_Tafel3.Click += new System.EventHandler(this.btn_Tafel3_Click);
@@ -90,6 +93,7 @@
             this.btn_Tafel4.Name = "btn_Tafel4";
             this.btn_Tafel4.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel4.TabIndex = 3;
+            this.btn_Tafel4.TabStop = false;
             this.btn_Tafel4.Text = "4";
             this.btn_Tafel4.UseVisualStyleBackColor = true;
             this.btn_Tafel4.Click += new System.EventHandler(this.btn_Tafel4_Click);
@@ -101,6 +105,7 @@
             this.btn_Tafel5.Name = "btn_Tafel5";
             this.btn_Tafel5.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel5.TabIndex = 4;
+            this.btn_Tafel5.TabStop = false;
             this.btn_Tafel5.Text = "5";
             this.btn_Tafel5.UseVisualStyleBackColor = true;
             this.btn_Tafel5.Click += new System.EventHandler(this.btn_Tafel5_Click);
@@ -112,6 +117,7 @@
             this.btn_Tafel6.Name = "btn_Tafel6";
             this.btn_Tafel6.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel6.TabIndex = 5;
+            this.btn_Tafel6.TabStop = false;
             this.btn_Tafel6.Text = "6";
             this.btn_Tafel6.UseVisualStyleBackColor = true;
             this.btn_Tafel6.Click += new System.EventHandler(this.btn_Tafel6_Click);
@@ -123,6 +129,7 @@
             this.btn_Tafel7.Name = "btn_Tafel7";
             this.btn_Tafel7.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel7.TabIndex = 6;
+            this.btn_Tafel7.TabStop = false;
             this.btn_Tafel7.Text = "7";
             this.btn_Tafel7.UseVisualStyleBackColor = true;
             this.btn_Tafel7.Click += new System.EventHandler(this.btn_Tafel7_Click);
@@ -134,6 +141,7 @@
             this.btn_Tafel8.Name = "btn_Tafel8";
             this.btn_Tafel8.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel8.TabIndex = 7;
+            this.btn_Tafel8.TabStop = false;
             this.btn_Tafel8.Text = "8";
             this.btn_Tafel8.UseVisualStyleBackColor = true;
             this.btn_Tafel8.Click += new System.EventHandler(this.btn_Tafel8_Click);
@@ -145,6 +153,7 @@
             this.btn_Tafel9.Name = "btn_Tafel9";
             this.btn_Tafel9.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel9.TabIndex = 8;
+            this.btn_Tafel9.TabStop = false;
             this.btn_Tafel9.Text = "9";
             this.btn_Tafel9.UseVisualStyleBackColor = true;
             this.btn_Tafel9.Click += new System.EventHandler(this.btn_Tafel9_Click);
@@ -156,6 +165,7 @@
             this.btn_Tafel10.Name = "btn_Tafel10";
             this.btn_Tafel10.Size = new System.Drawing.Size(57, 56);
             this.btn_Tafel10.TabIndex = 9;
+            this.btn_Tafel10.TabStop = false;
             this.btn_Tafel10.Text = "10";
             this.btn_Tafel10.UseVisualStyleBackColor = true;
             this.btn_Tafel10.Click += new System.EventHandler(this.btn_Tafel10_Click);
@@ -208,8 +218,10 @@
             this.btn_Opnemen.Name = "btn_Opnemen";
             this.btn_Opnemen.Size = new System.Drawing.Size(104, 56);
             this.btn_Opnemen.TabIndex = 17;
+            this.btn_Opnemen.TabStop = false;
             this.btn_Opnemen.Text = "Opnemen";
             this.btn_Opnemen.UseVisualStyleBackColor = true;
+            this.btn_Opnemen.Click += new System.EventHandler(this.btn_Opnemen_Click);
             // 
             // btn_Bestellingen
             // 
@@ -219,6 +231,7 @@
             this.btn_Bestellingen.Name = "btn_Bestellingen";
             this.btn_Bestellingen.Size = new System.Drawing.Size(114, 56);
             this.btn_Bestellingen.TabIndex = 18;
+            this.btn_Bestellingen.TabStop = false;
             this.btn_Bestellingen.Text = "Bestellingen";
             this.btn_Bestellingen.UseVisualStyleBackColor = true;
             // 
@@ -230,9 +243,10 @@
             this.btn_Uitloggen.Name = "btn_Uitloggen";
             this.btn_Uitloggen.Size = new System.Drawing.Size(102, 56);
             this.btn_Uitloggen.TabIndex = 19;
-            this.btn_Uitloggen.Text = "Terug";
+            this.btn_Uitloggen.TabStop = false;
+            this.btn_Uitloggen.Text = "Uitloggen";
             this.btn_Uitloggen.UseVisualStyleBackColor = true;
-            this.btn_Uitloggen.Click += new System.EventHandler(this.btn_Terug_Click);
+            this.btn_Uitloggen.Click += new System.EventHandler(this.btn_Uitloggen_Click);
             // 
             // l_huidigeTafel
             // 

@@ -16,15 +16,29 @@ namespace UI
     {
         private TafeloverzichtService tService;
         private Inlogscherm inlogForm;
-        private Tafel t;
+        private BestellingLogica bService;
+        private BestellingOpneemScherm bestellingForm;
+        private Tafel tafel;
+        private Tafel huidigeTafel;
+        private Bestelling bestelling;
         private int tafelId;
         private bool isBezet;
+        private int medewerkerId;
+        private int huidigeMedewerkerId;
+
+        public void medewerker(Medewerker m)
+        {
+            l_huidigeGebruiker.Tag = m;
+            l_huidigeGebruiker.Text += m.Naam;
+            huidigeMedewerkerId = m.Id;
+        }
 
         public TafeloverzichtScherm()
         {
             InitializeComponent();
 
             btn_Vrijgeven.Enabled = false;
+            btn_Opnemen.Enabled = false;
             checkBezettenTafels(btn_Tafel1, 1);
             checkBezettenTafels(btn_Tafel2, 2);
             checkBezettenTafels(btn_Tafel3, 3);
@@ -39,86 +53,87 @@ namespace UI
 
         private void checkBezettenTafels(Button b, int tafelId)
         {
-            
-                tService = new TafeloverzichtService();
-                t = tService.getTafel(tafelId);
-                b.Tag = t; 
+            tService = new TafeloverzichtService();
+            tafel = tService.getTafel(tafelId);
+            b.Tag = tafel;
 
-                if (t.IsBezet == true)
-                {
-                    b.BackColor = Color.Tomato;
-                }
-                else
-                {
-                    b.BackColor = Color.Green;
-                }
-            
-        }
-
-        //methode: tafelid meegeven tafel ophalen 
-        public void medewerker(Medewerker m)
-        {
-            l_huidigeGebruiker.Tag = m;
-            l_huidigeGebruiker.Text += m.Naam;
+            if (tafel.IsBezet == true)
+            {
+                b.BackColor = Color.Tomato;
+            }
+            else
+            {
+                b.BackColor = Color.Green;
+            }
         }
 
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel1.Tag; 
+            Tafel tafel = (Tafel)btn_Tafel1.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel1, tafel);
         }
 
         private void btn_Tafel2_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel2.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel2, tafel);
         }
 
         private void btn_Tafel3_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel3.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel3, tafel);
         }
 
         private void btn_Tafel4_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel4.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel4, tafel);
         }
 
         private void btn_Tafel5_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel5.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel5, tafel);
         }
 
         private void btn_Tafel6_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel6.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel6, tafel);
         }
 
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel7.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel7, tafel);
         }
 
         private void btn_Tafel8_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel8.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel8, tafel);
         }
 
         private void btn_Tafel9_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel9.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel9, tafel);
         }
 
         private void btn_Tafel10_Click(object sender, EventArgs e)
         {
             Tafel tafel = (Tafel)btn_Tafel10.Tag;
+            huidigeTafel = tafel;
             tafelButton(tafel.Nummer, btn_Tafel10, tafel);
         }
 
@@ -128,21 +143,23 @@ namespace UI
             //TOMATO = 1 = TRUE
             l_huidigeTafel.Text = "Geselecteerde tafel = " + tafel.Nummer;
 
-            if (t.IsBezet == true) //TOMATO
+            if (tafel.IsBezet == true && bestelling != null) //TOMATO
             {
-                tService.writeTafelStatus(tafelid, isBezet);
+                btn_Opnemen.Enabled = true;
+                tService.writeTafelStatus(tafelid, tafel.IsBezet);
             }
 
             else //GREEN
             {
-                tafel.IsBezet = false;
+                tafel.IsBezet = true;
                 b.BackColor = Color.Tomato;
                 btn_Vrijgeven.Enabled = true;
-                tService.writeTafelStatus(tafelid, isBezet);
+                btn_Opnemen.Enabled = true;
+                tService.writeTafelStatus(tafelid, tafel.IsBezet);
             }
         }
 
-        private void btn_Terug_Click(object sender, EventArgs e)
+        private void btn_Uitloggen_Click(object sender, EventArgs e)
         {
             inlogForm = new Inlogscherm();
             this.Hide();
@@ -151,28 +168,71 @@ namespace UI
 
         private void btn_Vrijgeven_Click(object sender, EventArgs e)
         {
-            //GREEN = 0 = FALSE
-            //TOMATO = 1 = TRUE
-
-            for (int tafelId = 1; tafelId < 10; tafelId++)
+            switch (huidigeTafel.Nummer)
             {
-                t.IsBezet = false;
-                tService.writeTafelStatus(t.Nummer, t.IsBezet);
-                btn_Tafel1.BackColor = Color.Green;
-                btn_Tafel2.BackColor = Color.Green;
-                btn_Tafel3.BackColor = Color.Green;
-                btn_Tafel4.BackColor = Color.Green;
-                btn_Tafel5.BackColor = Color.Green;
-                btn_Tafel6.BackColor = Color.Green;
-                btn_Tafel7.BackColor = Color.Green;
-                btn_Tafel8.BackColor = Color.Green;
-                btn_Tafel9.BackColor = Color.Green;
-                btn_Tafel10.BackColor = Color.Green;
-
-                btn_Vrijgeven.Enabled = false;
+                case 1:
+                    vrijgevenButton(1, btn_Tafel1);
+                    break;
+                case 2:
+                    vrijgevenButton(2, btn_Tafel2);
+                    break;
+                case 3:
+                    vrijgevenButton(3, btn_Tafel3);
+                    break;
+                case 4:
+                    vrijgevenButton(4, btn_Tafel4);
+                    break;
+                case 5:
+                    vrijgevenButton(5, btn_Tafel5);
+                    break;
+                case 6:
+                    vrijgevenButton(6, btn_Tafel6);
+                    break;
+                case 7:
+                    vrijgevenButton(7, btn_Tafel7);
+                    break;
+                case 8:
+                    vrijgevenButton(8, btn_Tafel8);
+                    break;
+                case 9:
+                    vrijgevenButton(9, btn_Tafel9);
+                    break;
+                case 10:
+                    vrijgevenButton(10, btn_Tafel10);
+                    break;
+                default:
+                    break;
             }
         }
 
-        
+        private void vrijgevenButton(int tafelid, Button b)
+        {
+            //tafel = tService.getTafel(tafelId);
+            b.Tag = huidigeTafel;
+            isBezet = false;
+            tService.writeTafelStatus(tafelid, isBezet);
+            b.BackColor = Color.Green;
+            l_huidigeTafel.Text = "Geselecteerde tafel = ";
+            btn_Vrijgeven.Enabled = false;
+        }
+
+        private void btn_Opnemen_Click(object sender, EventArgs e)
+        {
+            bService = new BestellingLogica();
+
+            List<Bestelling> bestellingen = bService.getAllBestellingen();
+
+            int laasteBestellingId = bestellingen[bestellingen.Count - 1].Id;
+            laasteBestellingId++;
+
+            bService.WriteBestellingIncrement(laasteBestellingId, huidigeMedewerkerId, huidigeTafel);
+
+            Bestelling bestelling = bService.getBestellingById(laasteBestellingId);
+
+            this.Hide();
+
+            bestellingForm = new BestellingOpneemScherm();
+            bestellingForm.ShowDialog();
+        }
     }
 }
