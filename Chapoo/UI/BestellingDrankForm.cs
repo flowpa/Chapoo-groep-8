@@ -23,14 +23,12 @@ namespace UI
 
         private void BestellingDrankForm_Load(object sender, EventArgs e)
         {
-
             FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
             lbl_clock.Text = DateTime.Now.ToString("HH:mm");
             lbl_date.Text = DateTime.Now.ToString("ddd dd/MM/yyyy");
             bool drank = true;
             vulEersteDGV(drank);
-            vulAlleDGV(drank);
+            vulTweedeDGV(drank);
 
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
@@ -98,46 +96,42 @@ namespace UI
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
                 FillWeight = 75
             });
-
-            List<Bestelling> bestellingen = bs.VulBestellingen(drank);
-            for (int i = 0; i < 3 && i < bestellingen.Count; i++)
-            {
-                dgv_eerste.Rows.Add(bestellingen[i].Id, bestellingen[i].ToString());
-            }
+            bool status = false;
+            List<Bestelling> bestellingen = bs.VulBestellingen(drank, status);
+            foreach (Bestelling b in bestellingen)
+                dgv_eerste.Rows.Add(b.Id, b.ToString());
         }
 
-        private void vulAlleDGV(bool drank)
+        private void vulTweedeDGV(bool drank)
         {
-            dgv_alle.Rows.Clear();
-            dgv_alle.Columns.Clear();
-            dgv_alle.AutoGenerateColumns = false;
-            dgv_alle.RowHeadersVisible = false;
-            dgv_eerste.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_alle.MultiSelect = false;
-            dgv_alle.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgv_alle.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgv_alle.AllowUserToAddRows = false;
+            dgv_tweede.Rows.Clear();
+            dgv_tweede.Columns.Clear();
+            dgv_tweede.AutoGenerateColumns = false;
+            dgv_tweede.RowHeadersVisible = false;
+            dgv_tweede.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_tweede.MultiSelect = false;
+            dgv_tweede.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv_tweede.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgv_tweede.AllowUserToAddRows = false;
 
-            dgv_alle.Columns.Add(new DataGridViewTextBoxColumn()
+            dgv_tweede.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 HeaderText = "ID",
                 ReadOnly = true,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
                 FillWeight = 25
             });
-            dgv_alle.Columns.Add(new DataGridViewTextBoxColumn()
+            dgv_tweede.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 HeaderText = "Bestelling",
                 ReadOnly = true,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
                 FillWeight = 75
             });
-
-            List<Bestelling> bestellingen = bs.VulBestellingen(drank);
-            for (int i = 3; i < bestellingen.Count; i++)
-            {
-                dgv_alle.Rows.Add(bestellingen[i].Id, bestellingen[i].ToString());
-            }
+            bool status = true;
+            List<Bestelling> bestellingen = bs.VulBestellingen(drank, status);
+            foreach(Bestelling b in bestellingen)
+                dgv_tweede.Rows.Add(b.Id, b.ToString());
         }
     }
 }

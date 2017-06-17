@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_bevestig = new System.Windows.Forms.Button();
             this.lbl_naam = new System.Windows.Forms.Label();
             this.lbl_clock = new System.Windows.Forms.Label();
@@ -37,10 +37,11 @@
             this.lbl_bestellingen = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
             this.dgv_eerste = new System.Windows.Forms.DataGridView();
-            this.dgv_alle = new System.Windows.Forms.DataGridView();
+            this.dgv_tweede = new System.Windows.Forms.DataGridView();
             this.btn_afmelden = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_tweede)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_bevestig
@@ -111,9 +112,9 @@
             // 
             // dgv_eerste
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_eerste.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_eerste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_eerste.Location = new System.Drawing.Point(28, 117);
             this.dgv_eerste.MultiSelect = false;
@@ -123,17 +124,17 @@
             this.dgv_eerste.Size = new System.Drawing.Size(632, 871);
             this.dgv_eerste.TabIndex = 17;
             // 
-            // dgv_alle
+            // dgv_tweede
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_alle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_alle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_alle.Location = new System.Drawing.Point(681, 22);
-            this.dgv_alle.Name = "dgv_alle";
-            this.dgv_alle.RowTemplate.Height = 33;
-            this.dgv_alle.Size = new System.Drawing.Size(632, 975);
-            this.dgv_alle.TabIndex = 18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_tweede.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_tweede.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_tweede.Location = new System.Drawing.Point(681, 117);
+            this.dgv_tweede.Name = "dgv_tweede";
+            this.dgv_tweede.RowTemplate.Height = 33;
+            this.dgv_tweede.Size = new System.Drawing.Size(632, 880);
+            this.dgv_tweede.TabIndex = 18;
             // 
             // btn_afmelden
             // 
@@ -145,14 +146,24 @@
             this.btn_afmelden.UseVisualStyleBackColor = true;
             this.btn_afmelden.Click += new System.EventHandler(this.btn_afmelden_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(670, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(648, 123);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Afgeronde Bestellingen";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // BestellingDrankForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1894, 1009);
             this.ControlBox = false;
             this.Controls.Add(this.btn_afmelden);
-            this.Controls.Add(this.dgv_alle);
             this.Controls.Add(this.dgv_eerste);
             this.Controls.Add(this.lbl_date);
             this.Controls.Add(this.lbl_bestellingen);
@@ -160,16 +171,18 @@
             this.Controls.Add(this.lbl_clock);
             this.Controls.Add(this.lbl_naam);
             this.Controls.Add(this.btn_bevestig);
+            this.Controls.Add(this.dgv_tweede);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BestellingDrankForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BestellingDrankForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.BestellingDrankForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_eerste)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_alle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_tweede)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,7 +195,8 @@
         private System.Windows.Forms.Label lbl_bestellingen;
         private System.Windows.Forms.Label lbl_date;
         private System.Windows.Forms.DataGridView dgv_eerste;
-        private System.Windows.Forms.DataGridView dgv_alle;
+        private System.Windows.Forms.DataGridView dgv_tweede;
         private System.Windows.Forms.Button btn_afmelden;
+        private System.Windows.Forms.Label label1;
     }
 }

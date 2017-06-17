@@ -12,9 +12,9 @@ namespace Logica
     {
         private BestellingDAO bd = new BestellingDAO();
 
-        public List<Bestelling> VulBestellingen(bool drank)
+        public List<Bestelling> VulBestellingen(bool drank, bool status)
         {
-            List<Bestelling> b = bd.GetOnvoltooideBestellingen(drank);
+            List<Bestelling> b = bd.GetBestellingen(drank, status);
 
             return b;
         }

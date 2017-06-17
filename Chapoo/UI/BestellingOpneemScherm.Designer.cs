@@ -308,6 +308,5 @@
         private System.Windows.Forms.Button btn_VorrigeBestellingTab;
         private System.Windows.Forms.ListView lv_HuidigeBestelling;
         private System.Windows.Forms.TabPage tab_Bestelling;
-
     }
 }
