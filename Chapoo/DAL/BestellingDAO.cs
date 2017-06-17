@@ -34,7 +34,7 @@ namespace DAL
             return b;
         }
 
-        public List<Bestelling> GetOnvoltooideBestellingen(bool drank)
+        public List<Bestelling> GetBestellingen(bool drank, bool status)
         {
             List<Bestelling> bestellingen = new List<Bestelling>();
             List<BesteldeMenuItems> besteldemenuitems = new List<BesteldeMenuItems>();
@@ -45,11 +45,15 @@ namespace DAL
 
             else
                 dranken = "!= 'dranken'";
+
             SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
                                             "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " + 
-                                            "WHERE bm.status = 0 AND m.Categorie "+ dranken + " ORDER BY Bestelling_id ASC", dbConnection);
+                                            "WHERE bm.status = @status AND m.Categorie "+ dranken + " ORDER BY Bestelling_id ASC", dbConnection);
+            SqlParameter statusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
+            statusParam.Value = status;
 
             dbConnection.Open();
+            cmd.Parameters.Add(statusParam);
             cmd.Prepare();
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -60,14 +64,16 @@ namespace DAL
             }
 
             reader.Close();
-            dbConnection.Close();
 
             List<MenuItem> AllMenuItems = MenuitemDAO.GetAll();
 
             cmd = new SqlCommand("SELECT DISTINCT b.* FROM Bestelling AS b " +
-                                 "INNER JOIN Bestelde_MenuItems AS bm ON b.Bestelling_id=bm.Bestelling_id " + 
-                                 "WHERE bm.Status=0", dbConnection);
-            dbConnection.Open();
+                                 "INNER JOIN Bestelde_MenuItems AS bm ON b.Bestelling_id=bm.Bestelling_id " +
+                                 "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
+                                 "WHERE bm.Status= @status AND m.Categorie " + dranken, dbConnection);
+            statusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
+            statusParam.Value = status;
+            cmd.Parameters.Add(statusParam);
             reader = cmd.ExecuteReader();
 
             while(reader.Read())
@@ -121,29 +127,13 @@ namespace DAL
 
             SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int, 32);
             idParam.Value = id;
+            cmd.Parameters.Add(idParam);
 
             dbConnection.Open();
             cmd.Prepare();
             cmd.ExecuteNonQuery();
             dbConnection.Close();
            
-        }
-
-        public void BevestigDrankBestelling(int id)
-        {
-            SqlCommand cmd = new SqlCommand("UPDATE bm " +
-                                            "SET bm.Status = 1 " +
-                                            "FROM Bestelde_MenuItems AS bm " +
-                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
-                                            "WHERE bm.Bestelling_id = @id AND m.Categorie = 'dranken'", dbConnection);
-
-            SqlParameter idParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
-            idParam.Value = id;
-
-            cmd.Prepare();
-            cmd.ExecuteNonQuery();
-            dbConnection.Close();
-            
         }
 
         public List<Bestelling> GetBestellingenVanTafel(int tafelId)
@@ -201,16 +191,6 @@ namespace DAL
             return bestellingen;
         }
 
-        public Bestelling ReadBestelling(SqlDataReader reader)
-        {
-            int bestellingid = (int)reader["Bestelling_id"];
-            int medewerkerid = (int)reader["Werknemer_id"];
-            int tafelid = (int)reader["Tafel_id"];
-            DateTime tijd = (DateTime)reader["Tijd"];
-
-            return new Bestelling(bestellingid, medewerkerid, tafelid, tijd);
-        }
-
         public Bestelling GetBestellingById(int id)
         {
             string queryString =
@@ -242,7 +222,7 @@ namespace DAL
 
         }
 
-        public List<Bestelling> ReadBestellingen()
+        public List<Bestelling> GetBestellingen()
         {
             string queryString =
             "SELECT * FROM dbo.Bestelling;";

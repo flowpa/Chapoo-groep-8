@@ -105,15 +105,16 @@ namespace DAL
 
         public MenuItem GetItemById(int id)
         {
-
             SqlCommand cmd = new SqlCommand("SELECT * FROM MenuItem WHERE Menuitem_id = @menuItem_id ", dbConnection);
             SqlParameter idParam = new SqlParameter("@menuItem_id", System.Data.SqlDbType.Int, 32);
 
             idParam.Value = id.ToString();
 
             cmd.Parameters.Add(idParam);
+
             dbConnection.Open();
             cmd.Prepare();
+
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
 
