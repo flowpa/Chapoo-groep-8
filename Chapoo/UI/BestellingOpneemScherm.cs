@@ -14,31 +14,37 @@ namespace UI
 {
     public partial class BestellingOpneemScherm : Form
     {
+        Tafel tafel;
+
         public BestellingOpneemScherm()
         {
             InitializeComponent();
             tbx_opmerking.Hide();
 
+            // TODO: maak dynamisch. dit is nog hardcoded
+            this.tafel = new Tafel(1, true);
+
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
-           // timer.Tick += new EventHandler(timer_Tick);
+            timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
-            lv_MenuKaart.Columns.Add("naam", 100);
+            lv_MenuKaart.Columns.Add("naam", 130);
             lv_MenuKaart.Columns.Add("prijs", 100);
             lv_MenuKaart.Columns.Add("omschrijving", 350);
 
             lv_BesteldeItemlist.Columns.Add("Aantal", 50);
-            lv_BesteldeItemlist.Columns.Add("naam", 100);
+            lv_BesteldeItemlist.Columns.Add("naam", 130);
             lv_BesteldeItemlist.Columns.Add("prijs", 100);
             lv_BesteldeItemlist.Columns.Add("opmerking", 150);
             lv_BesteldeItemlist.Columns.Add("omschrijving", 350);
+
+            lv_geheleBestelling.Columns.Add("Aantal", 50);
+            lv_geheleBestelling.Columns.Add("naam", 130);
+            lv_geheleBestelling.Columns.Add("prijs", 100);
+            lv_geheleBestelling.Columns.Add("opmerking", 150);
         }
 
-      //  private void timer_Tick(object sender, EventArgs e)
-     //   {
-           
-       // }
 
         private void btn_voorgerecht_Click(object sender, EventArgs e)
         {
@@ -84,6 +90,7 @@ namespace UI
             Catagorie c = new Catagorie();
             c = Catagorie.dranken;
             Dagdeel d = new Dagdeel();
+            d = Dagdeel.altijd;
 
             VulMenuKaart(c, d);
 
@@ -92,17 +99,25 @@ namespace UI
 
         private void btn_AddBestelscherm_Click(object sender, EventArgs e)
         {
+            MenuKaart m = new MenuKaart();
 
             for (int i = 0; i < lv_MenuKaart.SelectedItems.Count; i++)
             {
                 Model.MenuItem menuItem = (Model.MenuItem)lv_MenuKaart.SelectedItems[i].Tag;
                 menuItem.Opmerking = "";
-                
 
-                toevoegen(menuItem);
+
+                if (m.aantal(menuItem.Id) > 1)
+                {
+                    toevoegen(menuItem);
+                }
+                else
+                {
+                    MessageBox.Show("Het item wat je wil hebben is helaas niet meer op voorraad", "Geen Voorraad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
-            
+
 
         }
 
@@ -144,7 +159,6 @@ namespace UI
         private void btn_VerzendenBestelscherm_Click(object sender, EventArgs e)
         {
             BesteldeMenuItemsLogica b = new BesteldeMenuItemsLogica();
-
            
             List<Model.BesteldeMenuItems> besteldeItemsList = new List<Model.BesteldeMenuItems>();
 
@@ -154,7 +168,9 @@ namespace UI
                 besteldeItemsList.Add(item);
             }
 
-            b.verzendBesteldeItems(besteldeItemsList);
+            bool positief = true;
+
+            b.verzendBesteldeItems(besteldeItemsList, positief);
 
             
             tbx_opmerking.Hide();
@@ -179,7 +195,7 @@ namespace UI
             {
                 ListViewItem item = new ListViewItem(menuItem.Naam);
 
-                item.SubItems.Add(menuItem.Prijs.ToString());
+                item.SubItems.Add(menuItem.Prijs.ToString("0.00"));
                 item.SubItems.Add(menuItem.Omschrijving);
 
                 lv_MenuKaart.Items.Add(item);
@@ -207,7 +223,7 @@ namespace UI
                 Model.BesteldeMenuItems besteldeMenuItem = (Model.BesteldeMenuItems)i.Tag;
                 besteldeMenuItem.Opmerking = tbx_opmerking.Text;
 
-                if (besteldeMenuItem.MenuItem.Naam == item.Naam && besteldeMenuItem.Opmerking == item.Opmerking)
+                if (besteldeMenuItem.MenuItem.Naam == item.Naam && item.Opmerking == besteldeMenuItem.Opmerking)
                 {
                     besteldeMenuItem.Aantal++;
                     
@@ -215,7 +231,7 @@ namespace UI
 
                     ListViewItem li = new ListViewItem(besteldeMenuItem.Aantal.ToString());
                     li.SubItems.Add(besteldeMenuItem.MenuItem.Naam);
-                    li.SubItems.Add(besteldeMenuItem.MenuItem.Prijs.ToString());
+                    li.SubItems.Add(besteldeMenuItem.MenuItem.Prijs.ToString("0.00"));
                     li.SubItems.Add(besteldeMenuItem.Opmerking);
                     li.SubItems.Add(besteldeMenuItem.MenuItem.Omschrijving);
                     li.Tag = besteldeMenuItem;
@@ -233,7 +249,7 @@ namespace UI
 
                 ListViewItem li = new ListViewItem(bestelItem.Aantal.ToString());
                 li.SubItems.Add(bestelItem.MenuItem.Naam);
-                li.SubItems.Add(bestelItem.MenuItem.Prijs.ToString());
+                li.SubItems.Add(bestelItem.MenuItem.Prijs.ToString("0.00"));
                 li.SubItems.Add(bestelItem.Opmerking);
                 li.SubItems.Add(bestelItem.MenuItem.Omschrijving);
 
@@ -243,6 +259,8 @@ namespace UI
 
                 lv_BesteldeItemlist.Items.Add(li);
             }
+            tbx_opmerking.Text = "";
+            tbx_opmerking.Hide();
         }
 
         private void deleten(Model.BesteldeMenuItems item)
@@ -257,7 +275,7 @@ namespace UI
 
                 if (b.MenuItem.Naam == item.MenuItem.Naam)
                 {
-                    if (b.Aantal >= 1)
+                    if (b.Aantal > 1)
                     {
                         b.Aantal--;
 
@@ -266,11 +284,12 @@ namespace UI
 
                         ListViewItem li = new ListViewItem(b.Aantal.ToString());
                         li.SubItems.Add(b.MenuItem.Naam);
-                        li.SubItems.Add(b.MenuItem.Prijs.ToString());
+                        li.SubItems.Add(b.MenuItem.Prijs.ToString("0.00"));
                         li.SubItems.Add(b.Opmerking);
                         li.SubItems.Add(b.MenuItem.Omschrijving);
 
                         li.Tag = b;
+                        lv_BesteldeItemlist.Items.Add(li);
                     }
                     else
                     {
@@ -281,6 +300,59 @@ namespace UI
             }
 
             
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            MenuKaart m = new MenuKaart();
+            // ophalen bestelling_id
+            List<BesteldeMenuItems> besteldeItems = m.getBesteldeMenuItemsByBestellingId(1);
+
+
+            foreach (Model.BesteldeMenuItems menuItem in besteldeItems)
+            {
+                ListViewItem item = new ListViewItem(menuItem.Aantal.ToString());
+                item.SubItems.Add(menuItem.MenuItem.Naam);
+                item.SubItems.Add(menuItem.MenuItem.Prijs.ToString("0.00"));
+                item.SubItems.Add(menuItem.Opmerking);
+                item.Tag = menuItem;
+
+                lv_geheleBestelling.Items.Add(item);
+
+            }
+
+            Timer timer = new Timer();
+            timer.Interval = (1 * 1000); // 15 secs
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+        }
+
+        private void btn_vorrige_Click(object sender, EventArgs e)
+        {
+            
+
+            
+        }
+
+        private void btn_deleten_Click(object sender, EventArgs e)
+        {
+            BesteldeMenuItemsLogica b = new BesteldeMenuItemsLogica();
+            bool positief = false;
+
+            foreach (ListViewItem lv in lv_geheleBestelling.SelectedItems)
+            {
+                deleten((BesteldeMenuItems)lv.Tag);
+
+
+                b.VeranderVooraad((BesteldeMenuItems)lv.Tag, positief);
+            }
+        }
+
+        private void btn_betalen_Click(object sender, EventArgs e)
+        {
+            Afrekenen afrekenForm = new Afrekenen(this, tafel);
+            this.Hide();
+            afrekenForm.ShowDialog();
         }
     }
 

@@ -12,7 +12,7 @@ namespace Model
         private int medewerkersId;
         private int tafelId;
         private DateTime tijd;
-        private List<MenuItem> besteldeItems; 
+        private List<BesteldeMenuItems> besteldeItems;
 
         public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
         {
@@ -45,7 +45,7 @@ namespace Model
             set { tijd = value; }
         } 
 
-        public List<MenuItem> BesteldeItems
+        public List<BesteldeMenuItems> BesteldeItems
         {
             get { return besteldeItems; }
             set { besteldeItems = value; }
@@ -55,9 +55,9 @@ namespace Model
         {
             string s = "";
             s += "Tafel: " + TafelId + "            Tijd: " + Tijd.ToString("HH:mm") + "\n\n";
-            foreach (MenuItem m in besteldeItems)
+            foreach (BesteldeMenuItems m in besteldeItems)
             {
-                s += m.Aantal + "x    " + m.Naam + "\n";
+                s += m.Aantal + "x    " + m.MenuItem.Naam + "\n";
                 if (m.Opmerking != "")
                 {
                     s += "!!!" + m.Opmerking + "!!!" + "\n";

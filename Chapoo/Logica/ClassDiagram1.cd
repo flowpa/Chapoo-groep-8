@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Logica.AfrekenenLogica">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>AfrekenenLogica.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="bestellingService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Logica.BesteldeMenuItemsLogica">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BesteldeMenuItemsLogica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.BestellingService">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAkAAAAAAAAAADAIQAAA=</HashCode>
+      <FileName>BestellingService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.InloggenService">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAAEAAAAA=</HashCode>
+      <FileName>InloggenService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.MenuKaart">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>MenuKaart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.TafeloverzichtService">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAIAAAAAAIABAAAAQAAAAAAAA=</HashCode>
+      <FileName>TafeloverzichtService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

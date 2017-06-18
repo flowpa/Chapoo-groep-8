@@ -8,21 +8,18 @@ namespace Model
 {
     public class Bon
     {
+
         private int id;
-        private int bestellingId; 
+        private int betstelling_id;
+        private bool isBetaald;
+        private double totaalprijs;
+        private double totaalBtwHoog;
+        private double totaalBtwLaag;
+        private double totaalBtw;
         private double fooi;
-        private bool isBetaald; 
-        
+        private double totaalPrijsInclusief;
 
         List<Bestelling> bestellingenOpBon = new List<Bestelling>();
-
-        public Bon(int id, int bestellingId, double fooi, bool isBetaald)
-        {
-            this.id = id;
-            this.bestellingId = bestellingId;
-            this.fooi = fooi;
-            this.isBetaald = isBetaald;
-        }
 
         public int Id
         {
@@ -30,10 +27,10 @@ namespace Model
             set { id = value; }
         }
 
-        public int BestellingId
+        public List<Bestelling> BestellingenOpBon
         {
-            get { return bestellingId; }
-            set { bestellingId = value; }
+            get { return bestellingenOpBon; }
+            set { bestellingenOpBon = value; }
         }
 
         public double Fooi
@@ -48,10 +45,41 @@ namespace Model
             set { isBetaald = value; }
         }
 
-        public List<Bestelling> BestellingenOpBon
+        public double Totaalprijs
         {
-            get { return bestellingenOpBon; }
-            set { bestellingenOpBon = value; }
+            get { return totaalprijs; }
+            set { totaalprijs = value; }
         }
+
+        public double TotaalBtwHoog
+        {
+            get { return totaalBtwHoog; }
+            set { totaalBtwHoog = value; }
+        }
+
+        public double TotaalBtwLaag
+        {
+            get { return totaalBtwLaag; }
+            set { totaalBtwLaag = value; }
+        }
+
+        public double TotaalBtw
+        {
+            get { return totaalBtw; }
+            set { totaalBtw = value; }
+        }
+
+        public double TotaalPrijsInclusief
+        {
+            get { return totaalPrijsInclusief; }
+            set { totaalPrijsInclusief = value; }
+        }
+        
+        public int Betstelling_id
+        {
+            get { return betstelling_id; }
+            set { betstelling_id = value; }
+        }
+
     }
 }
