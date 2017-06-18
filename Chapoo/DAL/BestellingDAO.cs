@@ -132,8 +132,7 @@ namespace DAL
             dbConnection.Open();
             cmd.Prepare();
             cmd.ExecuteNonQuery();
-            dbConnection.Close();
-           
+            dbConnection.Close();   
         }
 
         public List<Bestelling> GetBestellingenVanTafel(int tafelId)
@@ -191,38 +190,7 @@ namespace DAL
             return bestellingen;
         }
 
-        public Bestelling GetBestellingById(int id)
-        {
-            string queryString =
-            "SELECT * FROM dbo.Bestelling WHERE Bestelling_id = @id;";
-
-
-            using (dbConnection)
-            {
-                SqlCommand command = new SqlCommand(queryString, dbConnection);
-                dbConnection.Open();
-
-                SqlParameter BestellingIdParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
-                BestellingIdParam.Value = id;
-                command.Parameters.Add(BestellingIdParam);
-
-                command.Prepare();
-                SqlDataReader reader = command.ExecuteReader();
-
-
-                int medewerkersId = (int)reader["Werknemer_id"];
-                int TafelId = (int)reader["Tafel_id"];
-                DateTime tijd = (DateTime)reader["Tijd"];
-                Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
-                // Call Close when done reading.
-                reader.Close();
-                dbConnection.Close();
-                return b;
-            }
-
-        }
-
-        public List<Bestelling> GetBestellingen()
+        public List<Bestelling> ReadBestellingen()
         {
             string queryString =
             "SELECT * FROM dbo.Bestelling;";
@@ -256,6 +224,74 @@ namespace DAL
             }
         }
 
+        public Bestelling GetBestellingById(int id)
+        {
+            string queryString =
+            "SELECT * FROM dbo.Bestelling WHERE Bestelling_id = @id;";
+
+
+            using (dbConnection)
+            {
+                SqlCommand command = new SqlCommand(queryString, dbConnection);
+                dbConnection.Open();
+
+                SqlParameter BestellingIdParam = new SqlParameter("@id", System.Data.SqlDbType.Int);
+                BestellingIdParam.Value = id;
+                command.Parameters.Add(BestellingIdParam);
+
+                command.Prepare();
+                SqlDataReader reader = command.ExecuteReader();
+                Bestelling b = null;
+                if (reader.Read())
+                {
+                    int medewerkersId = (int)reader["Werknemer_id"];
+                    int TafelId = (int)reader["Tafel_id"];
+                    DateTime tijd = (DateTime)reader["Tijd"];
+                    b = new Bestelling(id, medewerkersId, TafelId, tijd);
+                }
+
+                // Call Close when done reading.
+                reader.Close();
+                dbConnection.Close();
+                return b;
+            }
+
+        }
+
+        public List<Bestelling> GetBestellingen()
+        {
+            string queryString =
+            "SELECT * FROM dbo.Bestelling;";
+
+            using (dbConnection)
+            {
+                SqlCommand command = new SqlCommand(queryString, dbConnection);
+                dbConnection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                // Call Read before accessing data.
+
+                List<Bestelling> bestellingen = new List<Bestelling>();
+
+                while (reader.Read())
+                {
+                    int id = (int)reader["Bestelling_id"];
+                    int medewerkersId = (int)reader["Werknemer_id"];
+                    int TafelId = (int)reader["Tafel_id"];
+                    DateTime tijd = (DateTime)reader["Tijd"];
+                    Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
+                    bestellingen.Add(b);
+                }
+
+
+                // Call Close when done reading.
+                reader.Close();
+                dbConnection.Close();
+                return bestellingen;
+            }
+        }
+
         public void WriteBesteling(Bestelling nieuwBestelling)
         {
             string queryString =
@@ -269,9 +305,9 @@ namespace DAL
                 dbConnection.Open();
 
 
-                SqlParameter werknemerId = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int);
-                SqlParameter tafelId = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int);
-                SqlParameter Tijd = new SqlParameter("@tijd", System.Data.SqlDbType.NVarChar);
+                SqlParameter werknemerId = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int, 32);
+                SqlParameter tafelId = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int, 32);
+                SqlParameter Tijd = new SqlParameter("@tijd", System.Data.SqlDbType.DateTime);
 
 
 
@@ -293,13 +329,7 @@ namespace DAL
                 // Call Close when done reading.
 
                 dbConnection.Close();
-
-
-
             }
-
-
-
         }
 
         public int GetBestellingIdByTijd(DateTime tijd)
