@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Model.BesteldeMenuItems">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgBAAAIAQAIAAAAIAIgAAACIAAAAAAAA=</HashCode>
+      <FileName>BesteldeMenuItems.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="menuItem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Bestelling">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAEAABAFAAAQAAAAAAAAAAAAAACAAAAAggA=</HashCode>
+      <FileName>Bestelling.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="besteldeItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Model.Bon">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIhA=</HashCode>
+      <FileName>Bon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="bestellingenOpBon" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Model.Medewerker">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCACAIggAAAIAAAAAAAQBAAAEAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Medewerker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="functie" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.MenuItem">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAAAEAAAABAAgBAQAIgQAACIQIgAAEiI=</HashCode>
+      <FileName>MenuItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="catagorie" />
+      <Field Name="dagdeel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Tafel">
+    <Position X="1.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAICAAACAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tafel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Model.Catagorie">
+    <Position X="10.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIACCAAAgAgAAA=</HashCode>
+      <FileName>Catagorie.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Model.Dagdeel">
+    <Position X="10.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAQ=</HashCode>
+      <FileName>Dagdeel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Model.Functie">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAQAAEEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functie.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
