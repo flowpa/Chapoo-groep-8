@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using DAL; 
 
 namespace Logica
 {
     public class AfrekenenLogica
     {
+        private BonDAO bDAO; 
         BestellingService bestellingService = new BestellingService();
 
         public AfrekenenLogica()
@@ -27,6 +29,14 @@ namespace Logica
             }
 
             return bon;
+        }
+
+        public Bon GetBonByBestellingId(int bestellingId)
+        {
+            bDAO = new BonDAO();
+            Bon bon = bDAO.getBonByBestellingId(bestellingId);
+
+            return bon; 
         }
     }
 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BesteldeMenuItemsDAO.cs" />
     <Compile Include="BestellingDAO.cs" />
+    <Compile Include="BonDAO.cs" />
     <Compile Include="MedewerkerDAO.cs" />
     <Compile Include="MenuitemDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

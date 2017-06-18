@@ -48,11 +48,24 @@
             this.l_huidigeTafel = new System.Windows.Forms.Label();
             this.l_huidigeGebruiker = new System.Windows.Forms.Label();
             this.btn_Vrijgeven = new System.Windows.Forms.Button();
+            this.fake_btn_BestellingStatus = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_1 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_2 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_4 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_3 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_6 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_5 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_8 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_7 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_10 = new System.Windows.Forms.Label();
+            this.lbl_Bestelling_9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Tafel1
             // 
             this.btn_Tafel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Tafel1.Location = new System.Drawing.Point(156, 71);
             this.btn_Tafel1.Name = "btn_Tafel1";
             this.btn_Tafel1.Size = new System.Drawing.Size(57, 56);
@@ -65,6 +78,7 @@
             // btn_Tafel2
             // 
             this.btn_Tafel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel2.Location = new System.Drawing.Point(231, 71);
             this.btn_Tafel2.Name = "btn_Tafel2";
             this.btn_Tafel2.Size = new System.Drawing.Size(57, 56);
@@ -77,6 +91,7 @@
             // btn_Tafel3
             // 
             this.btn_Tafel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel3.Location = new System.Drawing.Point(156, 147);
             this.btn_Tafel3.Name = "btn_Tafel3";
             this.btn_Tafel3.Size = new System.Drawing.Size(57, 56);
@@ -89,6 +104,7 @@
             // btn_Tafel4
             // 
             this.btn_Tafel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel4.Location = new System.Drawing.Point(231, 147);
             this.btn_Tafel4.Name = "btn_Tafel4";
             this.btn_Tafel4.Size = new System.Drawing.Size(57, 56);
@@ -101,6 +117,7 @@
             // btn_Tafel5
             // 
             this.btn_Tafel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel5.Location = new System.Drawing.Point(156, 226);
             this.btn_Tafel5.Name = "btn_Tafel5";
             this.btn_Tafel5.Size = new System.Drawing.Size(57, 56);
@@ -113,6 +130,7 @@
             // btn_Tafel6
             // 
             this.btn_Tafel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel6.Location = new System.Drawing.Point(231, 226);
             this.btn_Tafel6.Name = "btn_Tafel6";
             this.btn_Tafel6.Size = new System.Drawing.Size(57, 56);
@@ -125,6 +143,7 @@
             // btn_Tafel7
             // 
             this.btn_Tafel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel7.Location = new System.Drawing.Point(156, 305);
             this.btn_Tafel7.Name = "btn_Tafel7";
             this.btn_Tafel7.Size = new System.Drawing.Size(57, 56);
@@ -137,6 +156,7 @@
             // btn_Tafel8
             // 
             this.btn_Tafel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel8.Location = new System.Drawing.Point(231, 305);
             this.btn_Tafel8.Name = "btn_Tafel8";
             this.btn_Tafel8.Size = new System.Drawing.Size(57, 56);
@@ -149,6 +169,7 @@
             // btn_Tafel9
             // 
             this.btn_Tafel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel9.Location = new System.Drawing.Point(156, 387);
             this.btn_Tafel9.Name = "btn_Tafel9";
             this.btn_Tafel9.Size = new System.Drawing.Size(57, 56);
@@ -161,6 +182,7 @@
             // btn_Tafel10
             // 
             this.btn_Tafel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Tafel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Tafel10.Location = new System.Drawing.Point(231, 387);
             this.btn_Tafel10.Name = "btn_Tafel10";
             this.btn_Tafel10.Size = new System.Drawing.Size(57, 56);
@@ -175,7 +197,7 @@
             this.fake_btn_tafelGebruik.BackColor = System.Drawing.Color.Tomato;
             this.fake_btn_tafelGebruik.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.fake_btn_tafelGebruik.Enabled = false;
-            this.fake_btn_tafelGebruik.Location = new System.Drawing.Point(15, 334);
+            this.fake_btn_tafelGebruik.Location = new System.Drawing.Point(6, 328);
             this.fake_btn_tafelGebruik.Name = "fake_btn_tafelGebruik";
             this.fake_btn_tafelGebruik.Size = new System.Drawing.Size(34, 33);
             this.fake_btn_tafelGebruik.TabIndex = 10;
@@ -186,7 +208,7 @@
             this.fake_btn_tafelVrij.BackColor = System.Drawing.Color.Green;
             this.fake_btn_tafelVrij.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.fake_btn_tafelVrij.Enabled = false;
-            this.fake_btn_tafelVrij.Location = new System.Drawing.Point(15, 378);
+            this.fake_btn_tafelVrij.Location = new System.Drawing.Point(6, 372);
             this.fake_btn_tafelVrij.Name = "fake_btn_tafelVrij";
             this.fake_btn_tafelVrij.Size = new System.Drawing.Size(34, 33);
             this.fake_btn_tafelVrij.TabIndex = 11;
@@ -195,7 +217,7 @@
             // fake_lbl_tafelGebruik
             // 
             this.fake_lbl_tafelGebruik.AutoSize = true;
-            this.fake_lbl_tafelGebruik.Location = new System.Drawing.Point(57, 343);
+            this.fake_lbl_tafelGebruik.Location = new System.Drawing.Point(48, 337);
             this.fake_lbl_tafelGebruik.Name = "fake_lbl_tafelGebruik";
             this.fake_lbl_tafelGebruik.Size = new System.Drawing.Size(89, 13);
             this.fake_lbl_tafelGebruik.TabIndex = 12;
@@ -204,7 +226,7 @@
             // fake_lbl_tafelVrij
             // 
             this.fake_lbl_tafelVrij.AutoSize = true;
-            this.fake_lbl_tafelVrij.Location = new System.Drawing.Point(57, 387);
+            this.fake_lbl_tafelVrij.Location = new System.Drawing.Point(48, 381);
             this.fake_lbl_tafelVrij.Name = "fake_lbl_tafelVrij";
             this.fake_lbl_tafelVrij.Size = new System.Drawing.Size(62, 13);
             this.fake_lbl_tafelVrij.TabIndex = 13;
@@ -276,11 +298,123 @@
             this.btn_Vrijgeven.UseVisualStyleBackColor = true;
             this.btn_Vrijgeven.Click += new System.EventHandler(this.btn_Vrijgeven_Click);
             // 
+            // fake_btn_BestellingStatus
+            // 
+            this.fake_btn_BestellingStatus.BackColor = System.Drawing.Color.Red;
+            this.fake_btn_BestellingStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.fake_btn_BestellingStatus.Enabled = false;
+            this.fake_btn_BestellingStatus.Location = new System.Drawing.Point(6, 279);
+            this.fake_btn_BestellingStatus.Name = "fake_btn_BestellingStatus";
+            this.fake_btn_BestellingStatus.Size = new System.Drawing.Size(34, 33);
+            this.fake_btn_BestellingStatus.TabIndex = 23;
+            this.fake_btn_BestellingStatus.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(46, 289);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "= Bestelling ligt gereed";
+            // 
+            // lbl_Bestelling_1
+            // 
+            this.lbl_Bestelling_1.AutoSize = true;
+            this.lbl_Bestelling_1.Location = new System.Drawing.Point(168, 114);
+            this.lbl_Bestelling_1.Name = "lbl_Bestelling_1";
+            this.lbl_Bestelling_1.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_1.TabIndex = 25;
+            // 
+            // lbl_Bestelling_2
+            // 
+            this.lbl_Bestelling_2.AutoSize = true;
+            this.lbl_Bestelling_2.Location = new System.Drawing.Point(241, 114);
+            this.lbl_Bestelling_2.Name = "lbl_Bestelling_2";
+            this.lbl_Bestelling_2.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_2.TabIndex = 26;
+            // 
+            // lbl_Bestelling_4
+            // 
+            this.lbl_Bestelling_4.AutoSize = true;
+            this.lbl_Bestelling_4.Location = new System.Drawing.Point(241, 190);
+            this.lbl_Bestelling_4.Name = "lbl_Bestelling_4";
+            this.lbl_Bestelling_4.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_4.TabIndex = 28;
+            // 
+            // lbl_Bestelling_3
+            // 
+            this.lbl_Bestelling_3.AutoSize = true;
+            this.lbl_Bestelling_3.Location = new System.Drawing.Point(168, 190);
+            this.lbl_Bestelling_3.Name = "lbl_Bestelling_3";
+            this.lbl_Bestelling_3.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_3.TabIndex = 27;
+            // 
+            // lbl_Bestelling_6
+            // 
+            this.lbl_Bestelling_6.AutoSize = true;
+            this.lbl_Bestelling_6.Location = new System.Drawing.Point(241, 269);
+            this.lbl_Bestelling_6.Name = "lbl_Bestelling_6";
+            this.lbl_Bestelling_6.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_6.TabIndex = 30;
+            // 
+            // lbl_Bestelling_5
+            // 
+            this.lbl_Bestelling_5.AutoSize = true;
+            this.lbl_Bestelling_5.Location = new System.Drawing.Point(168, 269);
+            this.lbl_Bestelling_5.Name = "lbl_Bestelling_5";
+            this.lbl_Bestelling_5.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_5.TabIndex = 29;
+            // 
+            // lbl_Bestelling_8
+            // 
+            this.lbl_Bestelling_8.AutoSize = true;
+            this.lbl_Bestelling_8.Location = new System.Drawing.Point(241, 348);
+            this.lbl_Bestelling_8.Name = "lbl_Bestelling_8";
+            this.lbl_Bestelling_8.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_8.TabIndex = 32;
+            // 
+            // lbl_Bestelling_7
+            // 
+            this.lbl_Bestelling_7.AutoSize = true;
+            this.lbl_Bestelling_7.Location = new System.Drawing.Point(168, 348);
+            this.lbl_Bestelling_7.Name = "lbl_Bestelling_7";
+            this.lbl_Bestelling_7.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_7.TabIndex = 31;
+            // 
+            // lbl_Bestelling_10
+            // 
+            this.lbl_Bestelling_10.AutoSize = true;
+            this.lbl_Bestelling_10.Location = new System.Drawing.Point(235, 430);
+            this.lbl_Bestelling_10.Name = "lbl_Bestelling_10";
+            this.lbl_Bestelling_10.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_10.TabIndex = 34;
+            // 
+            // lbl_Bestelling_9
+            // 
+            this.lbl_Bestelling_9.AutoSize = true;
+            this.lbl_Bestelling_9.Location = new System.Drawing.Point(162, 430);
+            this.lbl_Bestelling_9.Name = "lbl_Bestelling_9";
+            this.lbl_Bestelling_9.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Bestelling_9.TabIndex = 33;
+            // 
             // TafeloverzichtScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 544);
+            this.Controls.Add(this.lbl_Bestelling_10);
+            this.Controls.Add(this.lbl_Bestelling_9);
+            this.Controls.Add(this.lbl_Bestelling_8);
+            this.Controls.Add(this.lbl_Bestelling_7);
+            this.Controls.Add(this.lbl_Bestelling_6);
+            this.Controls.Add(this.lbl_Bestelling_5);
+            this.Controls.Add(this.lbl_Bestelling_4);
+            this.Controls.Add(this.lbl_Bestelling_3);
+            this.Controls.Add(this.lbl_Bestelling_2);
+            this.Controls.Add(this.lbl_Bestelling_1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.fake_btn_BestellingStatus);
             this.Controls.Add(this.btn_Vrijgeven);
             this.Controls.Add(this.l_huidigeGebruiker);
             this.Controls.Add(this.l_huidigeTafel);
@@ -331,5 +465,17 @@
         private System.Windows.Forms.Label l_huidigeTafel;
         private System.Windows.Forms.Label l_huidigeGebruiker;
         private System.Windows.Forms.Button btn_Vrijgeven;
+        private System.Windows.Forms.Button fake_btn_BestellingStatus;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Bestelling_1;
+        private System.Windows.Forms.Label lbl_Bestelling_2;
+        private System.Windows.Forms.Label lbl_Bestelling_4;
+        private System.Windows.Forms.Label lbl_Bestelling_3;
+        private System.Windows.Forms.Label lbl_Bestelling_6;
+        private System.Windows.Forms.Label lbl_Bestelling_5;
+        private System.Windows.Forms.Label lbl_Bestelling_8;
+        private System.Windows.Forms.Label lbl_Bestelling_7;
+        private System.Windows.Forms.Label lbl_Bestelling_10;
+        private System.Windows.Forms.Label lbl_Bestelling_9;
     }
 }

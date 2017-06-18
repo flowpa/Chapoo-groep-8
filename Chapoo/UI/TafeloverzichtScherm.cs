@@ -16,14 +16,13 @@ namespace UI
     {
         private TafeloverzichtService tService;
         private Inlogscherm inlogForm;
-        private BestellingLogica bService;
+        private BestellingService bService;
         private BestellingOpneemScherm bestellingForm;
+        private AfrekenenLogica aService; 
         private Tafel tafel;
         private Tafel huidigeTafel;
-        private Bestelling bestelling;
-        private int tafelId;
+        private Bestelling bestelling; 
         private bool isBezet;
-        private int medewerkerId;
         private int huidigeMedewerkerId;
 
         public void medewerker(Medewerker m)
@@ -49,22 +48,60 @@ namespace UI
             checkBezettenTafels(btn_Tafel8, 8);
             checkBezettenTafels(btn_Tafel9, 9);
             checkBezettenTafels(btn_Tafel10, 10);
+
+            checkBestellingStatus(lbl_Bestelling_1, 1);
+            checkBestellingStatus(lbl_Bestelling_2, 2);
+            checkBestellingStatus(lbl_Bestelling_3, 3);
+            checkBestellingStatus(lbl_Bestelling_4, 4);
+            checkBestellingStatus(lbl_Bestelling_5, 5);
+            checkBestellingStatus(lbl_Bestelling_6, 6);
+            checkBestellingStatus(lbl_Bestelling_7, 7);
+            checkBestellingStatus(lbl_Bestelling_8, 8);
+            checkBestellingStatus(lbl_Bestelling_9, 9);
+            checkBestellingStatus(lbl_Bestelling_10, 10);
+
+
         }
 
-        private void checkBezettenTafels(Button b, int tafelId)
+        private void checkBezettenTafels(Button btn, int tafelId)
         {
             tService = new TafeloverzichtService();
             tafel = tService.getTafel(tafelId);
-            b.Tag = tafel;
+            btn.Tag = tafel;
 
             if (tafel.IsBezet == true)
             {
-                b.BackColor = Color.Tomato;
+                btn.BackColor = Color.Tomato;
             }
             else
             {
-                b.BackColor = Color.Green;
+                btn.BackColor = Color.Green;
             }
+        }
+
+        private void checkBestellingStatus(Label lbl, int tafelId)
+        {
+            bService = new BestellingService();
+            aService = new AfrekenenLogica();
+            List<Bestelling> bestellingenPerTafelId = bService.getAllBestellingenByTafelId(tafelId);
+
+            try
+            {
+                int laatstBestellingIdPerTafelId = bestellingenPerTafelId[bestellingenPerTafelId.Count - 1].Id;
+
+                try
+                {
+                    Bon bon = aService.GetBonByBestellingId(laatstBestellingIdPerTafelId);
+                    if (bon.IsBetaald == false)
+                    {
+                        lbl.Text = bon.BestellingId.ToString();
+                        btn_Vrijgeven.Enabled = false;
+                    }
+                }
+                catch { }
+
+            }
+            catch { }
         }
 
         private void btn_Tafel1_Click(object sender, EventArgs e)
@@ -218,7 +255,7 @@ namespace UI
 
         private void btn_Opnemen_Click(object sender, EventArgs e)
         {
-            bService = new BestellingLogica();
+            bService = new BestellingService();
 
             List<Bestelling> bestellingen = bService.getAllBestellingen();
 
@@ -234,5 +271,6 @@ namespace UI
             bestellingForm = new BestellingOpneemScherm();
             bestellingForm.ShowDialog();
         }
+
     }
 }

@@ -12,7 +12,7 @@ namespace Model
         private int medewerkersId;
         private int tafelId;
         private DateTime tijd;
-        private List<MenuItem> besteldeItems;
+        private List<MenuItem> besteldeItems; 
 
         public Bestelling(int id, int medewerkersId, int tafelId, DateTime tijd)
         {

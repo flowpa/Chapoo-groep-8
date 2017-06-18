@@ -8,29 +8,9 @@ using Model;
 
 namespace Logica
 {
-    public class BestellingService
+    public class BestellingLogica
     {
-        private BestellingDAO bd = new BestellingDAO();
-
-        public List<Bestelling> VulBestellingen(bool drank, bool status)
-        {
-            List<Bestelling> b = bd.GetBestellingen(drank, status);
-
-            return b;
-        }
-
-        public void BevestigBestelling(int id, bool drank)
-        {
-            bd.BevestigBestelling(id, drank);
-        }
-
-        public List<Bestelling> GetBestellingenVanTafel(int tafelId)
-        {
-            List<Bestelling> bestellingen = bd.GetBestellingenVanTafel(tafelId);
-
-            return bestellingen;
-        }
-
+        BestellingDAO b = new BestellingDAO();
         public Tafel HaalTafelOp()
         {
             // moet eigenlijk data ophalen van een label van juan
@@ -54,8 +34,9 @@ namespace Logica
             Bestelling bestelling = new Bestelling(0, m.Id, t.Nummer, DateTime.Now);
 
 
-            bDAO.WriteBesteling(bestelling);
-            int bestellingId = bDAO.GetBestellingIdByTijd(bestelling.Tijd);
+           /// bDAO.WriteBesteling(bestelling);
+
+           // int bestellingId = bDAO.GetBestellingIdByTijd(bestelling.Tijd);
 
         }
 
@@ -79,16 +60,8 @@ namespace Logica
         public Bestelling getBestellingById(int bestellingId)
         {
             BestellingDAO bDAO = new BestellingDAO();
-            Bestelling bestelling = bDAO.GetBestellingById(bestellingId);
-            return bestelling;
+            Bestelling bestelling  = bDAO.GetBestellingById(bestellingId);
+            return bestelling; 
         }
-
-        public List<Bestelling> getAllBestellingenByTafelId(int tafelId)
-        {
-            BestellingDAO bDAO = new BestellingDAO();
-            List <Bestelling> bestellingen = bDAO.getAllBestellingenByTafelId(tafelId);
-            return bestellingen; 
-        }
-
     }
 }
