@@ -190,6 +190,40 @@ namespace DAL
             return bestellingen;
         }
 
+        public List<Bestelling> ReadBestellingen()
+        {
+            string queryString =
+            "SELECT * FROM dbo.Bestelling;";
+
+            using (dbConnection)
+            {
+                SqlCommand command = new SqlCommand(queryString, dbConnection);
+                dbConnection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                // Call Read before accessing data.
+
+                List<Bestelling> bestelingen = new List<Bestelling>();
+
+                while (reader.Read())
+                {
+                    int id = (int)reader["Bestelling_id"];
+                    int medewerkersId = (int)reader["Werknemer_id"];
+                    int TafelId = (int)reader["Tafel_id"];
+                    DateTime tijd = (DateTime)reader["Tijd"];
+                    Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
+                    bestelingen.Add(b);
+                }
+
+
+                // Call Close when done reading.
+                reader.Close();
+                dbConnection.Close();
+                return bestelingen;
+            }
+        }
+
         public Bestelling GetBestellingById(int id)
         {
             string queryString =
