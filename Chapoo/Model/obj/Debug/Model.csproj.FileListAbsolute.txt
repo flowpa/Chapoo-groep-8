@@ -20,6 +20,5 @@ C:\Users\basto\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.dll
 C:\Users\basto\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.pdb
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\bin\Debug\Model.dll
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\bin\Debug\Model.pdb
-C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\obj\Debug\Model.dll
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\obj\Debug\Model.pdb

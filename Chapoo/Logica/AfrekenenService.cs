@@ -4,39 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using DAL;
 
 namespace Logica
 {
     public class AfrekenenService
     {
-        BestellingService bestellingService = new BestellingService();
-
-       
+        BestellingService bestellingService;
+        BonDAO bonDAO;
+        Bon bon;
 
         public AfrekenenService()
         {
-            
+            bestellingService = new BestellingService();
+            bonDAO = new BonDAO();
         }
 
         public List<BesteldeMenuItems> GetBon(int tafelId)
         {
-            List<BesteldeMenuItems> bon = new List<BesteldeMenuItems>();
+            List<BesteldeMenuItems> bonLijst = new List<BesteldeMenuItems>();
             List<Bestelling> bestellingen = bestellingService.GetBestellingenVanTafel(tafelId);
+
+            // onthoud bestlling id
+            bon = new Bon(bestellingen[0].Id);
 
             foreach (Bestelling bestelling in bestellingen)
             {
-                bon.AddRange(bestelling.BesteldeItems);
+                bonLijst.AddRange(bestelling.BesteldeItems);
             }
 
-            return bon;
+            return bonLijst;
         }
 
         public Bon BerekenBedragen(List<BesteldeMenuItems> bonLijst)
         {
             double btwHoog = 0.21;
             double btwLaag = 0.06;
-
-            Bon bon = new Bon();
 
             foreach (BesteldeMenuItems item in bonLijst)
             {
@@ -57,6 +60,11 @@ namespace Logica
             bon.TotaalBtw = bon.TotaalBtwLaag + bon.TotaalBtwHoog;
 
             return bon;
+        }
+
+        public void SafeBonNaarDb()
+        {
+            bonDAO.SafeBon(bon);
         }
     }
 }

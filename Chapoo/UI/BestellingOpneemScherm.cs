@@ -345,7 +345,9 @@ namespace UI
 
         private void btn_betalen_Click(object sender, EventArgs e)
         {
-
+            Afrekenen afrekenForm = new Afrekenen(this);
+            this.Hide();
+            afrekenForm.ShowDialog();
         }
     }
 

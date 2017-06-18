@@ -24,10 +24,9 @@ namespace Model
         {
         }
 
-        public Bon(int id, double fooi)
+        public Bon(int bestelling_id)
         {
-            this.id = id;
-            this.fooi = fooi;
+            this.betstelling_id = bestelling_id;
         }
 
         public int Id

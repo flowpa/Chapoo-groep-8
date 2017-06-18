@@ -8,20 +8,15 @@ namespace UI
 {
     public partial class Afrekenen : Form
     {
-
-        /***
-         * NOTE to matter550:
-         * bon aanmaken in bestellingDAO 'GetBestelingvanTafel()'
-         * bon.bestelling_id
-         * bon -> DB
-         **/
+        BestellingOpneemScherm bestellingScherm;
         AfrekenenService logicaLaag;
         Bon bon;
         int tafelId;
 
-        public Afrekenen()
+        public Afrekenen(BestellingOpneemScherm bestellingScherm)
         {
             InitializeComponent();
+            this.bestellingScherm = bestellingScherm;
             //lbl_huidigeTafel.Text = "Geselecteerde tafel = " + ;
             pnl_betaling.Hide();
             lv_bon.Columns.Add("Aantal", 100);
@@ -32,7 +27,6 @@ namespace UI
 
         private void Afrekenen_Load(object sender, EventArgs e)
         {
-            tafelId = 1;
             logicaLaag = new AfrekenenService();
             List<BesteldeMenuItems> bonLijst = logicaLaag.GetBon(tafelId);
             bon = logicaLaag.BerekenBedragen(bonLijst);
@@ -71,15 +65,13 @@ namespace UI
 
         private void btn_terug_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
-            //code waarnaar gerefereerd welk form hij terug moet
+            bestellingScherm.Show();
+            this.Close();
         }
                
         private void btn_betaald_Click(object sender, EventArgs e)
         {
-            // pomp de bon naar db
-
+            logicaLaag.SafeBonNaarDb();
 
             // show betaald succes scherm
         }

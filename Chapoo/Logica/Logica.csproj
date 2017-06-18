@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AfrekenenLogica.cs" />
+    <Compile Include="AfrekenenService.cs" />
     <Compile Include="BesteldeMenuItemsLogica.cs" />
     <Compile Include="BestellingService.cs" />
     <Compile Include="InloggenService.cs" />
