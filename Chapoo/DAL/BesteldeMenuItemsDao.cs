@@ -117,5 +117,40 @@ namespace DAL
         }
 
 
+        public void veranderVoorraad(BesteldeMenuItems bm, bool positief)
+        {
+            string plus = " + ";
+            string min = " - ";
+            string huidig;
+
+            if (positief)
+            {
+                huidig = plus;
+            }
+            else
+            {
+                huidig = min;
+            }
+
+            SqlCommand cmd = new SqlCommand("UPDATE MenuItem SET Voorraad = Voorraad "+ huidig +" @aantal WHERE Menuitem_id = @menuItem_id ", dbConnection);
+
+            SqlParameter aantalParam = new SqlParameter("@aantal", System.Data.SqlDbType.Int, 32);
+            SqlParameter idParam = new SqlParameter("@menuItem_id", System.Data.SqlDbType.Int, 32);
+
+            idParam.Value = bm.MenuItem.Id;
+            aantalParam.Value = bm.Aantal;
+
+            cmd.Parameters.Add(aantalParam);
+            cmd.Parameters.Add(idParam);
+
+            dbConnection.Open();
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            dbConnection.Close();
+
+        }
+
     }
 }

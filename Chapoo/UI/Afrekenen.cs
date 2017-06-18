@@ -8,7 +8,13 @@ namespace UI
 {
     public partial class Afrekenen : Form
     {
-        
+
+        /***
+         * NOTE to matter550:
+         * bon aanmaken in bestellingDAO 'GetBestelingvanTafel()'
+         * bon.bestelling_id
+         * bon -> DB
+         **/
         AfrekenenService logicaLaag;
         Bon bon;
         int tafelId;

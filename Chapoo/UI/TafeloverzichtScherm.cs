@@ -16,7 +16,7 @@ namespace UI
     {
         private TafeloverzichtService tService;
         private Inlogscherm inlogForm;
-        private BestellingLogica bService;
+        private BestellingService bService;
         private BestellingOpneemScherm bestellingForm;
         private Tafel tafel;
         private Tafel huidigeTafel;
@@ -218,7 +218,7 @@ namespace UI
 
         private void btn_Opnemen_Click(object sender, EventArgs e)
         {
-            bService = new BestellingLogica();
+            bService = new BestellingService();
 
             List<Bestelling> bestellingen = bService.getAllBestellingen();
 

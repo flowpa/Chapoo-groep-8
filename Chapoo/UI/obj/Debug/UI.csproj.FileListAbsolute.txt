@@ -73,6 +73,7 @@ C:\Users\basto\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Tafeloverzicht
 C:\Users\basto\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\basto\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.exe
 C:\Users\basto\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.pdb
+<<<<<<< HEAD
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\UI\obj\Debug\UI.Afrekenen.resources
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\UI\obj\Debug\UI.BestellingEtenForm.resources
@@ -84,3 +85,10 @@ C:\Users\Sebas\Music\Chapoo 8\Chapoo\UI\obj\Debug\UI.TafeloverzichtScherm.resour
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\UI\obj\Debug\UI.exe
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\UI\obj\Debug\UI.pdb
+=======
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Afrekenen.resources
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingEtenForm.resources
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.BestellingDrankForm.resources
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.Inlogscherm.resources
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\UI\obj\Debug\UI.TafeloverzichtScherm.resources
+>>>>>>> a4250b8df7e22eaf4fa2f6c41eac93e9ed129911
