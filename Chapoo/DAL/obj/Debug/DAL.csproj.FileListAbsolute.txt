@@ -33,3 +33,10 @@ C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\DAL\bin\Debug\Model.dll
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\DAL\bin\Debug\Model.pdb
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.dll
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\DAL\obj\Debug\DAL.pdb
+C:\Users\Sebas\Music\Chapoo 8\Chapoo\DAL\bin\Debug\DAL.dll
+C:\Users\Sebas\Music\Chapoo 8\Chapoo\DAL\bin\Debug\DAL.pdb
+C:\Users\Sebas\Music\Chapoo 8\Chapoo\DAL\bin\Debug\Model.dll
+C:\Users\Sebas\Music\Chapoo 8\Chapoo\DAL\bin\Debug\Model.pdb
+C:\Users\Sebas\Music\Chapoo 8\Chapoo\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Sebas\Music\Chapoo 8\Chapoo\DAL\obj\Debug\DAL.dll
+C:\Users\Sebas\Music\Chapoo 8\Chapoo\DAL\obj\Debug\DAL.pdb

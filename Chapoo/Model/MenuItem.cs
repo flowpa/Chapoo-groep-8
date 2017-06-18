@@ -92,5 +92,10 @@ namespace Model
             get { return aantal; }
             set { aantal = value; }
         }
+
+        public bool IsAlcoholisch
+        {
+            get { return isAlcoholisch; }
+        }
     }
 }
