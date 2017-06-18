@@ -11,14 +11,16 @@ namespace UI
         BestellingOpneemScherm bestellingScherm;
         AfrekenenService logicaLaag;
         Bon bon;
-        int tafelId;
+        Tafel tafel;
 
-        public Afrekenen(BestellingOpneemScherm bestellingScherm)
+        public Afrekenen(BestellingOpneemScherm bestellingScherm, Tafel tafel)
         {
             InitializeComponent();
+            this.tafel = tafel;
             this.bestellingScherm = bestellingScherm;
-            //lbl_huidigeTafel.Text = "Geselecteerde tafel = " + ;
+            lbl_huidigeTafel.Text = "Geselecteerde tafel = " + tafel.Nummer;
             pnl_betaling.Hide();
+            pnl_betalingSucces.Hide();
             lv_bon.Columns.Add("Aantal", 100);
             lv_bon.Columns.Add("Item", 100);
             lv_bon.Columns.Add("Prijs", 100);
@@ -28,7 +30,7 @@ namespace UI
         private void Afrekenen_Load(object sender, EventArgs e)
         {
             logicaLaag = new AfrekenenService();
-            List<BesteldeMenuItems> bonLijst = logicaLaag.GetBon(tafelId);
+            List<BesteldeMenuItems> bonLijst = logicaLaag.GetBon(tafel.Nummer);
             bon = logicaLaag.BerekenBedragen(bonLijst);
             VulListView(bonLijst);
             VulLabels();
@@ -43,13 +45,13 @@ namespace UI
             lbl_totaalBetaaldPrijs.Text = "€ " + bon.TotaalPrijsInclusief.ToString();
         }
 
-        private void VulListView(List<BesteldeMenuItems> bon)
+        private void VulListView(List<BesteldeMenuItems> bonLijst)
         {
-            if (bon.Count == 0)
+            if (bonLijst.Count == 0)
                 return;
 
 
-            foreach (BesteldeMenuItems item in bon)
+            foreach (BesteldeMenuItems item in bonLijst)
             {
                 ListViewItem lvItem = new ListViewItem(item.Aantal.ToString());
                 
@@ -58,7 +60,6 @@ namespace UI
                 lvItem.SubItems.Add((item.MenuItem.Prijs * item.Aantal).ToString());
 
                 lv_bon.Items.Add(lvItem);
-                //lbl_totaal.Text = item.Prijs.ToString();
             }
 
         }
@@ -72,8 +73,8 @@ namespace UI
         private void btn_betaald_Click(object sender, EventArgs e)
         {
             logicaLaag.SafeBonNaarDb();
-
-            // show betaald succes scherm
+            pnl_betalingSucces.Show();
+            pnl_betaling.Hide();
         }
 
         private void btn_terugBetaald_Click_1(object sender, EventArgs e)
@@ -86,11 +87,6 @@ namespace UI
             pnl_betaling.Show();
         }
 
-        private void pnl_betaling_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void txt_betaaldBedrag_TextChanged(object sender, EventArgs e)
         {
             int fooiText;
@@ -101,6 +97,12 @@ namespace UI
 
             bon.Fooi = Math.Round(Convert.ToDouble(txt_betaaldBedrag.Text) - bon.TotaalPrijsInclusief, 2);
             lbl_fooiPrijs.Text = "€ " + bon.Fooi.ToString();
+        }
+
+        private void btn_betaaldOk_Click(object sender, EventArgs e)
+        {
+            pnl_betalingSucces.Hide();
+            btn_terug_Click(sender, e);
         }
     }
 }

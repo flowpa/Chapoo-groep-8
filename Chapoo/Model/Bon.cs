@@ -20,15 +20,6 @@ namespace Model
 
         List<Bestelling> bestellingenOpBon = new List<Bestelling>();
 
-        public Bon()
-        {
-        }
-
-        public Bon(int bestelling_id)
-        {
-            this.betstelling_id = bestelling_id;
-        }
-
         public int Id
         {
             get { return id; }

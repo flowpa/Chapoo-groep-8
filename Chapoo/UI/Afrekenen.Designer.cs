@@ -31,6 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_huidigeTafel = new System.Windows.Forms.Label();
             this.pnl_betaling = new System.Windows.Forms.Panel();
+            this.lbl_fooiPrijs = new System.Windows.Forms.Label();
+            this.lbl_fooi = new System.Windows.Forms.Label();
             this.btn_terugBetaald = new System.Windows.Forms.Button();
             this.lbl_totaalBetaaldPrijs = new System.Windows.Forms.Label();
             this.lbl_totaalBetaald = new System.Windows.Forms.Label();
@@ -51,10 +53,12 @@
             this.lbl_btwLaag = new System.Windows.Forms.Label();
             this.lbl_totaal = new System.Windows.Forms.Label();
             this.lv_bon = new System.Windows.Forms.ListView();
-            this.lbl_fooi = new System.Windows.Forms.Label();
-            this.lbl_fooiPrijs = new System.Windows.Forms.Label();
+            this.pnl_betalingSucces = new System.Windows.Forms.Panel();
+            this.lbl_betaalingSucces = new System.Windows.Forms.Label();
+            this.btn_betaaldOk = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnl_betaling.SuspendLayout();
+            this.pnl_betalingSucces.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -102,7 +106,24 @@
             this.pnl_betaling.Name = "pnl_betaling";
             this.pnl_betaling.Size = new System.Drawing.Size(481, 459);
             this.pnl_betaling.TabIndex = 16;
-            this.pnl_betaling.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_betaling_Paint);
+            
+            // 
+            // lbl_fooiPrijs
+            // 
+            this.lbl_fooiPrijs.AutoSize = true;
+            this.lbl_fooiPrijs.Location = new System.Drawing.Point(92, 229);
+            this.lbl_fooiPrijs.Name = "lbl_fooiPrijs";
+            this.lbl_fooiPrijs.Size = new System.Drawing.Size(0, 13);
+            this.lbl_fooiPrijs.TabIndex = 10;
+            // 
+            // lbl_fooi
+            // 
+            this.lbl_fooi.AutoSize = true;
+            this.lbl_fooi.Location = new System.Drawing.Point(50, 229);
+            this.lbl_fooi.Name = "lbl_fooi";
+            this.lbl_fooi.Size = new System.Drawing.Size(30, 13);
+            this.lbl_fooi.TabIndex = 9;
+            this.lbl_fooi.Text = "Fooi:";
             // 
             // btn_terugBetaald
             // 
@@ -289,28 +310,41 @@
             this.lv_bon.UseCompatibleStateImageBehavior = false;
             this.lv_bon.View = System.Windows.Forms.View.Details;
             // 
-            // lbl_fooi
+            // pnl_betalingSucces
             // 
-            this.lbl_fooi.AutoSize = true;
-            this.lbl_fooi.Location = new System.Drawing.Point(50, 229);
-            this.lbl_fooi.Name = "lbl_fooi";
-            this.lbl_fooi.Size = new System.Drawing.Size(30, 13);
-            this.lbl_fooi.TabIndex = 9;
-            this.lbl_fooi.Text = "Fooi:";
+            this.pnl_betalingSucces.Controls.Add(this.btn_betaaldOk);
+            this.pnl_betalingSucces.Controls.Add(this.lbl_betaalingSucces);
+            this.pnl_betalingSucces.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnl_betalingSucces.Location = new System.Drawing.Point(2, 1);
+            this.pnl_betalingSucces.Name = "pnl_betalingSucces";
+            this.pnl_betalingSucces.Size = new System.Drawing.Size(484, 462);
+            this.pnl_betalingSucces.TabIndex = 11;
             // 
-            // lbl_fooiPrijs
+            // lbl_betaalingSucces
             // 
-            this.lbl_fooiPrijs.AutoSize = true;
-            this.lbl_fooiPrijs.Location = new System.Drawing.Point(92, 229);
-            this.lbl_fooiPrijs.Name = "lbl_fooiPrijs";
-            this.lbl_fooiPrijs.Size = new System.Drawing.Size(0, 13);
-            this.lbl_fooiPrijs.TabIndex = 10;
+            this.lbl_betaalingSucces.AutoSize = true;
+            this.lbl_betaalingSucces.Location = new System.Drawing.Point(75, 150);
+            this.lbl_betaalingSucces.Name = "lbl_betaalingSucces";
+            this.lbl_betaalingSucces.Size = new System.Drawing.Size(349, 33);
+            this.lbl_betaalingSucces.TabIndex = 0;
+            this.lbl_betaalingSucces.Text = "U hebt succesvol betaald!";
+            // 
+            // btn_betaaldOk
+            // 
+            this.btn_betaaldOk.Location = new System.Drawing.Point(147, 299);
+            this.btn_betaaldOk.Name = "btn_betaaldOk";
+            this.btn_betaaldOk.Size = new System.Drawing.Size(184, 67);
+            this.btn_betaaldOk.TabIndex = 1;
+            this.btn_betaaldOk.Text = "Ok";
+            this.btn_betaaldOk.UseVisualStyleBackColor = true;
+            this.btn_betaaldOk.Click += new System.EventHandler(this.btn_betaaldOk_Click);
             // 
             // Afrekenen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 459);
+            this.Controls.Add(this.pnl_betalingSucces);
             this.Controls.Add(this.panel1);
             this.Name = "Afrekenen";
             this.Text = "Afrekenen";
@@ -319,6 +353,8 @@
             this.panel1.PerformLayout();
             this.pnl_betaling.ResumeLayout(false);
             this.pnl_betaling.PerformLayout();
+            this.pnl_betalingSucces.ResumeLayout(false);
+            this.pnl_betalingSucces.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -350,5 +386,8 @@
         private System.Windows.Forms.Label lbl_huidigeTafel;
         private System.Windows.Forms.Label lbl_fooiPrijs;
         private System.Windows.Forms.Label lbl_fooi;
+        private System.Windows.Forms.Panel pnl_betalingSucces;
+        private System.Windows.Forms.Button btn_betaaldOk;
+        private System.Windows.Forms.Label lbl_betaalingSucces;
     }
 }

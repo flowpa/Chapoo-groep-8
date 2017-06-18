@@ -25,8 +25,15 @@ namespace Logica
             List<BesteldeMenuItems> bonLijst = new List<BesteldeMenuItems>();
             List<Bestelling> bestellingen = bestellingService.GetBestellingenVanTafel(tafelId);
 
+            if (bestellingen.Count == 0)
+            {
+                return bonLijst;
+            }
+
             // onthoud bestlling id
-            bon = new Bon(bestellingen[0].Id);
+            bon = new Bon();
+            bon.BestellingenOpBon = bestellingen;
+            bon.Betstelling_id = bestellingen[0].Id;
 
             foreach (Bestelling bestelling in bestellingen)
             {
@@ -38,6 +45,11 @@ namespace Logica
 
         public Bon BerekenBedragen(List<BesteldeMenuItems> bonLijst)
         {
+            if (bonLijst.Count == 0)
+            {
+                return new Bon();
+            }
+
             double btwHoog = 0.21;
             double btwLaag = 0.06;
 

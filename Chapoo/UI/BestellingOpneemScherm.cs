@@ -14,10 +14,15 @@ namespace UI
 {
     public partial class BestellingOpneemScherm : Form
     {
+        Tafel tafel;
+
         public BestellingOpneemScherm()
         {
             InitializeComponent();
             tbx_opmerking.Hide();
+
+            // TODO: maak dynamisch. dit is nog hardcoded
+            this.tafel = new Tafel(1, true);
 
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
@@ -345,7 +350,7 @@ namespace UI
 
         private void btn_betalen_Click(object sender, EventArgs e)
         {
-            Afrekenen afrekenForm = new Afrekenen(this);
+            Afrekenen afrekenForm = new Afrekenen(this, tafel);
             this.Hide();
             afrekenForm.ShowDialog();
         }
