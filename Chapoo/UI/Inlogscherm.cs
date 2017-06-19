@@ -50,7 +50,8 @@ namespace UI
                                 if (password == m.Wachtwoord)
                                 {
                                     this.Hide();
-                                    bestelForm = new BestellingOpneemScherm();
+                                    Tafel tafel = null;
+                                    bestelForm = new BestellingOpneemScherm(tafel);
                                     bestelForm.ShowDialog();
                                 }
                                 else

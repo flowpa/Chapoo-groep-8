@@ -22,7 +22,6 @@ namespace UI
         private BesteldeMenuItemsLogica bmService;
         private Tafel tafel;
         private Tafel huidigeTafel;
-        private Bestelling bestelling; 
         private bool isBezet;
         private int huidigeMedewerkerId;
 
@@ -212,7 +211,7 @@ namespace UI
             //TOMATO = 1 = TRUE
             l_huidigeTafel.Text = "Geselecteerde tafel = " + tafel.Nummer;
 
-            if (tafel.IsBezet == true && bestelling != null) //TOMATO
+            if (tafel.IsBezet == true ) //TOMATO
             {
                 btn_Opnemen.Enabled = true;
                 tService.writeTafelStatus(tafelid, tafel.IsBezet);
@@ -290,7 +289,7 @@ namespace UI
             bService = new BestellingService();
 
             List<Bestelling> bestellingen = bService.getAllBestellingen();
-
+            
             int laasteBestellingId = bestellingen[bestellingen.Count - 1].Id;
             laasteBestellingId++;
 
@@ -302,7 +301,7 @@ namespace UI
 
             this.Hide();
 
-            bestellingForm = new BestellingOpneemScherm();
+            bestellingForm = new BestellingOpneemScherm(huidigeTafel);
             bestellingForm.ShowDialog();
         }
 
