@@ -24,21 +24,40 @@ namespace DAL
         public void SafeBon(Bon bon)
         {
             string queryString =
-            "INSERT INTO dbo.Bon (Bestelling_id, Fooi, Is_betaald ) " +
-            "VALUES (@Bestelling_id, @Fooi, @Is_betaald )";
-            
+            "UPDATE dbo.Bon " +
+            "SET Is_betaald = 1, Fooi = @Fooi " +
+            "WHERE Bon_id = @Bon_id";
+
             SqlCommand command = new SqlCommand(queryString, dbConnection);
             dbConnection.Open();
 
-            command.Parameters.AddWithValue("@Bestelling_id", bon.Betstelling_id);
+            command.Parameters.AddWithValue("@Bon_id", bon.Id);
             command.Parameters.AddWithValue("@Fooi", bon.Fooi);
-            command.Parameters.AddWithValue("@Is_betaald", 1);
 
             //command.Prepare();
             command.ExecuteNonQuery();
 
             dbConnection.Close();
         }
+
+        //public void SafeBon(Bon bon)
+        //{
+        //    string queryString =
+        //    "INSERT INTO dbo.Bon (Bestelling_id, Fooi, Is_betaald ) " +
+        //    "VALUES (@Bestelling_id, @Fooi, @Is_betaald )";
+
+        //    SqlCommand command = new SqlCommand(queryString, dbConnection);
+        //    dbConnection.Open();
+
+        //    command.Parameters.AddWithValue("@Bestelling_id", bon.Betstelling_id);
+        //    command.Parameters.AddWithValue("@Fooi", bon.Fooi);
+        //    command.Parameters.AddWithValue("@Is_betaald", 1);
+
+        //    //command.Prepare();
+        //    command.ExecuteNonQuery();
+
+        //    dbConnection.Close();
+        //}
         //Juan
 
         public Bon getBonByBestellingId(int bestellingId)

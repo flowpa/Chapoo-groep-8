@@ -85,14 +85,14 @@ namespace UI
             aService = new AfrekenenService();
             bmService = new BesteldeMenuItemsLogica();
             List<Bestelling> bestellingenPerTafelId = bService.getAllBestellingenByTafelId(tafelId);
-
+            Bon bon = null;
             try
             {
                 int laatstBestellingIdPerTafelId = bestellingenPerTafelId[bestellingenPerTafelId.Count - 1].Id;
 
                 try
                 {
-                    Bon bon = aService.getBonByBestellingId(laatstBestellingIdPerTafelId);
+                    bon = aService.getBonByBestellingId(laatstBestellingIdPerTafelId);
                     if (bon.IsBetaald == false)
                     {
                         lbl.Text = bon.Betstelling_id.ToString();
@@ -103,7 +103,7 @@ namespace UI
 
             }
             catch { }
-        }
+
 
             ////1. Lees een list uit met alle besteldeMenuitems per bestellingID
             //int bestellingid;
@@ -113,7 +113,7 @@ namespace UI
 
             //if (legit)
             //{
-            //    besteldeMenuItems = bmService.GetBesteldeMenuItems(bestellingid);
+            //    besteldeMenuItems = bmService.GetBesteldeMenuItems(bon.Betstelling_id);
             //}
 
             ////2. Beslis of alle besteldeMenuItems de status TRUE hebben
@@ -130,10 +130,7 @@ namespace UI
             //    b.BackColor = Color.Red;
             //}
             ////3.1 Als dat niet zo is, niks.
-
-
-
-        //}
+        }
 
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
