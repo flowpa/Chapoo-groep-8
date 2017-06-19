@@ -85,7 +85,7 @@ namespace DAL
         public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId)
         {
             string queryString =
-            "SELECT * FROM dbo.Bestelde_MenuItems WHERE Bestelling_id = @id;";
+            "SELECT * FROM dbo.Bestelde_MenuItems WHERE Bestelling_id = @id";
 
 
             using (dbConnection)
@@ -104,7 +104,13 @@ namespace DAL
 
                 while (reader.Read())
                 {
-                    BesteldeMenuItems b = ReadBesteldeMenuItem(reader);
+                    int bestellingid = (int)reader["Bestelling_id"];
+                    int aantal = (int)reader["Aantal"];
+                    string opmerking = (string)reader["Opmerking"];
+                    int itemid = (int)reader["MenuItem_id"];
+                    bool status = (bool)reader["Status"];
+                    DateTime tijd = (DateTime)reader["Tijd"];
+                    BesteldeMenuItems b = new BesteldeMenuItems(bestellingid, aantal, opmerking, mDAO.GetItemById(itemid), status);
                     besteldeMenuItems.Add(b);
                 }
 

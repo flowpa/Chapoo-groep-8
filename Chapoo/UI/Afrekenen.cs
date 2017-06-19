@@ -17,7 +17,6 @@ namespace UI
         {
             InitializeComponent();
             this.tafel = tafel;
-            AfrS.GetBon(tafel.Nummer);
             this.bestellingScherm = bestellingScherm;
             lbl_huidigeTafel.Text = "Geselecteerde tafel = " + tafel.Nummer;
             pnl_betaling.Hide();

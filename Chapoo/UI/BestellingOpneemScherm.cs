@@ -22,10 +22,10 @@ namespace UI
             InitializeComponent();
             tbx_opmerking.Hide();
 
-            Timer timer = new Timer();
-            timer.Interval = (15 * 1000); // 15 secs
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
+            //Timer timer = new Timer();
+            //timer.Interval = (15 * 1000); // 1 secs
+            //timer.Tick += new EventHandler(timer_Tick);
+            //timer.Start();
 
             lv_MenuKaart.Columns.Add("naam", 130);
             lv_MenuKaart.Columns.Add("prijs", 100);
@@ -173,7 +173,7 @@ namespace UI
             
             tbx_opmerking.Hide();
 
-            lv_BesteldeItemlist.Clear();
+            lv_BesteldeItemlist.Items.Clear();
         }
 
         private void VulMenuKaart(Catagorie c, Dagdeel d)
@@ -300,7 +300,57 @@ namespace UI
             
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        //private void timer_Tick(object sender, EventArgs e)
+        //{
+
+        //    lv_geheleBestelling.Items.Clear();
+        //    MenuKaart m = new MenuKaart();
+        //    // ophalen bestelling_id
+        //    List<BesteldeMenuItems> besteldeItems = m.getBesteldeMenuItemsByBestellingId(1);
+
+
+        //    foreach (Model.BesteldeMenuItems menuItem in besteldeItems)
+        //    {
+        //        ListViewItem item = new ListViewItem(menuItem.Aantal.ToString());
+        //        item.SubItems.Add(menuItem.MenuItem.Naam);
+        //        item.SubItems.Add(menuItem.MenuItem.Prijs.ToString("0.00"));
+        //        item.SubItems.Add(menuItem.Opmerking);
+        //        item.Tag = menuItem;
+
+        //        lv_geheleBestelling.Items.Add(item);
+
+        //    }
+
+        //    Timer timer = new Timer();
+        //    timer.Interval = (1 * 1000); // 15 secs
+        //    timer.Tick += new EventHandler(timer_Tick);
+        //    timer.Start();
+        //}
+
+        
+
+        //private void btn_deleten_Click(object sender, EventArgs e)
+        //{
+        //    BesteldeMenuItemsLogica b = new BesteldeMenuItemsLogica();
+        //    bool positief = false;
+
+        //    foreach (ListViewItem lv in lv_geheleBestelling.SelectedItems)
+        //    {
+        //        deleten((BesteldeMenuItems)lv.Tag);
+
+
+        //        b.VeranderVooraad((BesteldeMenuItems)lv.Tag, positief);
+        //    }
+        //}
+
+        private void btn_betalen_Click(object sender, EventArgs e)
+        {
+            Afrekenen afrekenForm = new Afrekenen(this, tafel);
+            this.Hide();
+            afrekenForm.ShowDialog();
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
         {
             lv_geheleBestelling.Items.Clear();
             MenuKaart m = new MenuKaart();
@@ -319,39 +369,21 @@ namespace UI
                 lv_geheleBestelling.Items.Add(item);
 
             }
-
-            Timer timer = new Timer();
-            timer.Interval = (15 * 1000); // 15 secs
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
         }
 
-        private void btn_vorrige_Click(object sender, EventArgs e)
+        private void btn_terug_Click(object sender, EventArgs e)
         {
-            
-
-            
-        }
-
-        private void btn_deleten_Click(object sender, EventArgs e)
-        {
-            BesteldeMenuItemsLogica b = new BesteldeMenuItemsLogica();
-            bool positief = false;
-
-            foreach (ListViewItem lv in lv_geheleBestelling.SelectedItems)
-            {
-                deleten((BesteldeMenuItems)lv.Tag);
-
-
-                b.VeranderVooraad((BesteldeMenuItems)lv.Tag, positief);
-            }
-        }
-
-        private void btn_betalen_Click(object sender, EventArgs e)
-        {
-            Afrekenen afrekenForm = new Afrekenen(this, tafel);
             this.Hide();
-            afrekenForm.ShowDialog();
+            TafeloverzichtScherm ts = new TafeloverzichtScherm();
+            ts.ShowDialog();
+        
+        }
+
+        private void btn_VorrigeBestelscherm_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TafeloverzichtScherm ts = new TafeloverzichtScherm();
+            ts.ShowDialog();
         }
     }
 
