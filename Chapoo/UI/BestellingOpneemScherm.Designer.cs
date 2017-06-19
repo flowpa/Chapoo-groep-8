@@ -50,7 +50,7 @@
             this.lv_geheleBestelling = new System.Windows.Forms.ListView();
             this.btn_betalen = new System.Windows.Forms.Button();
             this.btn_deleten = new System.Windows.Forms.Button();
-            this.btn_vorrige = new System.Windows.Forms.Button();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.BackgroundPannel.SuspendLayout();
             this.container_tabjes.SuspendLayout();
             this.tab_menus.SuspendLayout();
@@ -267,7 +267,7 @@
             this.tab_Rekeningen.Controls.Add(this.lv_geheleBestelling);
             this.tab_Rekeningen.Controls.Add(this.btn_betalen);
             this.tab_Rekeningen.Controls.Add(this.btn_deleten);
-            this.tab_Rekeningen.Controls.Add(this.btn_vorrige);
+            this.tab_Rekeningen.Controls.Add(this.btn_refresh);
             this.tab_Rekeningen.Location = new System.Drawing.Point(4, 40);
             this.tab_Rekeningen.Name = "tab_Rekeningen";
             this.tab_Rekeningen.Padding = new System.Windows.Forms.Padding(3);
@@ -309,16 +309,15 @@
             this.btn_deleten.UseVisualStyleBackColor = true;
             this.btn_deleten.Click += new System.EventHandler(this.btn_deleten_Click);
             // 
-            // btn_vorrige
+            // btn_refresh
             // 
-            this.btn_vorrige.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_vorrige.Location = new System.Drawing.Point(3, 545);
-            this.btn_vorrige.Name = "btn_vorrige";
-            this.btn_vorrige.Size = new System.Drawing.Size(126, 54);
-            this.btn_vorrige.TabIndex = 9;
-            this.btn_vorrige.Text = "Vorrige";
-            this.btn_vorrige.UseVisualStyleBackColor = true;
-            this.btn_vorrige.Click += new System.EventHandler(this.btn_vorrige_Click);
+            this.btn_refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_refresh.Location = new System.Drawing.Point(3, 545);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(126, 54);
+            this.btn_refresh.TabIndex = 9;
+            this.btn_refresh.Text = "Refresh";
+            this.btn_refresh.UseVisualStyleBackColor = true;
             // 
             // BestellingOpneemScherm
             // 
@@ -364,7 +363,7 @@
         private System.Windows.Forms.TabPage tab_Bestelling;
         private System.Windows.Forms.Button btn_betalen;
         private System.Windows.Forms.Button btn_deleten;
-        private System.Windows.Forms.Button btn_vorrige;
+        private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.ListView lv_geheleBestelling;
     }
 }
