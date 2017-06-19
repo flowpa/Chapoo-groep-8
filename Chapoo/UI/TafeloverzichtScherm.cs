@@ -18,7 +18,8 @@ namespace UI
         private Inlogscherm inlogForm;
         private BestellingService bService;
         private BestellingOpneemScherm bestellingForm;
-        private AfrekenenService aService; 
+        private AfrekenenService aService;
+        private BesteldeMenuItemsLogica bmService;
         private Tafel tafel;
         private Tafel huidigeTafel;
         private bool isBezet;
@@ -48,16 +49,16 @@ namespace UI
             checkBezettenTafels(btn_Tafel9, 9);
             checkBezettenTafels(btn_Tafel10, 10);
 
-            checkBestellingStatus(lbl_Bestelling_1, 1);
-            checkBestellingStatus(lbl_Bestelling_2, 2);
-            checkBestellingStatus(lbl_Bestelling_3, 3);
-            checkBestellingStatus(lbl_Bestelling_4, 4);
-            checkBestellingStatus(lbl_Bestelling_5, 5);
-            checkBestellingStatus(lbl_Bestelling_6, 6);
-            checkBestellingStatus(lbl_Bestelling_7, 7);
-            checkBestellingStatus(lbl_Bestelling_8, 8);
-            checkBestellingStatus(lbl_Bestelling_9, 9);
-            checkBestellingStatus(lbl_Bestelling_10, 10);
+            checkBestellingStatus(lbl_Bestelling_1, 1, btn_Tafel1);
+            checkBestellingStatus(lbl_Bestelling_2, 2, btn_Tafel2);
+            checkBestellingStatus(lbl_Bestelling_3, 3, btn_Tafel3);
+            checkBestellingStatus(lbl_Bestelling_4, 4, btn_Tafel4);
+            checkBestellingStatus(lbl_Bestelling_5, 5, btn_Tafel5);
+            checkBestellingStatus(lbl_Bestelling_6, 6, btn_Tafel6);
+            checkBestellingStatus(lbl_Bestelling_7, 7, btn_Tafel7);
+            checkBestellingStatus(lbl_Bestelling_8, 8, btn_Tafel8);
+            checkBestellingStatus(lbl_Bestelling_9, 9, btn_Tafel9);
+            checkBestellingStatus(lbl_Bestelling_10, 10, btn_Tafel10);
 
 
         }
@@ -78,10 +79,11 @@ namespace UI
             }
         }
 
-        private void checkBestellingStatus(Label lbl, int tafelId)
+        private void checkBestellingStatus(Label lbl, int tafelId, Button b)
         {
             bService = new BestellingService();
             aService = new AfrekenenService();
+            bmService = new BesteldeMenuItemsLogica();
             List<Bestelling> bestellingenPerTafelId = bService.getAllBestellingenByTafelId(tafelId);
 
             try
@@ -93,7 +95,7 @@ namespace UI
                     Bon bon = aService.getBonByBestellingId(laatstBestellingIdPerTafelId);
                     if (bon.IsBetaald == false)
                     {
-                        lbl.Text = bon.Betstelling_id.ToString(); 
+                        lbl.Text = bon.Betstelling_id.ToString();
                         btn_Vrijgeven.Enabled = false;
                     }
                 }
@@ -102,6 +104,36 @@ namespace UI
             }
             catch { }
         }
+
+            ////1. Lees een list uit met alle besteldeMenuitems per bestellingID
+            //int bestellingid;
+            //bool legit = int.TryParse(lbl.Text, out bestellingid);
+
+            //List<BesteldeMenuItems> besteldeMenuItems = null;
+
+            //if (legit)
+            //{
+            //    besteldeMenuItems = bmService.GetBesteldeMenuItems(bestellingid);
+            //}
+
+            ////2. Beslis of alle besteldeMenuItems de status TRUE hebben
+            //bool status = true;
+
+            //foreach (BesteldeMenuItems item in besteldeMenuItems)
+            //{
+            //    if (item.Geserveerd == false)
+            //        status = false;
+            //}
+            ////3. Als dat zo is, maak de button rood
+            //if (status == true)
+            //{
+            //    b.BackColor = Color.Red;
+            //}
+            ////3.1 Als dat niet zo is, niks.
+
+
+
+        //}
 
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
@@ -264,6 +296,8 @@ namespace UI
             bService.WriteBestellingIncrement(laasteBestellingId, huidigeMedewerkerId, huidigeTafel);
 
             Bestelling bestelling = bService.getBestellingById(laasteBestellingId);
+
+            aService.newBonByBestellingId(bestelling.Id);
 
             this.Hide();
 

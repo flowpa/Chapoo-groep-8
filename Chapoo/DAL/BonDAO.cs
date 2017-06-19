@@ -75,5 +75,23 @@ namespace DAL
             return bon;
         }
 
+        public void newBonByBestellingId(int bestellingId)
+        {
+            string queryString =
+                "INSERT INTO dbo.Bon (Bestelling_id, Fooi, Is_betaald ) " +
+                "VALUES (@Bestelling_id, @Fooi, @Is_betaald )";
+
+            SqlCommand command = new SqlCommand(queryString, dbConnection);
+            dbConnection.Open();
+
+            command.Parameters.AddWithValue("@Bestelling_id", bestellingId);
+            command.Parameters.AddWithValue("@Fooi", 0);
+            command.Parameters.AddWithValue("@Is_betaald", 0);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
+
     }
 }
