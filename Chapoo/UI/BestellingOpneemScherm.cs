@@ -16,13 +16,11 @@ namespace UI
     {
         Tafel tafel;
 
-        public BestellingOpneemScherm()
+        public BestellingOpneemScherm(Tafel huidige)
         {
+            this.tafel = huidige;
             InitializeComponent();
             tbx_opmerking.Hide();
-
-            // TODO: maak dynamisch. dit is nog hardcoded
-            this.tafel = new Tafel(1, true);
 
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
@@ -304,6 +302,7 @@ namespace UI
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            lv_geheleBestelling.Items.Clear();
             MenuKaart m = new MenuKaart();
             // ophalen bestelling_id
             List<BesteldeMenuItems> besteldeItems = m.getBesteldeMenuItemsByBestellingId(1);

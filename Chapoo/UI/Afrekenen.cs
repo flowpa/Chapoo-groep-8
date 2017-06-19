@@ -9,7 +9,7 @@ namespace UI
     public partial class Afrekenen : Form
     {
         BestellingOpneemScherm bestellingScherm;
-        AfrekenenService logicaLaag;
+        AfrekenenService AfrS;
         Bon bon;
         Tafel tafel;
 
@@ -17,6 +17,7 @@ namespace UI
         {
             InitializeComponent();
             this.tafel = tafel;
+            AfrS.GetBon(tafel.Nummer);
             this.bestellingScherm = bestellingScherm;
             lbl_huidigeTafel.Text = "Geselecteerde tafel = " + tafel.Nummer;
             pnl_betaling.Hide();
@@ -25,13 +26,14 @@ namespace UI
             lv_bon.Columns.Add("Item", 100);
             lv_bon.Columns.Add("Prijs", 100);
             lv_bon.Columns.Add("Subtotaal", 100);
+
         }
 
         private void Afrekenen_Load(object sender, EventArgs e)
         {
-            logicaLaag = new AfrekenenService();
-            List<BesteldeMenuItems> bonLijst = logicaLaag.GetBon(tafel.Nummer);
-            bon = logicaLaag.BerekenBedragen(bonLijst);
+            AfrS = new AfrekenenService();
+            List<BesteldeMenuItems> bonLijst = AfrS.GetBon(tafel.Nummer);
+            bon = AfrS.BerekenBedragen(bonLijst);
             VulListView(bonLijst);
             VulLabels();
         }
@@ -72,7 +74,7 @@ namespace UI
                
         private void btn_betaald_Click(object sender, EventArgs e)
         {
-            logicaLaag.SafeBonNaarDb();
+            AfrS.SafeBonNaarDb();
             pnl_betalingSucces.Show();
             pnl_betaling.Hide();
         }
