@@ -17,10 +17,8 @@ namespace Logica
  
             foreach (BesteldeMenuItems m in menuItems)
             {
-
                 bmDAO.WriteBesteldeMenuItem(m);
                 VeranderVooraad(m, positief);
-
             }
             
         }
@@ -32,7 +30,8 @@ namespace Logica
 
         public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId)
         {
-            List<BesteldeMenuItems> besteldeMenuItems = bmDAO.GetBesteldeMenuItems(bestellingId);
+            bool drank = true;
+            List<BesteldeMenuItems> besteldeMenuItems = bmDAO.GetBesteldeMenuItems(bestellingId, drank);
             return besteldeMenuItems;
         }
     }

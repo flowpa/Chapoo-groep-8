@@ -82,17 +82,31 @@ namespace DAL
 
         }
 
-        public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId)
+        public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId, bool drank)
         {
-            string queryString =
-            "SELECT * FROM dbo.Bestelde_MenuItems WHERE Bestelling_id = @id";
+            string dranken = "";
+            if (drank)
+                dranken = "= 'dranken'";
 
+            else
+                dranken = "!= 'dranken'";
+
+            string queryString =
+            "SELECT bm.* FROM Bestelde_MenuItems AS bm " +
+            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
+            "WHERE Bestelling_id = @id AND m.Categorie " + dranken;
+
+            string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+            dbConnection = new SqlConnection(connString);
 
             using (dbConnection)
             {
                 SqlCommand command = new SqlCommand(queryString, dbConnection);
-                dbConnection.Open();
 
+                if (dbConnection.State != ConnectionState.Open)
+                {
+                    dbConnection.Open();
+                }
                 SqlParameter BestellingIdParam = new SqlParameter("@id", System.Data.SqlDbType.Int, 32);
                 BestellingIdParam.Value = bestellingId;
                 command.Parameters.Add(BestellingIdParam);
@@ -116,7 +130,8 @@ namespace DAL
 
                 // Call Close when done reading.
                 reader.Close();
-                dbConnection.Close();
+                if (dbConnection.State != ConnectionState.Closed)
+                    dbConnection.Close();
                 return besteldeMenuItems;
             }
 

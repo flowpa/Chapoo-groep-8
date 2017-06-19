@@ -7,6 +7,7 @@ using Model;
 using System.Data.SqlTypes;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace DAL
 {
@@ -49,7 +50,7 @@ namespace DAL
             SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
                                             "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
                                             "WHERE bm.status = @status AND m.Categorie " + dranken + " ORDER BY Bestelling_id ASC", dbConnection);
-            SqlParameter statusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
+            SqlParameter statusParam = new SqlParameter("@status", SqlDbType.Bit);
             statusParam.Value = status;
 
             dbConnection.Open();
@@ -65,13 +66,11 @@ namespace DAL
 
             reader.Close();
 
-            List<MenuItem> AllMenuItems = MenuitemDAO.GetAll();
-
             cmd = new SqlCommand("SELECT DISTINCT b.* FROM Bestelling AS b " +
                                  "INNER JOIN Bestelde_MenuItems AS bm ON b.Bestelling_id=bm.Bestelling_id " +
                                  "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
                                  "WHERE bm.Status= @status AND m.Categorie " + dranken, dbConnection);
-            statusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
+            statusParam = new SqlParameter("@status", SqlDbType.Bit);
             statusParam.Value = status;
             cmd.Parameters.Add(statusParam);
             reader = cmd.ExecuteReader();
@@ -79,34 +78,29 @@ namespace DAL
             while (reader.Read())
             {
                 int bestellingid = (int)reader["Bestelling_id"];
-                List<MenuItem> besteldeItems = new List<MenuItem>();
+
+                List<BesteldeMenuItems> besteldeItems = new List<BesteldeMenuItems>();
 
                 foreach (BesteldeMenuItems b in besteldemenuitems)
                 {
                     if (b.BestellingId == bestellingid)
                     {
-                        foreach (MenuItem m in AllMenuItems)
-                        {
-                            if (b.MenuItem.Id == m.Id)
-                            {
-                                m.Aantal = b.Aantal;
-                                if (b.Opmerking != "")
-                                {
-                                    m.Opmerking = b.Opmerking;
-                                }
-
-                                besteldeItems.Add(m);
-                            }
-                        }
+                        besteldeItems = BesteldeMenuItemsDAO.GetBesteldeMenuItems(bestellingid, drank);
                     }
-                    else
-                        break;
                 }
-                Bestelling bestelling = ReadBestelling(reader, besteldemenuitems);
+                Bestelling bestelling = ReadBestelling(reader, besteldeItems);
                 bestellingen.Add(bestelling);
             }
-            reader.Close();
-            dbConnection.Close();
+            try
+            {
+                reader.Close();
+            }
+            catch { };
+
+            if (dbConnection.State != ConnectionState.Closed)
+            {
+                dbConnection.Close();
+            }
             return bestellingen;
         }
 
@@ -180,7 +174,7 @@ namespace DAL
         public List<Bestelling> ReadBestellingen()
         {
             string queryString =
-            "SELECT * FROM dbo.Bestelling;";
+            "SELECT * FROM dbo.Bestelling";
 
             using (dbConnection)
             {
