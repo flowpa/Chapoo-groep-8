@@ -87,5 +87,13 @@ namespace Logica
             Bon bon = bonDAO.getBonByBestellingId(bestellingId);
             return bon;
         }
+
+        public void newBonByBestellingId(int bestellingId)
+        {
+            bonDAO = new BonDAO();
+            bonDAO.newBonByBestellingId(bestellingId);
+        }
     }
+
+   
 }
