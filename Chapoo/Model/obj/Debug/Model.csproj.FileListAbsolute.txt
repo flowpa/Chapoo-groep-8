@@ -17,3 +17,7 @@ C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\bin\Debug\Model.dll
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\bin\Debug\Model.pdb
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\obj\Debug\Model.dll
 C:\Users\Sebas\Music\Chapoo 8\Chapoo\Model\obj\Debug\Model.pdb
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.dll
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.pdb
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.dll
+C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.pdb

@@ -11,15 +11,23 @@ namespace Model
 
         private int id;
         private int betstelling_id;
+        private double fooi;
         private bool isBetaald;
         private double totaalprijs;
         private double totaalBtwHoog;
         private double totaalBtwLaag;
         private double totaalBtw;
-        private double fooi;
         private double totaalPrijsInclusief;
 
         List<Bestelling> bestellingenOpBon = new List<Bestelling>();
+
+        public Bon(int id, int betstelling_id, double fooi, bool isBetaald)
+        {
+            this.id = id;
+            this.betstelling_id = betstelling_id;
+            this.fooi = fooi;
+            this.isBetaald = isBetaald;
+        }
 
         public int Id
         {
@@ -27,10 +35,10 @@ namespace Model
             set { id = value; }
         }
 
-        public List<Bestelling> BestellingenOpBon
+        public int Betstelling_id
         {
-            get { return bestellingenOpBon; }
-            set { bestellingenOpBon = value; }
+            get { return betstelling_id; }
+            set { betstelling_id = value; }
         }
 
         public double Fooi
@@ -43,6 +51,12 @@ namespace Model
         {
             get { return isBetaald; }
             set { isBetaald = value; }
+        }
+
+        public List<Bestelling> BestellingenOpBon
+        {
+            get { return bestellingenOpBon; }
+            set { bestellingenOpBon = value; }
         }
 
         public double Totaalprijs
@@ -75,11 +89,7 @@ namespace Model
             set { totaalPrijsInclusief = value; }
         }
         
-        public int Betstelling_id
-        {
-            get { return betstelling_id; }
-            set { betstelling_id = value; }
-        }
+
 
     }
 }

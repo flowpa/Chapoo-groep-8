@@ -20,7 +20,7 @@ namespace UI
             BestellingDrankForm d = new BestellingDrankForm();
             BestellingEtenForm e = new BestellingEtenForm();
             Inlogscherm i = new Inlogscherm();
-            Application.Run(b);                // niet verwijderen. gwn veranderen.
+            Application.Run(i);                // niet verwijderen. gwn veranderen.
         }
     }
 }

@@ -18,7 +18,7 @@ namespace UI
         private Inlogscherm inlogForm;
         private BestellingService bService;
         private BestellingOpneemScherm bestellingForm;
-        private AfrekenenLogica aService; 
+        private AfrekenenService aService; 
         private Tafel tafel;
         private Tafel huidigeTafel;
         private Bestelling bestelling; 
@@ -82,7 +82,7 @@ namespace UI
         private void checkBestellingStatus(Label lbl, int tafelId)
         {
             bService = new BestellingService();
-            aService = new AfrekenenLogica();
+            aService = new AfrekenenService();
             List<Bestelling> bestellingenPerTafelId = bService.getAllBestellingenByTafelId(tafelId);
 
             try
@@ -91,10 +91,10 @@ namespace UI
 
                 try
                 {
-                    Bon bon = aService.GetBonByBestellingId(laatstBestellingIdPerTafelId);
+                    Bon bon = aService.getBonByBestellingId(laatstBestellingIdPerTafelId);
                     if (bon.IsBetaald == false)
                     {
-                        lbl.Text = bon.BestellingId.ToString();
+                        lbl.Text = bon.Betstelling_id.ToString(); 
                         btn_Vrijgeven.Enabled = false;
                     }
                 }

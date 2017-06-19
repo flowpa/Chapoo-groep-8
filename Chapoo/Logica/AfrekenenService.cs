@@ -31,7 +31,7 @@ namespace Logica
             }
 
             // onthoud bestlling id
-            bon = new Bon();
+            //bon = new Bon();
             bon.BestellingenOpBon = bestellingen;
             bon.Betstelling_id = bestellingen[0].Id;
 
@@ -47,7 +47,7 @@ namespace Logica
         {
             if (bonLijst.Count == 0)
             {
-                return new Bon();
+                //return new Bon();
             }
 
             double btwHoog = 0.21;
@@ -77,6 +77,15 @@ namespace Logica
         public void SafeBonNaarDb()
         {
             bonDAO.SafeBon(bon);
+        }
+
+        //Juan
+
+        public Bon getBonByBestellingId(int bestellingId)
+        {
+            bonDAO = new BonDAO();
+            Bon bon = bonDAO.getBonByBestellingId(bestellingId);
+            return bon;
         }
     }
 }
