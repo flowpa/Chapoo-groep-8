@@ -137,7 +137,8 @@ namespace DAL
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
                                             "INNER JOIN Bestelling AS b ON b.Bestelling_id = bm.Bestelling_id " +
-                                            "WHERE bm.status = 1 AND b.Tafel_id = @tafel_id", dbConnection);
+                                            "INNER JOIN Bon AS bon ON b.Bestelling_id = bon.Bestelling_id " +
+                                            "WHERE bm.status = 1 AND bon.Is_betaald = 0 AND b.Tafel_id = @tafel_id", dbConnection);
 
             cmd.Parameters.AddWithValue("@tafel_id", tafelId);
 
