@@ -27,12 +27,17 @@ namespace UI
             lbl_clock.Text = DateTime.Now.ToString("HH:mm");
             lbl_date.Text = DateTime.Now.ToString("ddd dd/MM/yyyy");
             bool drank = true;
+
             vulEersteDGV(drank);
             vulTweedeDGV(drank);
+
+            dgv_eerste.ClearSelection();
+            dgv_tweede.ClearSelection();
 
             Timer timer = new Timer();
             timer.Interval = (15 * 1000); // 15 secs
             timer.Tick += new EventHandler(timer_Tick);
+            timer.Stop();
             timer.Start();
         }
 
@@ -113,6 +118,7 @@ namespace UI
             dgv_tweede.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv_tweede.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgv_tweede.AllowUserToAddRows = false;
+            dgv_tweede.SelectionChanged += Dgv_tweede_SelectionChanged;
 
             dgv_tweede.Columns.Add(new DataGridViewTextBoxColumn()
             {
@@ -132,6 +138,11 @@ namespace UI
             List<Bestelling> bestellingen = bs.VulBestellingen(drank, status);
             foreach(Bestelling b in bestellingen)
                 dgv_tweede.Rows.Add(b.Id, b.ToString());
+        }
+
+        private void Dgv_tweede_SelectionChanged(object sender, EventArgs e)
+        {
+            dgv_tweede.ClearSelection();
         }
     }
 }
