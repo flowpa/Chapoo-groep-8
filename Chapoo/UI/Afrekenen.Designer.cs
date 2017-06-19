@@ -376,7 +376,6 @@
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Afrekenen";
             this.Text = "Afrekenen";
-            this.Load += new System.EventHandler(this.Afrekenen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnl_betaling.ResumeLayout(false);

@@ -31,7 +31,7 @@ namespace Logica
             }
 
             // onthoud bestlling id
-            //bon = new Bon();
+            bon = getBonByBestellingId(bestellingen[0].Id);
             bon.BestellingenOpBon = bestellingen;
             bon.Betstelling_id = bestellingen[0].Id;
 

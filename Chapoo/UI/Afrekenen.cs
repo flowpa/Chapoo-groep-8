@@ -25,18 +25,14 @@ namespace UI
             lv_bon.Columns.Add("Item", 100);
             lv_bon.Columns.Add("Prijs", 100);
             lv_bon.Columns.Add("Subtotaal", 100);
-
-        }
-
-        private void Afrekenen_Load(object sender, EventArgs e)
-        {
             AfrS = new AfrekenenService();
             List<BesteldeMenuItems> bonLijst = AfrS.GetBon(tafel.Nummer);
             bon = AfrS.BerekenBedragen(bonLijst);
             VulListView(bonLijst);
             VulLabels();
-        }
 
+        }
+        
         private void VulLabels()
         {
             lbl_totaalPrijs.Text = "€ " + bon.TotaalPrijsInclusief.ToString();
