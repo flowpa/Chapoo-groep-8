@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BesteldeMenuItemsDAO.cs" />
     <Compile Include="BestellingDAO.cs" />
+    <Compile Include="BonDAO.cs" />
     <Compile Include="MedewerkerDAO.cs" />
     <Compile Include="MenuitemDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +58,9 @@
       <Project>{eac5ce3e-7953-402b-9489-bf00adc06213}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

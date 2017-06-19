@@ -14,8 +14,11 @@ namespace UI
 {
     public partial class BestellingOpneemScherm : Form
     {
-        public BestellingOpneemScherm()
+        Tafel tafel;
+
+        public BestellingOpneemScherm(Tafel huidige)
         {
+            this.tafel = huidige;
             InitializeComponent();
             tbx_opmerking.Hide();
 
@@ -342,7 +345,9 @@ namespace UI
 
         private void btn_betalen_Click(object sender, EventArgs e)
         {
-
+            Afrekenen afrekenForm = new Afrekenen(this, tafel);
+            this.Hide();
+            afrekenForm.ShowDialog();
         }
     }
 

@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AfrekenenLogica.cs" />
+    <Compile Include="AfrekenenService.cs" />
     <Compile Include="BesteldeMenuItemsLogica.cs" />
     <Compile Include="BestellingService.cs" />
     <Compile Include="InloggenService.cs" />
@@ -58,6 +58,9 @@
       <Project>{eac5ce3e-7953-402b-9489-bf00adc06213}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

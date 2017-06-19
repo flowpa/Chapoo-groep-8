@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public Bestelling ReadBestelling(SqlDataReader reader, List<MenuItem> besteldeItems)
+        public Bestelling ReadBestelling(SqlDataReader reader, List<BesteldeMenuItems> besteldeItems)
         {
             int bestellingid = (int)reader["Bestelling_id"];
             int medewerkerid = (int)reader["Werknemer_id"];
@@ -47,8 +47,8 @@ namespace DAL
                 dranken = "!= 'dranken'";
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM Bestelde_MenuItems AS bm " +
-                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " + 
-                                            "WHERE bm.status = @status AND m.Categorie "+ dranken + " ORDER BY Bestelling_id ASC", dbConnection);
+                                            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
+                                            "WHERE bm.status = @status AND m.Categorie " + dranken + " ORDER BY Bestelling_id ASC", dbConnection);
             SqlParameter statusParam = new SqlParameter("@status", System.Data.SqlDbType.Bit);
             statusParam.Value = status;
 
@@ -57,7 +57,7 @@ namespace DAL
             cmd.Prepare();
             SqlDataReader reader = cmd.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 BesteldeMenuItems bestelde = BesteldeMenuItemsDAO.ReadBesteldeMenuItem(reader);
                 besteldemenuitems.Add(bestelde);
@@ -76,7 +76,7 @@ namespace DAL
             cmd.Parameters.Add(statusParam);
             reader = cmd.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 int bestellingid = (int)reader["Bestelling_id"];
                 List<MenuItem> besteldeItems = new List<MenuItem>();
@@ -94,7 +94,7 @@ namespace DAL
                                 {
                                     m.Opmerking = b.Opmerking;
                                 }
-                                
+
                                 besteldeItems.Add(m);
                             }
                         }
@@ -102,7 +102,7 @@ namespace DAL
                     else
                         break;
                 }
-                Bestelling bestelling = ReadBestelling(reader, besteldeItems);
+                Bestelling bestelling = ReadBestelling(reader, besteldemenuitems);
                 bestellingen.Add(bestelling);
             }
             reader.Close();
@@ -121,7 +121,7 @@ namespace DAL
 
             SqlCommand cmd = new SqlCommand("UPDATE bm " +
                                             "SET bm.Status = 1 " +
-                                            "FROM Bestelde_MenuItems AS bm " + 
+                                            "FROM Bestelde_MenuItems AS bm " +
                                             "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
                                             "WHERE bm.Bestelling_id = @id AND m.Categorie " + dranken, dbConnection);
 
@@ -132,7 +132,8 @@ namespace DAL
             dbConnection.Open();
             cmd.Prepare();
             cmd.ExecuteNonQuery();
-            dbConnection.Close();   
+            dbConnection.Close();
+           
         }
 
         public List<Bestelling> GetBestellingenVanTafel(int tafelId)
@@ -156,9 +157,6 @@ namespace DAL
             }
 
             reader.Close();
-
-            List<MenuItem> allMenuItems = MenuitemDAO.GetAll();
-
             cmd = new SqlCommand("SELECT * FROM Bestelling " +
                                  "WHERE Tafel_id = @tafel_id", dbConnection);
 
@@ -170,19 +168,8 @@ namespace DAL
             {
                 int bestellingId = (int)reader["Bestelling_id"];
                 List<BesteldeMenuItems> bMenuItems = besteldemenuitems.Where(bm => bm.BestellingId == bestellingId).ToList();
-                List<MenuItem> besteldeItems = new List<MenuItem>();
 
-                foreach (BesteldeMenuItems bItem in bMenuItems)
-                {
-                    MenuItem item = allMenuItems.Where(mi => mi.Id == bItem.MenuItem.Id).FirstOrDefault();
-
-                    for (int i = 0; i <= bItem.Aantal; i++)
-                    {
-                        besteldeItems.Add(item);
-                    }
-                }
-
-                Bestelling bestelling = ReadBestelling(reader, besteldeItems);
+                Bestelling bestelling = ReadBestelling(reader, bMenuItems);
                 bestellingen.Add(bestelling);
             }
             dbConnection.Close();
@@ -241,7 +228,9 @@ namespace DAL
 
                 command.Prepare();
                 SqlDataReader reader = command.ExecuteReader();
+
                 Bestelling b = null;
+
                 if (reader.Read())
                 {
                     int medewerkersId = (int)reader["Werknemer_id"];
@@ -249,7 +238,7 @@ namespace DAL
                     DateTime tijd = (DateTime)reader["Tijd"];
                     b = new Bestelling(id, medewerkersId, TafelId, tijd);
                 }
-
+                
                 // Call Close when done reading.
                 reader.Close();
                 dbConnection.Close();
@@ -272,7 +261,7 @@ namespace DAL
 
                 // Call Read before accessing data.
 
-                List<Bestelling> bestellingen = new List<Bestelling>();
+                List<Bestelling> bestelingen = new List<Bestelling>();
 
                 while (reader.Read())
                 {
@@ -281,14 +270,14 @@ namespace DAL
                     int TafelId = (int)reader["Tafel_id"];
                     DateTime tijd = (DateTime)reader["Tijd"];
                     Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
-                    bestellingen.Add(b);
+                    bestelingen.Add(b);
                 }
 
 
                 // Call Close when done reading.
                 reader.Close();
                 dbConnection.Close();
-                return bestellingen;
+                return bestelingen;
             }
         }
 
@@ -305,8 +294,8 @@ namespace DAL
                 dbConnection.Open();
 
 
-                SqlParameter werknemerId = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int, 32);
-                SqlParameter tafelId = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int, 32);
+                SqlParameter werknemerId = new SqlParameter("@werknemer_id", System.Data.SqlDbType.Int);
+                SqlParameter tafelId = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int);
                 SqlParameter Tijd = new SqlParameter("@tijd", System.Data.SqlDbType.DateTime);
 
 
@@ -356,7 +345,78 @@ namespace DAL
                 dbConnection.Close();
                 return id;
             }
+        }
 
+        //public List<Bestelling> ReadBestellingen()
+        //{
+        //    string queryString =
+        //    "SELECT * FROM dbo.Bestelling;";
+
+        //    using (dbConnection)
+        //    {
+        //        SqlCommand command = new SqlCommand(queryString, dbConnection);
+        //        dbConnection.Open();
+
+        //        SqlDataReader reader = command.ExecuteReader();
+
+        //        // Call Read before accessing data.
+
+        //        List<Bestelling> bestelingen = new List<Bestelling>();
+
+        //        while (reader.Read())
+        //        {
+        //            int id = (int)reader["Bestelling_id"];
+        //            int medewerkersId = (int)reader["Werknemer_id"];
+        //            int TafelId = (int)reader["Tafel_id"];
+        //            DateTime tijd = (DateTime)reader["Tijd"];
+        //            Bestelling b = new Bestelling(id, medewerkersId, TafelId, tijd);
+        //            bestelingen.Add(b);
+        //        }
+
+
+        //        // Call Close when done reading.
+        //        reader.Close();
+        //        dbConnection.Close();
+        //        return bestelingen;
+        //    }
+        
+
+        //Juan
+        public List<Bestelling> getAllBestellingenByTafelId(int tafelId)
+        {
+            string queryString = "SELECT * FROM dbo.Bestelling WHERE Tafel_id = @tafel_id";
+
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand(queryString, dbConnection);
+
+            SqlParameter tafel_idParam = new SqlParameter("@tafel_id", System.Data.SqlDbType.Int);
+
+            tafel_idParam.Value = tafelId;
+
+            command.Parameters.Add(tafel_idParam);
+            command.Prepare();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Bestelling> bestellingen = new List<Bestelling>();
+
+            while (reader.Read())
+            {
+                int bestellingId = (int)reader["Bestelling_id"];
+                int medewerkersId = (int)reader["Werknemer_id"];
+                DateTime tijd = (DateTime)reader["Tijd"];
+
+                Bestelling bestelling = new Bestelling(bestellingId, medewerkersId, tafelId, tijd);
+
+                bestellingen.Add(bestelling);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return bestellingen;
         }
     }
 }
+

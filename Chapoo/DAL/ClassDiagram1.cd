@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DAL.BesteldeMenuItemsDAO">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAIAAAAAAAAAAAAAAAABAAAAIBAAAAAAA=</HashCode>
+      <FileName>BesteldeMenuItemsDAO.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.BestellingDAO">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAABAAAAAAAAAAAgAAIAAABgAAEAACAACAAACAA=</HashCode>
+      <FileName>BestellingDAO.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="BesteldeMenuItemsDAO" />
+      <Field Name="MenuitemDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.MedewerkerDAO">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MedewerkerDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.MenuitemDAO">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAAAAAAAAAAAAAAABAACAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>MenuitemDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.TafelDAO">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>TafelDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
