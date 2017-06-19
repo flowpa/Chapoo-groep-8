@@ -262,7 +262,7 @@
             this.tab_Rekeningen.Padding = new System.Windows.Forms.Padding(3);
             this.tab_Rekeningen.Size = new System.Drawing.Size(402, 625);
             this.tab_Rekeningen.TabIndex = 2;
-            this.tab_Rekeningen.Text = "Bestellingen";
+            this.tab_Rekeningen.Text = "Bestelling";
             this.tab_Rekeningen.UseVisualStyleBackColor = true;
             // 
             // lv_geheleBestelling

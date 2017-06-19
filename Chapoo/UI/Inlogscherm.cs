@@ -51,7 +51,8 @@ namespace UI
                                 {
                                     this.Hide();
                                     Tafel tafel = null;
-                                    bestelForm = new BestellingOpneemScherm(tafel);
+                                    Bestelling b = null;
+                                    bestelForm = new BestellingOpneemScherm(b,tafel);
                                     bestelForm.ShowDialog();
                                 }
                                 else

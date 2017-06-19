@@ -14,11 +14,13 @@ namespace UI
 {
     public partial class BestellingOpneemScherm : Form
     {
+        Bestelling bestelling;
         Tafel tafel;
 
-        public BestellingOpneemScherm(Tafel huidige)
+        public BestellingOpneemScherm(Bestelling bestelling, Tafel tafel)
         {
-            this.tafel = huidige;
+            this.bestelling = bestelling;
+            this.tafel = tafel;
             InitializeComponent();
             tbx_opmerking.Hide();
 
@@ -202,12 +204,6 @@ namespace UI
             VulTagMenuKaart(menuKaart);
         }
 
-
-        private void btn_VorrigeBestellingTab_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toevoegen(Model.MenuItem item)
         {
             // voegt menuItem toe aan bestelde menuItem lijst een chekt op dubbelen
@@ -243,7 +239,7 @@ namespace UI
 
             if (!toegevoegd)
             {
-                BesteldeMenuItems bestelItem = new BesteldeMenuItems(1, 1, tbx_opmerking.Text, item, false);
+                BesteldeMenuItems bestelItem = new BesteldeMenuItems(bestelling.Id, 1, tbx_opmerking.Text, item, false);
 
                 ListViewItem li = new ListViewItem(bestelItem.Aantal.ToString());
                 li.SubItems.Add(bestelItem.MenuItem.Naam);
@@ -355,7 +351,7 @@ namespace UI
             lv_geheleBestelling.Items.Clear();
             MenuKaart m = new MenuKaart();
             // ophalen bestelling_id
-            List<BesteldeMenuItems> besteldeItems = m.getBesteldeMenuItemsByBestellingId(1);
+            List<BesteldeMenuItems> besteldeItems = m.getBesteldeMenuItemsByBestellingId(bestelling.Id);
 
 
             foreach (Model.BesteldeMenuItems menuItem in besteldeItems)

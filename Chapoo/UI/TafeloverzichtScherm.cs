@@ -290,7 +290,7 @@ namespace UI
 
             List<Bestelling> bestellingen = bService.getAllBestellingen();
             
-            int laasteBestellingId = bestellingen[bestellingen.Count - 1].Id;
+            int laasteBestellingId = bestellingen[bestellingen.Count - 2].Id;
             laasteBestellingId++;
 
             bService.WriteBestellingIncrement(laasteBestellingId, huidigeMedewerkerId, huidigeTafel);
@@ -301,7 +301,7 @@ namespace UI
 
             this.Hide();
 
-            bestellingForm = new BestellingOpneemScherm(huidigeTafel);
+            bestellingForm = new BestellingOpneemScherm(bestelling, huidigeTafel);
             bestellingForm.ShowDialog();
         }
 
