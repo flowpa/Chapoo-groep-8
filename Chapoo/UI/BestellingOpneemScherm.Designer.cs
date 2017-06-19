@@ -346,10 +346,6 @@
         private System.Windows.Forms.ListView lv_MenuKaart;
         private System.Windows.Forms.ListView lv_BesteldeItemlist;
         private System.Windows.Forms.TextBox tbx_opmerking;
-        private System.Windows.Forms.Button btn_DeleteBestellingTab;
-        private System.Windows.Forms.Button btn_VorrigeBestellingTab;
-        private System.Windows.Forms.ListView lv_HuidigeBestelling;
-        private System.Windows.Forms.TabPage tab_Bestelling;
         private System.Windows.Forms.Button btn_betalen;
         private System.Windows.Forms.Button btn_terug;
         private System.Windows.Forms.Button btn_refresh;
