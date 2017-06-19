@@ -52,7 +52,6 @@ namespace Logica
         public List<BesteldeMenuItems> getBesteldeMenuItemsByBestellingId(int bestellingId)
         {
             BesteldeMenuItemsDAO bmi = new BesteldeMenuItemsDAO();
-            bool drank = true;
             List<BesteldeMenuItems> besteldeItems = bmi.GetBesteldeMenuItems(bestellingId, drank);
             return besteldeItems;
         }       
