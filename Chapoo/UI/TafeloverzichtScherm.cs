@@ -287,7 +287,7 @@ namespace UI
 
             List<Bestelling> bestellingen = bService.getAllBestellingen();
             
-            int laasteBestellingId = bestellingen[bestellingen.Count - 2].Id;
+            int laasteBestellingId = bestellingen[bestellingen.Count - 1].Id;
             laasteBestellingId++;
 
             bService.WriteBestellingIncrement(laasteBestellingId, huidigeMedewerkerId, huidigeTafel);
