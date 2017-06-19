@@ -1,8 +1,3 @@
-C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.dll
-C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.pdb
-C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.dll
-C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.pdb
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.dll
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.pdb
 C:\Users\basto\OneDrive\Documents\GitHub\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
@@ -21,3 +16,7 @@ C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.dll
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.pdb
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.dll
 C:\Users\Juan\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.pdb
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.dll
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\bin\Debug\Model.pdb
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.dll
+C:\Users\Florian's\Source\Repos\Chapoo-groep-8\Chapoo\Model\obj\Debug\Model.pdb
