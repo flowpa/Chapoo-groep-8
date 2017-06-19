@@ -321,7 +321,7 @@ namespace UI
             }
 
             Timer timer = new Timer();
-            timer.Interval = (1 * 1000); // 15 secs
+            timer.Interval = (15 * 1000); // 15 secs
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
