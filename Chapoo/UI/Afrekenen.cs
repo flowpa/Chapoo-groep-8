@@ -9,6 +9,7 @@ namespace UI
     public partial class Afrekenen : Form
     {
         BestellingOpneemScherm bestellingScherm;
+        TafeloverzichtScherm tafelOverzicht = new TafeloverzichtScherm();
         AfrekenenService AfrS;
         Bon bon;
         Tafel tafel;
@@ -98,8 +99,9 @@ namespace UI
 
         private void btn_betaaldOk_Click(object sender, EventArgs e)
         {
-            pnl_betalingSucces.Hide();
-            btn_terug_Click(sender, e);
+            
+            tafelOverzicht.Show();
+            this.Close();
         }
     }
 }

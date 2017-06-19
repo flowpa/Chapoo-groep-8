@@ -47,16 +47,18 @@ namespace Logica
             return m;
         }
 
-        public void WriteBestelling(Medewerker m, Tafel t)
+        public Bestelling WriteBestelling(int medewerkerId, Tafel t)
         {
             BestellingDAO bDAO = new BestellingDAO();
 
-            Bestelling bestelling = new Bestelling(0, m.Id, t.Nummer, DateTime.Now);
-
+            Bestelling bestelling = new Bestelling(0, medewerkerId, t.Nummer, DateTime.Now);
 
             bDAO.WriteBesteling(bestelling);
-            int bestellingId = bDAO.GetBestellingIdByTijd(bestelling.Tijd);
+             
+            
+            bestelling.Id = bDAO.GetBestellingIdByTijd(bestelling.Tijd);
 
+            return bestelling;
         }
 
         //Juan

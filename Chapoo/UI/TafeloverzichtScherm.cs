@@ -20,8 +20,8 @@ namespace UI
         private BestellingOpneemScherm bestellingForm;
         private AfrekenenService aService;
         private BesteldeMenuItemsLogica bmService;
-        private Tafel tafel;
         private Tafel huidigeTafel;
+        private Label huidigeLabel;
         private bool isBezet;
         private int huidigeMedewerkerId;
 
@@ -49,27 +49,37 @@ namespace UI
             checkBezettenTafels(btn_Tafel9, 9);
             checkBezettenTafels(btn_Tafel10, 10);
 
-            checkBestellingStatus(lbl_Bestelling_1, 1, btn_Tafel1);
-            checkBestellingStatus(lbl_Bestelling_2, 2, btn_Tafel2);
-            checkBestellingStatus(lbl_Bestelling_3, 3, btn_Tafel3);
-            checkBestellingStatus(lbl_Bestelling_4, 4, btn_Tafel4);
-            checkBestellingStatus(lbl_Bestelling_5, 5, btn_Tafel5);
-            checkBestellingStatus(lbl_Bestelling_6, 6, btn_Tafel6);
-            checkBestellingStatus(lbl_Bestelling_7, 7, btn_Tafel7);
-            checkBestellingStatus(lbl_Bestelling_8, 8, btn_Tafel8);
-            checkBestellingStatus(lbl_Bestelling_9, 9, btn_Tafel9);
-            checkBestellingStatus(lbl_Bestelling_10, 10, btn_Tafel10);
+            checkBestellinOpTafel(lbl_Bestelling_1, 1, btn_Tafel1);
+            checkBestellinOpTafel(lbl_Bestelling_2, 2, btn_Tafel2);
+            checkBestellinOpTafel(lbl_Bestelling_3, 3, btn_Tafel3);
+            checkBestellinOpTafel(lbl_Bestelling_4, 4, btn_Tafel4);
+            checkBestellinOpTafel(lbl_Bestelling_5, 5, btn_Tafel5);
+            checkBestellinOpTafel(lbl_Bestelling_6, 6, btn_Tafel6);
+            checkBestellinOpTafel(lbl_Bestelling_7, 7, btn_Tafel7);
+            checkBestellinOpTafel(lbl_Bestelling_8, 8, btn_Tafel8);
+            checkBestellinOpTafel(lbl_Bestelling_9, 9, btn_Tafel9);
+            checkBestellinOpTafel(lbl_Bestelling_10, 10, btn_Tafel10);
 
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_1, btn_Tafel1);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_2, btn_Tafel2);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_3, btn_Tafel3);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_4, btn_Tafel4);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_5, btn_Tafel5);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_6, btn_Tafel6);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_7, btn_Tafel7);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_8, btn_Tafel8);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_9, btn_Tafel9);
+            checkStatusBesteldeMenuItemsPerBestelling(lbl_Bestelling_10, btn_Tafel10);
 
         }
 
         private void checkBezettenTafels(Button btn, int tafelId)
         {
             tService = new TafeloverzichtService();
-            tafel = tService.getTafel(tafelId);
-            btn.Tag = tafel;
+            huidigeTafel = tService.getTafel(tafelId);
+            btn.Tag = huidigeTafel;
 
-            if (tafel.IsBezet == true)
+            if (huidigeTafel.IsBezet == true)
             {
                 btn.BackColor = Color.Tomato;
             }
@@ -79,127 +89,168 @@ namespace UI
             }
         }
 
-        private void checkBestellingStatus(Label lbl, int tafelId, Button b)
+        private void checkBestellinOpTafel(Label lbl, int tafelId, Button b)
         {
             bService = new BestellingService();
             aService = new AfrekenenService();
             bmService = new BesteldeMenuItemsLogica();
             List<Bestelling> bestellingenPerTafelId = bService.getAllBestellingenByTafelId(tafelId);
             Bon bon = null;
-            try
-            {
-                int laatstBestellingIdPerTafelId = bestellingenPerTafelId[bestellingenPerTafelId.Count - 1].Id;
 
-                try
+
+
+            if (bestellingenPerTafelId.Count != 0 )
+            {
+                if (bestellingenPerTafelId.Last().Id > 0)
                 {
-                    bon = aService.getBonByBestellingId(laatstBestellingIdPerTafelId);
+                    bon = aService.getBonByBestellingId(bestellingenPerTafelId.Last().Id);
                     if (bon.IsBetaald == false)
                     {
                         lbl.Text = bon.Betstelling_id.ToString();
                         btn_Vrijgeven.Enabled = false;
                     }
+                    else
+                    {
+                        btn_Vrijgeven.Enabled = true;
+                        b.BackColor = Color.Green;
+                    }
+
+
                 }
-                catch { }
-
             }
-            catch { }
-
-
-            ////1. Lees een list uit met alle besteldeMenuitems per bestellingID
-            //int bestellingid;
-            //bool legit = int.TryParse(lbl.Text, out bestellingid);
-
-            //List<BesteldeMenuItems> besteldeMenuItems = null;
-
-            //if (legit)
-            //{
-            //    besteldeMenuItems = bmService.GetBesteldeMenuItems(bon.Betstelling_id);
-            //}
-
-            ////2. Beslis of alle besteldeMenuItems de status TRUE hebben
-            //bool status = true;
-
-            //foreach (BesteldeMenuItems item in besteldeMenuItems)
-            //{
-            //    if (item.Geserveerd == false)
-            //        status = false;
-            //}
-            ////3. Als dat zo is, maak de button rood
-            //if (status == true)
-            //{
-            //    b.BackColor = Color.Red;
-            //}
-            ////3.1 Als dat niet zo is, niks.
         }
+
+        private void checkStatusBesteldeMenuItemsPerBestelling(Label huidigeLabel, Button huidigeButton)
+        {
+            if (huidigeButton.BackColor == Color.Tomato)
+            {
+                //1. Lees een list uit met alle besteldeMenuitems per bestellingID
+                int bestellingId;
+                bool legit = int.TryParse(huidigeLabel.Text, out bestellingId);
+
+                List<BesteldeMenuItems> besteldeMenuItems = new List<BesteldeMenuItems>();
+
+                if (legit)
+                {
+                    besteldeMenuItems = bmService.GetBesteldeMenuItems(bestellingId);
+                }
+
+                bool status = true;
+
+                foreach (BesteldeMenuItems item in besteldeMenuItems)
+                {
+                    if (item.Bereid == false)
+                    {
+                        status = false;
+                        break;
+                    }
+                }
+                if (status)
+                {
+                    huidigeButton.BackColor = Color.Red;
+                }
+                
+            }
+        }
+
+
+
 
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel1.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel1, tafel);
+            checkBezettenTafels(btn_Tafel1, 1);
+            huidigeTafel = (Tafel)btn_Tafel1.Tag;
+            huidigeLabel = lbl_Bestelling_1;
+            tafelButton(huidigeTafel.Nummer, btn_Tafel1, huidigeTafel);
         }
 
         private void btn_Tafel2_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel2.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel2, tafel);
+            checkBezettenTafels(btn_Tafel2, 2);
+            huidigeTafel = (Tafel)btn_Tafel2.Tag;
+            huidigeLabel = lbl_Bestelling_2;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel2, huidigeTafel);
         }
 
         private void btn_Tafel3_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel3.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel3, tafel);
+            checkBezettenTafels(btn_Tafel3, 3);
+
+            huidigeTafel = (Tafel)btn_Tafel3.Tag;
+            huidigeLabel = lbl_Bestelling_3;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel3, huidigeTafel);
         }
 
         private void btn_Tafel4_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel4.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel4, tafel);
+            checkBezettenTafels(btn_Tafel4, 4);
+
+            huidigeTafel = (Tafel)btn_Tafel4.Tag;
+            huidigeLabel = lbl_Bestelling_4;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel4, huidigeTafel);
         }
 
         private void btn_Tafel5_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel5.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel5, tafel);
+            checkBezettenTafels(btn_Tafel5, 5);
+
+            huidigeTafel = (Tafel)btn_Tafel5.Tag;
+            huidigeLabel = lbl_Bestelling_5;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel5, huidigeTafel);
         }
 
         private void btn_Tafel6_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel6.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel6, tafel);
+            checkBezettenTafels(btn_Tafel6, 6);
+
+            huidigeTafel = (Tafel)btn_Tafel6.Tag;
+            huidigeLabel = lbl_Bestelling_6;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel6, huidigeTafel);
         }
 
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel7.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel7, tafel);
+            checkBezettenTafels(btn_Tafel7, 7);
+
+            huidigeTafel = (Tafel)btn_Tafel7.Tag;
+            huidigeLabel = lbl_Bestelling_7;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel7, huidigeTafel);
         }
 
         private void btn_Tafel8_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel8.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel8, tafel);
+            checkBezettenTafels(btn_Tafel8, 8);
+
+            huidigeTafel = (Tafel)btn_Tafel8.Tag;
+            huidigeLabel = lbl_Bestelling_8;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel8, huidigeTafel);
         }
 
         private void btn_Tafel9_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel9.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel9, tafel);
+            checkBezettenTafels(btn_Tafel9, 9);
+
+            huidigeTafel = (Tafel)btn_Tafel9.Tag;
+            huidigeLabel = lbl_Bestelling_9;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel9, huidigeTafel);
         }
 
         private void btn_Tafel10_Click(object sender, EventArgs e)
         {
-            Tafel tafel = (Tafel)btn_Tafel10.Tag;
-            huidigeTafel = tafel;
-            tafelButton(tafel.Nummer, btn_Tafel10, tafel);
+            checkBezettenTafels(btn_Tafel10, 10);
+
+            huidigeTafel = (Tafel)btn_Tafel10.Tag;
+            huidigeLabel = lbl_Bestelling_10;
+
+            tafelButton(huidigeTafel.Nummer, btn_Tafel10, huidigeTafel);
         }
 
         private void tafelButton(int tafelid, Button b, Tafel tafel)
@@ -283,23 +334,37 @@ namespace UI
 
         private void btn_Opnemen_Click(object sender, EventArgs e)
         {
+            // check is er al een bestelling //label
+
+            // zo niet nieuwe bestelling aangemaakt + new bon + bestellingId ophalen
+
+            // tafel bezet zetten
             bService = new BestellingService();
+            aService = new AfrekenenService();
+            Bestelling bestelling = null;
 
-            List<Bestelling> bestellingen = bService.getAllBestellingen();
-            
-            int laasteBestellingId = bestellingen[bestellingen.Count - 2].Id;
-            laasteBestellingId++;
 
-            bService.WriteBestellingIncrement(laasteBestellingId, huidigeMedewerkerId, huidigeTafel);
+            if (huidigeLabel.Text != "")
+            {
+                bestelling = bService.getBestellingById(int.Parse(huidigeLabel.Text));
 
-            Bestelling bestelling = bService.getBestellingById(laasteBestellingId);
+                bestellingForm = new BestellingOpneemScherm(bestelling, huidigeTafel);
+                this.Hide();
+                bestellingForm.ShowDialog();
+                
+            }
+            else
+            {
+                bestelling = bService.WriteBestelling(huidigeMedewerkerId, huidigeTafel);
+                aService.newBonByBestellingId(bestelling.Id);
+                huidigeLabel.Text = bestelling.Id.ToString();
 
-            aService.newBonByBestellingId(bestelling.Id);
-
-            this.Hide();
-
-            bestellingForm = new BestellingOpneemScherm(bestelling, huidigeTafel);
-            bestellingForm.ShowDialog();
+                bestellingForm = new BestellingOpneemScherm(bestelling, huidigeTafel);
+                this.Hide();
+                bestellingForm.ShowDialog();
+                
+            }
+ 
         }
 
     }

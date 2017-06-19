@@ -16,6 +16,8 @@ namespace UI
     {
         Bestelling bestelling;
         Tafel tafel;
+        Catagorie c;
+
 
         public BestellingOpneemScherm(Bestelling bestelling, Tafel tafel)
         {
@@ -48,51 +50,40 @@ namespace UI
 
         private void btn_voorgerecht_Click(object sender, EventArgs e)
         {
-            Catagorie c = new Catagorie();
             c = Catagorie.voorgerecht;
-            Dagdeel d = new Dagdeel();
 
-            VulMenuKaart(c, d);
+            VulMenuKaart(c);
         }
 
         private void btn_hoofdgerecht_Click(object sender, EventArgs e)
         {
-            Catagorie c = new Catagorie();
             c = Catagorie.hoofdgerecht;
-            Dagdeel d = new Dagdeel();
 
-            VulMenuKaart(c, d);
+            VulMenuKaart(c);
 
         }
 
         private void btn_Tussengerecht_Click(object sender, EventArgs e)
         {
-            Catagorie c = new Catagorie();
             c = Catagorie.tussengerecht;
-            Dagdeel d = new Dagdeel();
 
-            VulMenuKaart(c, d);
+            VulMenuKaart(c);
 
         }
 
         private void btn_Nagerecht_Click(object sender, EventArgs e)
         {
-            Catagorie c = new Catagorie();
             c = Catagorie.nagerecht;
-            Dagdeel d = new Dagdeel();
 
-            VulMenuKaart(c, d);
+            VulMenuKaart(c);
 
         }
 
         private void btn_Drank_Click(object sender, EventArgs e)
         {
-            Catagorie c = new Catagorie();
             c = Catagorie.dranken;
-            Dagdeel d = new Dagdeel();
-            d = Dagdeel.altijd;
 
-            VulMenuKaart(c, d);
+            VulMenuKaart(c);
 
 
         }
@@ -123,8 +114,8 @@ namespace UI
 
         private void btn_DeleteBestelscherm_Click(object sender, EventArgs e)
         {
-            
-            foreach(ListViewItem lv in lv_BesteldeItemlist.SelectedItems)
+
+            foreach (ListViewItem lv in lv_BesteldeItemlist.SelectedItems)
             {
                 deleten((BesteldeMenuItems)lv.Tag);
             }
@@ -155,16 +146,16 @@ namespace UI
         {
             lv_BesteldeItemlist.Items.Clear();
         }
-        
+
         private void btn_VerzendenBestelscherm_Click(object sender, EventArgs e)
         {
             BesteldeMenuItemsLogica b = new BesteldeMenuItemsLogica();
-           
+
             List<Model.BesteldeMenuItems> besteldeItemsList = new List<Model.BesteldeMenuItems>();
 
             for (int i = 0; i < lv_BesteldeItemlist.Items.Count; i++)
             {
-                Model.BesteldeMenuItems item = (Model.BesteldeMenuItems)lv_BesteldeItemlist.Items[i].Tag;          
+                Model.BesteldeMenuItems item = (Model.BesteldeMenuItems)lv_BesteldeItemlist.Items[i].Tag;
                 besteldeItemsList.Add(item);
             }
 
@@ -172,23 +163,24 @@ namespace UI
 
             b.verzendBesteldeItems(besteldeItemsList, positief);
 
-            
+
             tbx_opmerking.Hide();
 
             lv_BesteldeItemlist.Items.Clear();
         }
 
-        private void VulMenuKaart(Catagorie c, Dagdeel d)
+        private void VulMenuKaart(Catagorie c)
         {
             lv_MenuKaart.Items.Clear();
             //lv_MenuKaart.Columns.Clear();
 
             MenuKaart m = new MenuKaart();
 
+
             List<Model.MenuItem> menuKaart = new List<Model.MenuItem>();
 
 
-            menuKaart = m.VulMenuKaart(c, d);
+            menuKaart = m.VulMenuKaart(c);
 
 
             foreach (Model.MenuItem menuItem in menuKaart)
@@ -220,7 +212,7 @@ namespace UI
                 if (besteldeMenuItem.MenuItem.Naam == item.Naam && item.Opmerking == besteldeMenuItem.Opmerking)
                 {
                     besteldeMenuItem.Aantal++;
-                    
+
                     lv_BesteldeItemlist.Items.Remove(i);
 
                     ListViewItem li = new ListViewItem(besteldeMenuItem.Aantal.ToString());
@@ -293,7 +285,7 @@ namespace UI
 
             }
 
-            
+
         }
 
         //private void timer_Tick(object sender, EventArgs e)
@@ -323,7 +315,7 @@ namespace UI
         //    timer.Start();
         //}
 
-        
+
 
         //private void btn_deleten_Click(object sender, EventArgs e)
         //{
@@ -351,7 +343,8 @@ namespace UI
             lv_geheleBestelling.Items.Clear();
             MenuKaart m = new MenuKaart();
             // ophalen bestelling_id
-            List<BesteldeMenuItems> besteldeItems = m.getBesteldeMenuItemsByBestellingId(bestelling.Id);
+            List<BesteldeMenuItems> besteldeItems = m.getBesteldeMenuItemsByBestellingId(bestelling.Id, false);
+            besteldeItems.AddRange(m.getBesteldeMenuItemsByBestellingId(bestelling.Id, true));
 
 
             foreach (Model.BesteldeMenuItems menuItem in besteldeItems)
@@ -372,7 +365,7 @@ namespace UI
             this.Hide();
             TafeloverzichtScherm ts = new TafeloverzichtScherm();
             ts.ShowDialog();
-        
+
         }
 
         private void btn_VorrigeBestelscherm_Click(object sender, EventArgs e)

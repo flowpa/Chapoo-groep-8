@@ -32,7 +32,8 @@ namespace Logica
 
         public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId)
         {
-            List<BesteldeMenuItems> besteldeMenuItems = bmDAO.GetBesteldeMenuItems(bestellingId);
+            List<BesteldeMenuItems> besteldeMenuItems = bmDAO.GetBesteldeMenuItems(bestellingId, false);
+            besteldeMenuItems.AddRange(bmDAO.GetBesteldeMenuItems(bestellingId, true));
             return besteldeMenuItems;
         }
     }

@@ -82,8 +82,11 @@ namespace DAL
 
         }
 
-        public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId)
+        public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId, bool drank)
         {
+            string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+            dbConnection = new SqlConnection(connString);
+
             string queryString =
             "SELECT * FROM dbo.Bestelde_MenuItems WHERE Bestelling_id = @id";
 

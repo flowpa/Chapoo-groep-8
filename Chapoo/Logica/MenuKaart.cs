@@ -12,8 +12,15 @@ namespace Logica
     public class MenuKaart
     {
         private MenuitemDAO md;
-        public List<MenuItem> VulMenuKaart(Catagorie c, Dagdeel d)
+        public List<MenuItem> VulMenuKaart(Catagorie c)
         {
+            Dagdeel d = new Dagdeel();
+
+            if(c == Catagorie.dranken)
+            {
+                d = Dagdeel.altijd;
+            }
+
             md= new MenuitemDAO();
 
             if (d != Dagdeel.altijd)
@@ -49,11 +56,11 @@ namespace Logica
             return m.Voorraad;
         }
 
-        public List<BesteldeMenuItems> getBesteldeMenuItemsByBestellingId(int bestellingId)
+        public List<BesteldeMenuItems> getBesteldeMenuItemsByBestellingId(int bestellingId, bool drank)
         {
             BesteldeMenuItemsDAO bmi = new BesteldeMenuItemsDAO();
 
-            List<BesteldeMenuItems> besteldeItems = bmi.GetBesteldeMenuItems(bestellingId);
+            List<BesteldeMenuItems> besteldeItems = bmi.GetBesteldeMenuItems(bestellingId, drank);
             return besteldeItems;
         }       
         

@@ -189,7 +189,6 @@ namespace DAL
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                // Call Read before accessing data.
 
                 List<Bestelling> bestelingen = new List<Bestelling>();
 
@@ -323,12 +322,13 @@ namespace DAL
 
         public int GetBestellingIdByTijd(DateTime tijd)
         {
+            string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+            dbConnection = new SqlConnection(connString);
+
             string queryString =
             "SELECT * FROM dbo.Bestelling WHERE Tijd = @tijd;";
 
 
-            using (dbConnection)
-            {
                 SqlCommand command = new SqlCommand(queryString, dbConnection);
                 dbConnection.Open();
 
@@ -338,13 +338,14 @@ namespace DAL
 
                 command.Prepare();
                 SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
 
                 int id = (int)reader["Bestelling_id"];
 
                 reader.Close();
                 dbConnection.Close();
                 return id;
-            }
+            
         }
 
         //public List<Bestelling> ReadBestellingen()

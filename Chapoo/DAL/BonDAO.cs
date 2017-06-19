@@ -79,14 +79,14 @@ namespace DAL
 
             Bon bon = null;
 
-            if (reader.Read())
-            {
-                int bonId = (int)reader["Bon_id"];
-                double fooi = (double)reader["Fooi"];
-                bool isBetaald = (bool)reader["Is_betaald"];
+            reader.Read();
 
-                bon = new Bon(bonId, bestellingId, fooi, isBetaald);
-            }
+            int bonId = (int)reader["Bon_id"];
+            double fooi = (double)reader["Fooi"];
+            bool isBetaald = (bool)reader["Is_betaald"];
+
+            bon = new Bon(bonId, bestellingId, fooi, isBetaald);
+
 
             reader.Close();
             dbConnection.Close();
