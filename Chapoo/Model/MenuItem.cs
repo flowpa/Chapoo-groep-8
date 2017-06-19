@@ -76,26 +76,26 @@ namespace Model
             //set { omschrijving = value; }
         }
 
+        public override string ToString()
+        {
+            return Naam + ", " + Prijs + "        " + omschrijving;
+        }
+
+        public bool IsAlcoholisch
+        {
+            get { return isAlcoholisch; }
+        }
+
         public string Opmerking
         {
             get { return opmerking; }
             set { opmerking = value; }
         }
 
-        public override string ToString()
-        {
-            return Naam + ", " + Prijs + "        " + omschrijving;
-        }
-
         public int Aantal
         {
             get { return aantal; }
             set { aantal = value; }
-        }
-
-        public bool IsAlcoholisch
-        {
-            get { return isAlcoholisch; }
         }
     }
 }

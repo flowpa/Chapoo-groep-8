@@ -84,12 +84,20 @@ namespace DAL
 
         public List<BesteldeMenuItems> GetBesteldeMenuItems(int bestellingId, bool drank)
         {
-            string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
-            dbConnection = new SqlConnection(connString);
+            string dranken = "";
+            if (drank)
+                dranken = "= 'dranken'";
+
+            else
+                dranken = "!= 'dranken'";
 
             string queryString =
-            "SELECT * FROM dbo.Bestelde_MenuItems WHERE Bestelling_id = @id";
+            "SELECT bm.* FROM Bestelde_MenuItems AS bm " +
+            "INNER JOIN MenuItem AS m ON bm.MenuItem_id = m.MenuItem_id " +
+            "WHERE Bestelling_id = @id AND m.Categorie " + dranken;
 
+            string connString = ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+            dbConnection = new SqlConnection(connString);
 
             using (dbConnection)
             {

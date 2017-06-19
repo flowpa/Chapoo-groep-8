@@ -59,7 +59,7 @@ namespace DAL
                 command.Parameters.Add(CatagorieParam);
                 command.Parameters.Add(DagdeelParam);
 
-               // command.Prepare();
+                //command.Prepare();
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -112,7 +112,8 @@ namespace DAL
             idParam.Value = id.ToString();
 
             cmd.Parameters.Add(idParam);
-            dbConnection.Open();
+            if (dbConnection.State != System.Data.ConnectionState.Open)
+                dbConnection.Open();
             cmd.Prepare();
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
@@ -120,6 +121,7 @@ namespace DAL
             MenuItem m = ReadMenuItem(reader);
 
             reader.Close();
+            if(dbConnection.State != System.Data.ConnectionState.Closed)
             dbConnection.Close();
 
             return m;

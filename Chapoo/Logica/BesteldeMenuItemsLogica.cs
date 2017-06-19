@@ -17,10 +17,8 @@ namespace Logica
  
             foreach (BesteldeMenuItems m in menuItems)
             {
-
                 bmDAO.WriteBesteldeMenuItem(m);
                 VeranderVooraad(m, positief);
-
             }
             
         }
